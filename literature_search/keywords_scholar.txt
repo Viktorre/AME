@@ -1,0 +1,3 @@
+panel data fixed effects environment
+10
+
