@@ -19,15 +19,15 @@ import shap
 from econml.dml import CausalForestDML
 
 # read Stata .dta file 
-df = pd.read_stata("data_rep.dta")
+df = pd.read_stata("data_rep.dta")[:100]
 
 # set variables 
 treatment = 'treatment'
 outcome = 'loansamt_total'
-covariates = ["members_resid_bl", "nadults_resid_bl", "head_age_bl", "act_livestock_bl", "act_business_bl",
-              "borrowed_total_bl", "members_resid_d_bl", "nadults_resid_d_bl", "head_age_d_bl",
-              "act_livestock_d_bl", "act_business_d_bl", "borrowed_total_d_bl", "ccm_resp_activ",
-              "other_resp_activ", "ccm_resp_activ_d", "other_resp_activ_d", "head_educ_1", "nmember_age6_16"]
+covariates = ["members_resid_bl"]#, "nadults_resid_bl", "head_age_bl", "act_livestock_bl", "act_business_bl",
+              # "borrowed_total_bl", "members_resid_d_bl", "nadults_resid_d_bl", "head_age_d_bl",
+              # "act_livestock_d_bl", "act_business_d_bl", "borrowed_total_d_bl", "ccm_resp_activ",
+              # "other_resp_activ", "ccm_resp_activ_d", "other_resp_activ_d", "head_educ_1", "nmember_age6_16"]
 
 # build causal graph with dowhy 
 model = CausalModel(
@@ -88,17 +88,38 @@ causal_forest.const_marginal_ate(X_test)
 
 
 # fit causal forest with default parameters 
-causal_forest = CausalForestDML()
-causal_forest.fit(Y, T, X=X, W=W)
+# causal_forest = CausalForestDML()
+# causal_forest.fit(Y, T, X=X, W=W)
 
 # calculate shap values of causal forest model 
 shap_values = causal_forest.shap_values(X)
 # plot shap values 
-# shap.summary_plot(shap_values['Y0']['T0'])
+shap.summary_plot(shap_values['Y0']['T0'])
 # shap.summary_plot(shap_values.value[instance,feature])
-# shap.plots.beeswarm(shap_values, order=shap_values.abs.max(0))
 
+
+import xgboost
+import shap
+
+# train XGBoost model
+# X,y = shap.datasets.adult()
+model = xgboost.XGBClassifier().fit(X, Y)
+
+# compute SHAP values
+explainer = shap.Explainer(model, X)
+shap_values = explainer(X)
+
+
+shap.plots.beeswarm(shap_values)
+
+
+
+
+'''
+
+1. use ohter predictor and compare formats
 
 schauen wo das problem ist, evtl kleiners bsp; einmal weniger daten
 einmal anderer predictor https://shap.readthedocs.io/en/latest/example_notebooks/api_examples/plots/beeswarm.html
 
+'''
