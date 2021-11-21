@@ -22,7 +22,7 @@ class RegressionExecuter():
                      'skycover']
         self.dailyheat = ['dailyheat','skycover','pressureavgsealevel'
                           ,'windspeed','precipitationwaterequiv']
-        self.dummies = ['i.dayofweek','','i.nati','i.type','i.year'
+        self.dummies = ['i.dayofweek','i.nati','i.type','i.year'
                         ,'i.cm','i.chair']
         self.pollutants = ['ozone','co','pm25']
 
@@ -31,24 +31,17 @@ class RegressionExecuter():
         # return self.df
         
         ###base regression
-        mod = sm.OLS(self.df['res'],
-                      self.df[self.weatherdaily])
+        regressor_list = [*self.weatherdaily, *self.pollutants,
+                          *self.dummies]
+        mod = sm.OLS(self.df['res'], self.df[regressor_list])
+        # $weatherdaily $pollutants $dummies
+        priblem dummies werden in stata autom gehandelt mit i.dummy
+        
         return mod.fit().summary()
         
         ### panel regression
+        # https://bashtage.github.io/linearmodels/panel/examples/examples.html
         
-        
-
-        
-        
-        
-    
-    # def reg_base_6t4_nothing(self,df):
-        # return df
-
-
-
-
 
 
 
