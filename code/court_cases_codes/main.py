@@ -12,6 +12,7 @@ if __name__ == '__main__':
     df = DataImporter.data
     DataFormatter = DataFormatter()
     df = DataFormatter.clean_dataset(df)
+    df = DataFormatter.add_dummies_to_df(df,'dayofweek')
 
     # Plotter = Plotter()
     # Plotter.plot_long_lat(df)
@@ -19,3 +20,7 @@ if __name__ == '__main__':
     from RegressionExecuter import RegressionExecuter
     RegressionExecuter = RegressionExecuter(df)
     RegressionExecuter.reg_base_6t4_nothing()
+
+
+
+morgen dummies elegant fixen, dann pols angreifen!

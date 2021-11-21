@@ -22,8 +22,10 @@ class RegressionExecuter():
                      'skycover']
         self.dailyheat = ['dailyheat','skycover','pressureavgsealevel'
                           ,'windspeed','precipitationwaterequiv']
-        self.dummies = ['i.dayofweek','i.nati','i.type','i.year'
-                        ,'i.cm','i.chair']
+        self.dummies = ['dayofweek1','dayofweek3', 'dayofweek2', 
+                        'dayofweek5', 'dayofweek4']
+                        # ['i.dayofweek','i.nati','i.type','i.year'
+                        # ,'i.cm','i.chair']
         self.pollutants = ['ozone','co','pm25']
 
 
@@ -35,7 +37,6 @@ class RegressionExecuter():
                           *self.dummies]
         mod = sm.OLS(self.df['res'], self.df[regressor_list])
         # $weatherdaily $pollutants $dummies
-        priblem dummies werden in stata autom gehandelt mit i.dummy
         
         return mod.fit().summary()
         
