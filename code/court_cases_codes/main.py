@@ -7,11 +7,10 @@ from DataFormatter import DataFormatter
 if __name__ == '__main__':
 
     DataImporter = DataImporter()
-    # DataImporter.put_dta_into_df("matched.dta")
-    DataImporter.put_dta_into_df('C:/Users/fx236/Documents/AME_files/court_cases_data/my_exports/paper_data_line_192.dta')
+    DataImporter.put_dta_into_df('C:/Users/fx236/Documents/AME_files/court_cases_data/my_exports/final_dataset_stata_output.dta')
     df = DataImporter.data
     DataFormatter = DataFormatter()
-    df = DataFormatter.clean_dataset(df)
+    # df = DataFormatter.clean_dataset(df)
     df = DataFormatter.add_dummies_to_df(df,'dayofweek')
 
     # Plotter = Plotter()
@@ -22,5 +21,14 @@ if __name__ == '__main__':
     RegressionExecuter.reg_base_6t4_nothing()
 
 
+# morgen dummies elegant fixen, dann pols angreifen!
 
-morgen dummies elegant fixen, dann pols angreifen!
+
+
+'''
+to dos:
+    
+    - dummis erstellen
+    - nans klüger handeln
+    - pols implementen
+'''

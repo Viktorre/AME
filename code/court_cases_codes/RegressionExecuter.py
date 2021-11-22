@@ -27,7 +27,17 @@ class RegressionExecuter():
                         # ['i.dayofweek','i.nati','i.type','i.year'
                         # ,'i.cm','i.chair']
         self.pollutants = ['ozone','co','pm25']
+        # self.try_to_drop_na_col_names()
 
+    def try_to_drop_na_col_names(self):
+        for att in dir(self):
+            print(getattr(RegressionExecuter,att))
+            # try:
+            #     self.df.dropna(axis=1, \
+            #                subset=getattr(RegressionExecuter,att))
+            #     print(getattr(RegressionExecuter,att)+'dropped')
+            # except:
+            #     pass
 
     def reg_base_6t4_nothing(self):
         # return self.df
