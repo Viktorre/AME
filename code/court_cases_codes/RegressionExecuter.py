@@ -23,77 +23,58 @@ class RegressionExecuter():
             'dailyheat':['dailyheat','skycover','pressureavgsealevel',
                          'windspeed','precipitationwaterequiv'],
             'dummies':['dayofweek1','dayofweek3', 'dayofweek2', 
-                       'dayofweek5', 'dayofweek4']}
-        self.weatherdaily = ['avgtemp10','skycover',
-                             'pressureavgsealevel','windspeed',
-                             'precipitationwaterequiv','avgdewpt'] 
-        self.weatherdailyt = ['skycover','avgdewpt',
-                              'pressureavgsealevel','windspeed',
-                              'precipitationwaterequiv']
-        self.weathertemp = ['press6t4','dew6t4','prcp6t4','wind6t4',
-                            'skycover']
-        self.weather6t4  = ['temp6t410','press6t4','dew6t4','prcp6t4',
-                            'wind6t4','skycover']
-        self.heat = ['heat10','press6t4','prcp6t4','wind6t4',
-                     'skycover']
-        self.dailyheat = ['dailyheat','skycover','pressureavgsealevel'
-                          ,'windspeed','precipitationwaterequiv']
-        self.dummies = ['dayofweek1','dayofweek3', 'dayofweek2', 
-                        'dayofweek5', 'dayofweek4']
-                        # ['i.dayofweek','i.nati','i.type','i.year'
-                        # ,'i.cm','i.chair']
-        self.pollutants = ['ozone','co','pm25']
+                       'dayofweek5', 'dayofweek4'],
+            'pollutants' : ['ozone','co','pm25']}
         self.df = data
-        self.df = self.try_to_drop_na_col_names()
+        self.df = self.drop_na_col_names()
 
-    def flatten_dict_of_lists(self, dictionary):
+    def flatten_dict_of_lists(self, dictionary, keys='all keys'):
+        '''in default, this fct will return elements of the entire
+        dictionary. keys=... lets you specify certain parts if needed
+        '''
         list_of_all_elements = []
-        for key in dictionary.keys():
-            for element in dictionary[key]:
-                list_of_all_elements.append(element)
+        if keys == 'all keys':
+            for key in dictionary.keys():
+                for element in dictionary[key]:
+                    list_of_all_elements.append(element)
+        else:
+            for key in keys:
+                for element in dictionary[key]:
+                    list_of_all_elements.append(element)            
         return list_of_all_elements
 
-    def try_to_drop_na_col_names(self):
+    def drop_na_col_names(self):
         print('Dropping NA values in variables due to missing value',
-              'sensitivity of regression module')
-        print(self.flatten_dict_of_lists(self.var_dictionary))
-        try:
-                
-            self.df = self.df.dropna(subset=self.\
-                                flatten_dict_of_lists(self.var_dictionary))
-                
-                
-        except:
-            print('dropping vars via loop')
-            # for var_list in [self.weatherdaily,self.weatherdailyt,
-            #                  self.weathertemp,self.weather6t4,self.heat,
-            #                  self.dailyheat, self.dummies,['res']]:
-            #     for var in var_list:
-            #         try:
-            #             self.df = self.df.dropna(subset=[var])
-            #             print(var+' done')
-            #         except:
-            #             pass
+              'sensitivity of regression module. This changed',
+               'version of df is only saved as attribute.')
+        self.df = self.df.dropna(subset=self.\
+                            flatten_dict_of_lists(self.var_dictionary))
         return self.df
                 
             
     def reg_base_6t4_nothing(self):
-        # return self.df
-        
-        ###base regression
-        regressor_list = [*self.weatherdaily, *self.pollutants,
-                          *self.dummies]
+        '''base regression'''
+        regressor_list = self.\
+                    flatten_dict_of_lists(self.var_dictionary,keys=[
+                    'weatherdaily','pollutants','dummies'])
+                        
+        # regressor_list = [*self.weatherdaily, *self.pollutants,
+                          # *self.dummies]
         mod = sm.OLS(self.df['res'], self.df[regressor_list])
         # $weatherdaily $pollutants $dummies
         
         return mod.fit().summary()
         
-        ### panel regression
+        '''panel regression'''
         # https://bashtage.github.io/linearmodels/panel/examples/examples.html
         
 
 
 
+
+
+
+### geo stuff###
 # http://darribas.org/gds_scipy16/ipynb_md/07_spatial_clustering.html
 
 

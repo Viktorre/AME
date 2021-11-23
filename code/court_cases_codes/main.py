@@ -18,7 +18,9 @@ if __name__ == '__main__':
     
     from RegressionExecuter import RegressionExecuter
     RegressionExecuter = RegressionExecuter(df)
-    RegressionExecuter.reg_base_6t4_nothing()
+    
+    
+    print(RegressionExecuter.reg_base_6t4_nothing())
 
 
 '''
