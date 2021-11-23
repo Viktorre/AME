@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-from Plotter import Plotter
+# from Plotter import Plotter
 from DataFormatter import DataFormatter
 
 if __name__ == '__main__':
@@ -21,14 +21,9 @@ if __name__ == '__main__':
     RegressionExecuter.reg_base_6t4_nothing()
 
 
-# morgen dummies elegant fixen, dann pols angreifen!
-
-
-
 '''
 to dos:
     
-    - dummis erstellen
-    - nans klüger handeln
+    - dummis und nans zzu ende machen mit dict
     - pols implementen
 '''

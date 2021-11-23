@@ -7,7 +7,23 @@ import statsmodels.api as sm
 class RegressionExecuter():
 
     def __init__(self, data, *args, **kwargs):
-        self.df = data
+        self.var_dictionary = \
+            {'weatherdaily':['avgtemp10','skycover',
+                             'pressureavgsealevel','windspeed',
+                             'precipitationwaterequiv','avgdewpt'] ,
+            'weatherdailyt':['skycover','avgdewpt',
+                             'pressureavgsealevel','windspeed',
+                             'precipitationwaterequiv'],
+            'weathertemp':['press6t4','dew6t4',
+                           'prcp6t4','wind6t4','skycover'],
+            'weather6t4' :['temp6t410','press6t4','dew6t4',
+                           'prcp6t4','wind6t4','skycover'],
+            'heat':['heat10','press6t4','prcp6t4','wind6t4',
+                          'skycover'],
+            'dailyheat':['dailyheat','skycover','pressureavgsealevel',
+                         'windspeed','precipitationwaterequiv'],
+            'dummies':['dayofweek1','dayofweek3', 'dayofweek2', 
+                       'dayofweek5', 'dayofweek4']}
         self.weatherdaily = ['avgtemp10','skycover',
                              'pressureavgsealevel','windspeed',
                              'precipitationwaterequiv','avgdewpt'] 
@@ -18,7 +34,7 @@ class RegressionExecuter():
                             'skycover']
         self.weather6t4  = ['temp6t410','press6t4','dew6t4','prcp6t4',
                             'wind6t4','skycover']
-        self.heat = ['heat10','press6t4','','prcp6t4','wind6t4',
+        self.heat = ['heat10','press6t4','prcp6t4','wind6t4',
                      'skycover']
         self.dailyheat = ['dailyheat','skycover','pressureavgsealevel'
                           ,'windspeed','precipitationwaterequiv']
@@ -27,18 +43,40 @@ class RegressionExecuter():
                         # ['i.dayofweek','i.nati','i.type','i.year'
                         # ,'i.cm','i.chair']
         self.pollutants = ['ozone','co','pm25']
-        # self.try_to_drop_na_col_names()
+        self.df = data
+        self.df = self.try_to_drop_na_col_names()
+
+    def flatten_dict_of_lists(self, dictionary):
+        list_of_all_elements = []
+        for key in dictionary.keys():
+            for element in dictionary[key]:
+                list_of_all_elements.append(element)
+        return list_of_all_elements
 
     def try_to_drop_na_col_names(self):
-        for att in dir(self):
-            print(getattr(RegressionExecuter,att))
-            # try:
-            #     self.df.dropna(axis=1, \
-            #                subset=getattr(RegressionExecuter,att))
-            #     print(getattr(RegressionExecuter,att)+'dropped')
-            # except:
-            #     pass
-
+        print('Dropping NA values in variables due to missing value',
+              'sensitivity of regression module')
+        print(self.flatten_dict_of_lists(self.var_dictionary))
+        try:
+                
+            self.df = self.df.dropna(subset=self.\
+                                flatten_dict_of_lists(self.var_dictionary))
+                
+                
+        except:
+            print('dropping vars via loop')
+            # for var_list in [self.weatherdaily,self.weatherdailyt,
+            #                  self.weathertemp,self.weather6t4,self.heat,
+            #                  self.dailyheat, self.dummies,['res']]:
+            #     for var in var_list:
+            #         try:
+            #             self.df = self.df.dropna(subset=[var])
+            #             print(var+' done')
+            #         except:
+            #             pass
+        return self.df
+                
+            
     def reg_base_6t4_nothing(self):
         # return self.df
         
