@@ -3,6 +3,8 @@
 from DataImporter import DataImporter
 from DataFormatter import DataFormatter
 from RegressionSettings import RegressionSettings
+from Plotter import Plotter
+from RegressionExecuter import RegressionExecuter
 
 if __name__ == '__main__':
 
@@ -11,30 +13,13 @@ if __name__ == '__main__':
     DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
     df = DataImporter.data
     RegressionSettings = RegressionSettings()
-
     DataFormatter = DataFormatter()
-    # df = DataFormatter.clean_dataset(df)
     df = DataFormatter.add_dummies_to_df(df,'dayofweek')
     df = DataFormatter.drop_na_by_col_names(df, 
                     RegressionSettings.return_vars_as_flat_list())
-
-    from Plotter import Plotter
     Plotter = Plotter()
-    Plotter.plot_long_lat(df)
-    
-    from RegressionExecuter import RegressionExecuter
-    RegressionExecuter = RegressionExecuter(df)
-    
-#    print(RegressionExecuter.reg_cross_section(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['weatherdaily','pollutants','dummies'])))
-#    print(5*'\n')
-#    print(RegressionExecuter.reg_panel(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['weatherdaily','pollutants','dummies']),
-#                    dimensions=['id1','date']))
-   
-
+    Plotter.plot_long_lat(df)    
+    RegressionExecuter = RegressionExecuter(df)    
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['weather6t4','pollutants','dummies']),
@@ -62,7 +47,7 @@ if __name__ == '__main__':
 
 '''
 to dos:    
-    - 1. table nachmachen, erstmal händisch
+    table in latex bringen
 '''
 
 
