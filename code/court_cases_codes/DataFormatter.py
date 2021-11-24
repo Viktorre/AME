@@ -25,3 +25,10 @@ class DataFormatter():
                     temp_column.append(0)
             df[dummy_name+str(int(unique_val))] = temp_column
         return df
+    
+    def create_missing_vars(self,df):
+        pass 
+    
+    def drop_na_by_col_names(self, df, var_list):
+        df = df.dropna(subset=var_list)
+        return df

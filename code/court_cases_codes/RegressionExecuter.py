@@ -7,65 +7,17 @@ from linearmodels.panel import PooledOLS
 
 class RegressionExecuter():
 
-    def __init__(self, data, *args, **kwargs):
-        self.var_dictionary = \
-            {'weatherdaily':['avgtemp10','skycover',
-                             'pressureavgsealevel','windspeed',
-                             'precipitationwaterequiv','avgdewpt'] ,
-            'weatherdailyt':['skycover','avgdewpt',
-                             'pressureavgsealevel','windspeed',
-                             'precipitationwaterequiv'],
-            'weathertemp':['press6t4','dew6t4',
-                           'prcp6t4','wind6t4','skycover'],
-            'weather6t4' :['temp6t410','press6t4','dew6t4',
-                           'prcp6t4','wind6t4','skycover'],
-            'heat':['heat10','press6t4','prcp6t4','wind6t4',
-                          'skycover'],
-            'dailyheat':['dailyheat','skycover','pressureavgsealevel',
-                         'windspeed','precipitationwaterequiv'],
-            'dummies':['dayofweek1','dayofweek3', 'dayofweek2', 
-                       'dayofweek5', 'dayofweek4'],
-            'pollutants' : ['ozone','co','pm25']}
+    def __init__(self, data, *args, **kwargs):           
         self.df = data
-        self.df = self.drop_na_col_names()
-
-    def flatten_dict_of_lists(self, dictionary, keys='all keys'):
-        '''in default, this fct will return elements of the entire
-        dictionary. keys=... lets you specify certain parts if needed
-        '''
-        list_of_all_elements = []
-        if keys == 'all keys':
-            for key in dictionary.keys():
-                for element in dictionary[key]:
-                    list_of_all_elements.append(element)
-        else:
-            for key in keys:
-                for element in dictionary[key]:
-                    list_of_all_elements.append(element)            
-        return list_of_all_elements
-
-    def drop_na_col_names(self):
-        '''Dropping NA values in variables due to missing value 
-        sensitivity of regression module. This changed version of df 
-        is only saved as attribute.'''
-        self.df = self.df.dropna(subset=self.\
-                        flatten_dict_of_lists(self.var_dictionary))
-        return self.df
                 
-    def reg_base_6t4_nothing(self, wanted_regressors):
+    def reg_cross_section(self, regressor_list):
         '''base regression'''
-        regressor_list = self.\
-                    flatten_dict_of_lists(self.var_dictionary,keys=
-                                          wanted_regressors)
         mod = sm.OLS(self.df['res'], self.df[regressor_list])
         return mod.fit().summary()
                 
     
-    def reg_panel(self, wanted_regressors,dimensions):
-        '''panel regression'''
-        regressor_list = self.\
-                    flatten_dict_of_lists(self.var_dictionary,keys=
-                                          wanted_regressors)    
+    def reg_panel(self, regressor_list,dimensions):
+        '''panel regression'''   
         df = self.df.set_index(dimensions)
         mod = PooledOLS(df['res'],df[regressor_list] )
         pooled_res = mod.fit()
