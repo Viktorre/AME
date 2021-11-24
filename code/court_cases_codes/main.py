@@ -25,19 +25,40 @@ if __name__ == '__main__':
     from RegressionExecuter import RegressionExecuter
     RegressionExecuter = RegressionExecuter(df)
     
-    print(RegressionExecuter.reg_cross_section(regressor_list=
+#    print(RegressionExecuter.reg_cross_section(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['weatherdaily','pollutants','dummies'])))
+#    print(5*'\n')
+#    print(RegressionExecuter.reg_panel(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['weatherdaily','pollutants','dummies']),
+#                    dimensions=['id1','date']))
+   
+
+    base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
-                    ['weatherdaily','pollutants','dummies'])))
-    print(5*'\n')
-    print(RegressionExecuter.reg_panel(regressor_list=
+                    ['weather6t4','pollutants','dummies']),
+                    dimensions=['city','month'])
+
+    lag_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
-                    ['weatherdaily','pollutants','dummies']),
-                    dimensions=['id1','date']))
+                    ['ltemp6t410','weatherdaily','pollutants',
+                     'dummies']), dimensions=['city','month'])
+    
+    lead_6t4 = RegressionExecuter.reg_panel(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['letemp6t410','weather6t4','pollutants',
+                     'dummies']), dimensions=['city','month'])
+    
+    all_6t4_one = RegressionExecuter.reg_panel(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['ltemp6t410','temp6t410','letemp6t410','press6t4',
+                     'dew6t4','prcp6t4','wind6t4','skycover','dummies',
+                     'pollutants']), dimensions=['city','month'])
     
 
-
-#base_6t4 lag_6t4 lead_6t4  all_6t4_one 
-
+    for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
+        print(res)
 
 '''
 to dos:    
