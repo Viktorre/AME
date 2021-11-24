@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-# from Plotter import Plotter
 from DataFormatter import DataFormatter
 
 if __name__ == '__main__':
@@ -13,14 +12,19 @@ if __name__ == '__main__':
     # df = DataFormatter.clean_dataset(df)
     df = DataFormatter.add_dummies_to_df(df,'dayofweek')
 
-    # Plotter = Plotter()
-    # Plotter.plot_long_lat(df)
+    from Plotter import Plotter
+    Plotter = Plotter()
+    Plotter.plot_long_lat(df)
     
     from RegressionExecuter import RegressionExecuter
     RegressionExecuter = RegressionExecuter(df)
+    # print(RegressionExecuter.reg_base_6t4_nothing(wanted_regressors=
+                    # ['weatherdaily','pollutants','dummies']))
     
+    print(RegressionExecuter.reg_panel(wanted_regressors=
+                    ['weatherdaily','pollutants','dummies']))
     
-    print(RegressionExecuter.reg_base_6t4_nothing())
+
 
 
 '''
