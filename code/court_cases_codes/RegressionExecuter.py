@@ -61,12 +61,12 @@ class RegressionExecuter():
         return mod.fit().summary()
                 
     
-    def reg_panel(self, wanted_regressors):
+    def reg_panel(self, wanted_regressors,dimensions):
         '''panel regression'''
         regressor_list = self.\
                     flatten_dict_of_lists(self.var_dictionary,keys=
                                           wanted_regressors)    
-        df = self.df.set_index(['id1','date'])
+        df = self.df.set_index(dimensions)
         mod = PooledOLS(df['res'],df[regressor_list] )
         pooled_res = mod.fit()
         # print(dir(pooled_res))
