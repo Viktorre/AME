@@ -22,9 +22,22 @@ if __name__ == '__main__':
     Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
     
-    test1 = RegressionExecuter.reg_cross_section(regressor_list=
+    reg_linear_model1 = RegressionExecuter.reg_linear_model(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['letemp6t410','pollutants','dummies']))
+
+    reg_linear_model2 = RegressionExecuter.reg_linear_model(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['weather6t4','pollutants','dummies']))
+    
+    sm1 = RegressionExecuter.reg_cross_section(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['weather6t4','pollutants','dummies']))
+
+    sm2 = RegressionExecuter.reg_cross_section(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['weather6t4','pollutants','dummies']))
+
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
@@ -47,13 +60,15 @@ if __name__ == '__main__':
                      'dew6t4','prcp6t4','wind6t4','skycover','dummies',
                      'pollutants']), dimensions=['city','month'])
     
-
     for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
         print(res)
 
 '''
 to dos:    
     table in latex bringen
+    MRGEN NUR KURZ SCHAUEN OB MIT LIBRARY POLS MÖGLICH; WENN NICHT; 
+    DANN FCT FÜR PANDAS TABLE SO WIE IN PAPAER (IST JA NICHT SOVIEL)
+    MACHEN, ne erstmal in latex kucken
 '''
 
 

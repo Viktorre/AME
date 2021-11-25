@@ -6,34 +6,21 @@ import statsmodels.api as sm
 #from IPython.core.display import HTML
 
 from TexRession import texression
+from linearmodels import OLS
 
-class TexWriter():
+from statsmodels.iolib.summary2 import summary_col
 
-    def __init__(self, *args, **kwargs):
-        pass
-    
-varnames = {'t1' : '$Russell 2000_{t}$',
-            't0' : '$Russell 2000_{t-1}$',
-            'banded' : 'Banded state',
-            'banded_t1' : 'Banded state $\\times Russell 2000_{t}$'
-           }
+#class TexWriter():
 
-varorder = ['t1', 't0', 'banded', 'banded_t1',
-           {'name' : 'Firm controls', 'type' : 'controls',
-            'vars' :['NonIndxOwn', 'ISSrec_For', 'log_atq', 'roa', 'bm_ratio', 'firm_leverage']},
-           {'name' : 'Year controls', 'type' : 'controls',
-            'vars' : ['y_2010', 'y_2011', 'y_2012', 'y_2013', 'y_2014', 'y_2015', 'y_2016']},
-           {'name' : 'Float and mk.cap. controls', 'type' : 'controls',
-            'vars' : ['mkcap', 'float_value_t1']},
-           {'type' : 'silent', 'vars' : ['const']}]
+#    def __init__(self, *args, **kwargs):
+#        pass
 
+dfoutput = summary_col([sm1,sm2],stars=True)
+print(dfoutput)
+dfoutput.as_latex()
+pd.DataFrame(dfoutput.tables[0])
 
-tx = texression(varnames, varorder, ltcaption = """First stage of 2SLS regression.""")
-
-tx.add_regression(OLS(...).fit(), 'Similarity measure')
-tx.add_regression(OLS(...).fit(), '\% owned by index funds')
-
-#teste ob ohne wrapper roh möglich.... einfahc dne tbale bekommen
+\\begin{table}\n\\caption{}\n\\label{}\n\\begin{center}\n\\begin{tabular}{lll}\n\\hline\n               & res I      & res II      \\\\\n\\hline\ntemp6t410      & -1.3630*** & -1.3630***  \\\\\n               & (0.1553)   & (0.1553)    \\\\\npress6t4       & -0.0041*** & -0.0041***  \\\\\n               & (0.0011)   & (0.0011)    \\\\\ndew6t4         & 0.0004***  & 0.0004***   \\\\\n               & (0.0001)   & (0.0001)    \\\\\nprcp6t4        & 0.1282*    & 0.1282*     \\\\\n               & (0.0657)   & (0.0657)    \\\\\nwind6t4        & 0.0014***  & 0.0014***   \\\\\n               & (0.0003)   & (0.0003)    \\\\\nskycover       & 0.0208***  & 0.0208***   \\\\\n               & (0.0035)   & (0.0035)    \\\\\nozone          & 1.1201***  & 1.1201***   \\\\\n               & (0.0873)   & (0.0873)    \\\\\nco             & 0.0275***  & 0.0275***   \\\\\n               & (0.0020)   & (0.0020)    \\\\\npm25           & -0.0011*** & -0.0011***  \\\\\n               & (0.0001)   & (0.0001)    \\\\\ndayofweek1     & 0.2988***  & 0.2988***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek3     & 0.2884***  & 0.2884***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek2     & 0.2797***  & 0.2797***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek5     & 0.3004***  & 0.3004***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek4     & 0.2930***  & 0.2930***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\nR-squared      & 0.1669     & 0.1669      \\\\\nR-squared Adj. & 0.1668     & 0.1668      \\\\\n\\hline\n\\end{tabular}\n\\end{center}\n\\end{table}
 
 #
 #class custom_ols3():

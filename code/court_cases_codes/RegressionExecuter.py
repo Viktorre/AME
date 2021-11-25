@@ -4,6 +4,7 @@
 # from sklearn.linear_model import LinearRegression
 import statsmodels.api as sm
 from linearmodels.panel import PooledOLS
+from linearmodels import OLS
 
 class RegressionExecuter():
 
@@ -22,8 +23,12 @@ class RegressionExecuter():
         mod = PooledOLS(df['res'],df[regressor_list] )
         return mod.fit()
         
+    def reg_linear_model(self, regressor_list):
+        '''base regression'''
+        mod = OLS(self.df['res'], self.df[regressor_list])
+        return mod.fit()#.summary()
         
-        # https://bashtage.github.io/linearmodels/panel/examples/examples.html
+    # https://bashtage.github.io/linearmodels/panel/examples/examples.html
         
 
 
