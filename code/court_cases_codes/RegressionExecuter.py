@@ -13,16 +13,14 @@ class RegressionExecuter():
     def reg_cross_section(self, regressor_list):
         '''base regression'''
         mod = sm.OLS(self.df['res'], self.df[regressor_list])
-        return mod.fit().summary()
+        return mod.fit()#.summary()
                 
     
     def reg_panel(self, regressor_list,dimensions):
         '''panel regression'''   
         df = self.df.set_index(dimensions)
         mod = PooledOLS(df['res'],df[regressor_list] )
-        pooled_res = mod.fit()
-        # print(dir(pooled_res))
-        return pooled_res
+        return mod.fit()
         
         
         # https://bashtage.github.io/linearmodels/panel/examples/examples.html

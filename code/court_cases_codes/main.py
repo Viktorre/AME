@@ -5,6 +5,7 @@ from DataFormatter import DataFormatter
 from RegressionSettings import RegressionSettings
 from Plotter import Plotter
 from RegressionExecuter import RegressionExecuter
+#from TexWriter import TexWriter
 
 if __name__ == '__main__':
 
@@ -20,6 +21,11 @@ if __name__ == '__main__':
     Plotter = Plotter()
     Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
+    
+    test1 = RegressionExecuter.reg_cross_section(regressor_list=
+                    RegressionSettings.return_vars_as_flat_list(
+                    ['weather6t4','pollutants','dummies']))
+    
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['weather6t4','pollutants','dummies']),
