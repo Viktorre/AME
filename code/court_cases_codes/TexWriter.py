@@ -5,7 +5,7 @@ import statsmodels.api as sm
 #from stargazer.stargazer import Stargazer
 #from IPython.core.display import HTML
 
-from TexRession import texression
+#from TexRession import texression
 from linearmodels import OLS
 
 from statsmodels.iolib.summary2 import summary_col
@@ -15,14 +15,75 @@ from statsmodels.iolib.summary2 import summary_col
 #    def __init__(self, *args, **kwargs):
 #        pass
 
-dfoutput = summary_col([sm1,sm2],stars=True)
-print(dfoutput)
-dfoutput.as_latex()
-pd.DataFrame(dfoutput.tables[0])
-
-\\begin{table}\n\\caption{}\n\\label{}\n\\begin{center}\n\\begin{tabular}{lll}\n\\hline\n               & res I      & res II      \\\\\n\\hline\ntemp6t410      & -1.3630*** & -1.3630***  \\\\\n               & (0.1553)   & (0.1553)    \\\\\npress6t4       & -0.0041*** & -0.0041***  \\\\\n               & (0.0011)   & (0.0011)    \\\\\ndew6t4         & 0.0004***  & 0.0004***   \\\\\n               & (0.0001)   & (0.0001)    \\\\\nprcp6t4        & 0.1282*    & 0.1282*     \\\\\n               & (0.0657)   & (0.0657)    \\\\\nwind6t4        & 0.0014***  & 0.0014***   \\\\\n               & (0.0003)   & (0.0003)    \\\\\nskycover       & 0.0208***  & 0.0208***   \\\\\n               & (0.0035)   & (0.0035)    \\\\\nozone          & 1.1201***  & 1.1201***   \\\\\n               & (0.0873)   & (0.0873)    \\\\\nco             & 0.0275***  & 0.0275***   \\\\\n               & (0.0020)   & (0.0020)    \\\\\npm25           & -0.0011*** & -0.0011***  \\\\\n               & (0.0001)   & (0.0001)    \\\\\ndayofweek1     & 0.2988***  & 0.2988***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek3     & 0.2884***  & 0.2884***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek2     & 0.2797***  & 0.2797***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek5     & 0.3004***  & 0.3004***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\ndayofweek4     & 0.2930***  & 0.2930***   \\\\\n               & (0.0321)   & (0.0321)    \\\\\nR-squared      & 0.1669     & 0.1669      \\\\\nR-squared Adj. & 0.1668     & 0.1668      \\\\\n\\hline\n\\end{tabular}\n\\end{center}\n\\end{table}
-
+#dfoutput = summary_col([sm1,sm2],stars=True)
+#print(dfoutput)
+#dfoutput.as_latex()
+#with open('latex_test.txt', 'a') as file:
+#    file.write(dfoutput.as_latex())
 #
+#pd.DataFrame(dfoutput.tables[0])
+def return_list_of_ascending_ints_in_brackets(how_many_ints):
+    list_of_strings = []
+    for w in range(1,how_many_ints+1):
+        list_of_strings.append('('+str(w)+')')
+    return list_of_strings
+
+def return_result_table(results_array):
+    table = pd.DataFrame(columns=
+            return_list_of_ascending_ints_in_brackets(len(results_array)))
+    table.loc[''] =  return_list_of_ascending_ints_in_brackets(len(\
+                     results_array))#ka warum hier plain numbers...
+#    for res in results_array:
+#        print(res)
+    table.loc['Temperaturet/1000'] = [1,2,3,4]
+    table.loc[' '] = [1,2,3,4]
+    table.loc['Temperaturet-1/1000'] = [1,2,3,4] 
+    table.loc['  '] = [1,2,3,4]
+    table.loc['Temperaturet+1/1000'] = [1,2,3,4]
+    table.loc['   '] = [1,2,3,4]
+    table.loc['F-statistic of joint significance'] = [1,2,3,4]
+    table.loc['of weather variables'] = ['','','','']
+    table.loc['P-value'] = [1,2,3,4]
+    table.loc['Observations'] = [1,2,3,4]
+    return table
+
+def export_table_as_latex_code(table,filename,header=True):
+    raw_latex = table.to_latex(header=header)
+    index = raw_latex.find('Observations')
+    raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
+    with open(filename+'.txt', 'a') as file:
+        file.write(raw_latex)
+
+def asterisk_creator(pvalue):
+    if pvalue < 0.01:
+        return '***'
+    if pvalue <0.05:
+        return '**'
+    if pvalue <0.1:
+        return '*'
+    
+table = return_result_table([base_6t4,lag_6t4,lead_6t4,all_6t4_one])
+export_table_as_latex_code(table,'Table 2',header=[
+        '(1)\nPreferred','2','3','4' ])
+dir(base_6t4.params)
+dir(base_6t4)
+    
+[
+str(base_6t4.params[0])+asterisk_creator(base_6t4.pvalues[0]),
+'['+str(base_6t4.std_errors[0])+']',
+
+]
+ morgen überlegen wie das klug machen alles! morgen table fertig haben!!!
+und anndere tables denken. und schauen welche ergebnisse ich repliieren will!!   
+    
+base_6t4
+base_6t4.summary
+
+
+
+
+
+
 #class custom_ols3():
 #    
 #    def __init__(self, estimator):

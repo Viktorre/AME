@@ -15,7 +15,7 @@ if __name__ == '__main__':
     df = DataImporter.data
     RegressionSettings = RegressionSettings()
     DataFormatter = DataFormatter()
-    df = DataFormatter.add_dummies_to_df(df,'dayofweek')
+    df = DataFormatter.add_dummies_to_df(df,'dayofweek') #äre gut mit settings hier
     df = DataFormatter.drop_na_by_col_names(df, 
                     RegressionSettings.return_vars_as_flat_list())
     Plotter = Plotter()
@@ -63,12 +63,16 @@ if __name__ == '__main__':
     for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
         print(res)
 
+
+
+
 '''
 to dos:    
     table in latex bringen
     MRGEN NUR KURZ SCHAUEN OB MIT LIBRARY POLS MÖGLICH; WENN NICHT; 
     DANN FCT FÜR PANDAS TABLE SO WIE IN PAPAER (IST JA NICHT SOVIEL)
     MACHEN, ne erstmal in latex kucken
+    erstmal textfile export machen oder so anstatt rpint
 '''
 
 
