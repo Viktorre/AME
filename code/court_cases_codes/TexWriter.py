@@ -33,6 +33,9 @@ def return_result_table(results_array):
             return_list_of_ascending_ints_in_brackets(len(results_array)))
     table.loc[''] =  return_list_of_ascending_ints_in_brackets(len(\
                      results_array))#ka warum hier plain numbers...
+    print(table)
+
+#    one row 
 #    for res in results_array:
 #        print(res)
     table.loc['Temperaturet/1000'] = [1,2,3,4]
@@ -63,23 +66,48 @@ def asterisk_creator(pvalue):
         return '*'
     
 table = return_result_table([base_6t4,lag_6t4,lead_6t4,all_6t4_one])
-export_table_as_latex_code(table,'Table 2',header=[
-        '(1)\nPreferred','2','3','4' ])
-dir(base_6t4.params)
-dir(base_6t4)
+#export_table_as_latex_code(table,'Table 2',header=[
+#        '(1)\nPreferred','2','3','4' ])
+
+one_dct = {
+            'Temperaturet/1000' : str(base_6t4.params[0])+\
+            asterisk_creator(base_6t4.pvalues[0]),
+            ' ' : '['+str(base_6t4.std_errors[0])+']',
+            'Temperaturet-1/1000' : 1,
+            '  ' : 0,
+            'Temperaturet+1/1000' : 1,
+            '   ' : 2,
+            'F-statistic of joint significance' : 1,
+            'of weather variables' : 1,
+            'P-value' : 1,
+            'Observations' : 1
+                    }
+
+
+
+numbers = pd.concat([pd.DataFrame(one_dct,index=['(1)']),
+           pd.DataFrame(one_dct,index=['(2)']),
+           pd.DataFrame(one_dct,index=['(3)']),
+           pd.DataFrame(one_dct,index=['(4)'])]).T
+head = pd.concat([table,numbers])
+print(head)
     
-[
-str(base_6t4.params[0])+asterisk_creator(base_6t4.pvalues[0]),
-'['+str(base_6t4.std_errors[0])+']',
+#import string
+#string.replace(our_str, 'you', 'me', 1)    
+#
+#dir(base_6t4.params)
+#dir(base_6t4)
+#    
 
-]
- morgen überlegen wie das klug machen alles! morgen table fertig haben!!!
-und anndere tables denken. und schauen welche ergebnisse ich repliieren will!!   
-    
-base_6t4
-base_6t4.summary
-
-
+#str(base_6t4.params[0])+asterisk_creator(base_6t4.pvalues[0])
+#'['+str(base_6t4.std_errors[0])+']'
+# morgen überlegen wie das klug machen alles! morgen table fertig haben!!!
+#und anndere tables denken. und schauen welche ergebnisse ich repliieren will!!   
+#    
+#base_6t4
+#base_6t4.summary
+#
+#
 
 
 

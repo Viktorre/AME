@@ -71,8 +71,12 @@ to dos:
     table in latex bringen
     MRGEN NUR KURZ SCHAUEN OB MIT LIBRARY POLS MÖGLICH; WENN NICHT; 
     DANN FCT FÜR PANDAS TABLE SO WIE IN PAPAER (IST JA NICHT SOVIEL)
-    MACHEN, ne erstmal in latex kucken
     erstmal textfile export machen oder so anstatt rpint
+    if toprule: \hline\hline
+    if midrule \hline
+    if F-stat: \hline
+    if obs: \hline
+    if bottomrule \hline
 '''
 
 
