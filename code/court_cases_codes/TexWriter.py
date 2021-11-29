@@ -69,28 +69,47 @@ table = return_result_table([base_6t4,lag_6t4,lead_6t4,all_6t4_one])
 #export_table_as_latex_code(table,'Table 2',header=[
 #        '(1)\nPreferred','2','3','4' ])
 
-one_dct = {
-            'Temperaturet/1000' : str(base_6t4.params[0])+\
-            asterisk_creator(base_6t4.pvalues[0]),
-            ' ' : '['+str(base_6t4.std_errors[0])+']',
-            'Temperaturet-1/1000' : 1,
-            '  ' : 0,
-            'Temperaturet+1/1000' : 1,
-            '   ' : 2,
-            'F-statistic of joint significance' : 1,
-            'of weather variables' : 1,
-            'P-value' : 1,
-            'Observations' : 1
-                    }
+def return_elements_for_result_table_from_reg(reg):
+    dictionary = {}
+    try:
+        dictionary['Temperaturet/1000'] = str(reg.params['temp6t410'])+\
+        asterisk_creator(reg.pvalues['temp6t410'])
+        dictionary[' '] : '['+str(reg.std_errors['temp6t410'])+']'
+    except:
+        dictionary['Temperaturet/1000'] = str(reg.params['avgtemp10'])+\
+        asterisk_creator(reg.pvalues['avgtemp10'])
+        dictionary[' '] : '['+str(reg.std_errors['avgtemp10'])+']'        
+    try:
+        dictionary['Temperaturet-1/1000'] = str(reg.params['ltemp6t410'])+\
+        asterisk_creator(reg.pvalues['ltemp6t410'])
+        dictionary['  '] : '['+str(reg.std_errors['ltemp6t410'])+']'
+    except:
+        dictionary['Temperaturet-1/1000'] = '-'
+        dictionary['  '] = '-'
+    try:
+        dictionary['Temperaturet+1/1000'] = str(reg.params['letemp6t410'])+\
+        asterisk_creator(reg.pvalues['letemp6t410'])
+        dictionary['   '] : '['+str(reg.std_errors['lemp6t410'])+']'
+    except:
+        dictionary['Temperaturet-1/1000'] = '-'
+        dictionary['  '] = '-'
+    dictionary['F-statistic of joint significance'] = 1
+    dictionary['of weather variables'] = 1
+    dictionary['P-value'] = 1
+    dictionary['Observations'] = 1
+    return dictionary
+    
+for reg in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
+    print(reg.params)
+    print(return_elements_for_result_table_from_reg(reg))
+#    break    
 
-
-
-numbers = pd.concat([pd.DataFrame(one_dct,index=['(1)']),
-           pd.DataFrame(one_dct,index=['(2)']),
-           pd.DataFrame(one_dct,index=['(3)']),
-           pd.DataFrame(one_dct,index=['(4)'])]).T
-head = pd.concat([table,numbers])
-print(head)
+#numbers = pd.concat([pd.DataFrame(one_dct,index=['(1)']),
+#           pd.DataFrame(one_dct,index=['(2)']),
+#           pd.DataFrame(one_dct,index=['(3)']),
+#           pd.DataFrame(one_dct,index=['(4)'])]).T
+#head = pd.concat([table,numbers])
+#print(head)
     
 #import string
 #string.replace(our_str, 'you', 'me', 1)    

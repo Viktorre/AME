@@ -68,10 +68,9 @@ if __name__ == '__main__':
 
 '''
 to dos:    
+    in stata ohne quiet rausfinden welche die params in den tbales sind!
+        fpr alle 4 genau schauen welche die drei params sind lag_6t4!!!
     table in latex bringen
-    MRGEN NUR KURZ SCHAUEN OB MIT LIBRARY POLS MÖGLICH; WENN NICHT; 
-    DANN FCT FÜR PANDAS TABLE SO WIE IN PAPAER (IST JA NICHT SOVIEL)
-    erstmal textfile export machen oder so anstatt rpint
     if toprule: \hline\hline
     if midrule \hline
     if F-stat: \hline
