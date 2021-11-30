@@ -5,7 +5,7 @@ from DataFormatter import DataFormatter
 from RegressionSettings import RegressionSettings
 from Plotter import Plotter
 from RegressionExecuter import RegressionExecuter
-#from TexWriter import TexWriter
+from TexWriter import TexWriter
 
 if __name__ == '__main__':
 
@@ -64,13 +64,15 @@ if __name__ == '__main__':
     for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
         print(res)
 
-
+    TexWriter = TexWriter()
+    TexWriter.export_table_as_latex_code([base_6t4,lag_6t4,lead_6t4,\
+                                          all_6t4_one], 'Table 2')
 
 
 '''
 to dos:    
     - in stata ohne qui reg summaries vgl
-    jetzt noch tex writer reinmachen
+    - überlegen was als nächstes machen
 '''
 
 
