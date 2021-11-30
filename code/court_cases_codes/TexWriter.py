@@ -15,47 +15,12 @@ from statsmodels.iolib.summary2 import summary_col
 #    def __init__(self, *args, **kwargs):
 #        pass
 
-#dfoutput = summary_col([sm1,sm2],stars=True)
-#print(dfoutput)
-#dfoutput.as_latex()
-#with open('latex_test.txt', 'a') as file:
-#    file.write(dfoutput.as_latex())
-#
-#pd.DataFrame(dfoutput.tables[0])
+
 def return_list_of_ascending_ints_in_brackets(how_many_ints):
     list_of_strings = []
     for w in range(1,how_many_ints+1):
         list_of_strings.append('('+str(w)+')')
     return list_of_strings
-
-def return_result_table(results_array):
-    table = pd.DataFrame(columns=
-            return_list_of_ascending_ints_in_brackets(len(results_array)))
-    table.loc[''] =  return_list_of_ascending_ints_in_brackets(len(\
-                     results_array))#ka warum hier plain numbers...
-    print(table)
-
-#    one row 
-#    for res in results_array:
-#        print(res)
-    table.loc['Temperaturet/1000'] = [1,2,3,4]
-    table.loc[' '] = [1,2,3,4]
-    table.loc['Temperaturet-1/1000'] = [1,2,3,4] 
-    table.loc['  '] = [1,2,3,4]
-    table.loc['Temperaturet+1/1000'] = [1,2,3,4]
-    table.loc['   '] = [1,2,3,4]
-    table.loc['F-statistic of joint significance'] = [1,2,3,4]
-    table.loc['of weather variables'] = ['','','','']
-    table.loc['P-value'] = [1,2,3,4]
-    table.loc['Observations'] = [1,2,3,4]
-    return table
-
-def export_table_as_latex_code(table,filename,header=True):
-    raw_latex = table.to_latex(header=header)
-    index = raw_latex.find('Observations')
-    raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
-    with open(filename+'.txt', 'a') as file:
-        file.write(raw_latex)
 
 def asterisk_creator(pvalue):
     if pvalue < 0.01:
@@ -64,69 +29,84 @@ def asterisk_creator(pvalue):
         return '**'
     if pvalue <0.1:
         return '*'
+    return ''
     
-table = return_result_table([base_6t4,lag_6t4,lead_6t4,all_6t4_one])
-#export_table_as_latex_code(table,'Table 2',header=[
-#        '(1)\nPreferred','2','3','4' ])
-
-def return_elements_for_result_table_from_reg(reg):
+def return_elements_for_result_table_from_reg(reg,title):
     dictionary = {}
+    dictionary['     '] = title
     try:
         dictionary['Temperaturet/1000'] = str(reg.params['temp6t410'])+\
         asterisk_creator(reg.pvalues['temp6t410'])
-        dictionary[' '] : '['+str(reg.std_errors['temp6t410'])+']'
     except:
         dictionary['Temperaturet/1000'] = str(reg.params['avgtemp10'])+\
         asterisk_creator(reg.pvalues['avgtemp10'])
-        dictionary[' '] : '['+str(reg.std_errors['avgtemp10'])+']'        
     try:
-        dictionary['Temperaturet-1/1000'] = str(reg.params['ltemp6t410'])+\
-        asterisk_creator(reg.pvalues['ltemp6t410'])
-        dictionary['  '] : '['+str(reg.std_errors['ltemp6t410'])+']'
+        dictionary[' '] = '['+str(reg.std_errors['temp6t410'])+']'
+    except:
+        dictionary[' '] = '['+str(reg.std_errors['avgtemp10'])+']' 
+    try:
+        dictionary['Temperaturet-1/1000'] = str(reg.params['ltemp6t410'])\
+        +asterisk_creator(reg.pvalues['ltemp6t410'])
     except:
         dictionary['Temperaturet-1/1000'] = '-'
+    try:
+        dictionary['  '] = '['+str(reg.std_errors['ltemp6t410'])+']'
+    except:
         dictionary['  '] = '-'
     try:
         dictionary['Temperaturet+1/1000'] = str(reg.params['letemp6t410'])+\
         asterisk_creator(reg.pvalues['letemp6t410'])
-        dictionary['   '] : '['+str(reg.std_errors['lemp6t410'])+']'
     except:
-        dictionary['Temperaturet-1/1000'] = '-'
-        dictionary['  '] = '-'
+        dictionary['Temperaturet+1/1000'] = '-'
+    try:
+        dictionary['   '] = '['+str(reg.std_errors['lemp6t410'])+']'
+    except:
+        dictionary['   '] = '-'
     dictionary['F-statistic of joint significance'] = 1
     dictionary['of weather variables'] = 1
     dictionary['P-value'] = 1
     dictionary['Observations'] = 1
     return dictionary
-    
-for reg in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
-    print(reg.params)
-    print(return_elements_for_result_table_from_reg(reg))
-#    break    
 
-#numbers = pd.concat([pd.DataFrame(one_dct,index=['(1)']),
-#           pd.DataFrame(one_dct,index=['(2)']),
-#           pd.DataFrame(one_dct,index=['(3)']),
-#           pd.DataFrame(one_dct,index=['(4)'])]).T
-#head = pd.concat([table,numbers])
-#print(head)
-    
+def create_pandas_export_table_from_regs(reg_list,title_list):
+    '''
+    this fct loops trough regression results and saves each one's 
+    relevant numbers into a dictionary. Later these dicts are combined
+    via pandas concat and transposed to match latex format
+    '''
+    export_table = pd.DataFrame([])
+    for reg,index,title in zip(reg_list,
+                         return_list_of_ascending_ints_in_brackets(
+                                 len(reg_list)),title_list):
+        export_table = pd.concat([export_table,pd.DataFrame(
+                return_elements_for_result_table_from_reg(reg,title),
+                index= [index])],sort=False)
+    export_table = pd.DataFrame(export_table)
+    return  export_table.T
+
+def export_table_as_latex_code(table,filename):
+    raw_latex = table.to_latex()
+    index = raw_latex.find('Observations')
+    raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
+    with open(filename+'.txt', 'a') as file:
+        file.write(raw_latex)
+
+table = create_pandas_export_table_from_regs(
+        [base_6t4,lag_6t4,lead_6t4,all_6t4_one],
+        ['Preferred','1-Day','lag','1-Day','lead','All'])
+
+print(table)
+export_table_as_latex_code(table,'Table 2')
+table.to_csv('table.csv')
+
+
+
+
+
 #import string
 #string.replace(our_str, 'you', 'me', 1)    
-#
-#dir(base_6t4.params)
-#dir(base_6t4)
-#    
+kürzen, f stat rein, doubles lines rein
 
-#str(base_6t4.params[0])+asterisk_creator(base_6t4.pvalues[0])
-#'['+str(base_6t4.std_errors[0])+']'
-# morgen überlegen wie das klug machen alles! morgen table fertig haben!!!
-#und anndere tables denken. und schauen welche ergebnisse ich repliieren will!!   
-#    
-#base_6t4
-#base_6t4.summary
-#
-#
 
 
 
@@ -150,27 +130,3 @@ for reg in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
 #    def predict(self,X_test):
 #        X_test = X_test[['mvel1','b/m','mom1m']]
 #        return self.estimator.predict(X_test)
-#              
-#
-#
-
-
-#diabetes = datasets.load_diabetes()
-#df = pd.DataFrame(diabetes.data)
-#df.columns = ['Age', 'Sex', 'BMI', 'ABP', 'S1', 'S2', 'S3', 'S4', 'S5', 'S6']
-#df['target'] = diabetes.target
-#
-#est = sm.OLS(endog=df['target'], exog=sm.add_constant(df[df.columns[0:4]])).fit()
-#est2 = sm.OLS(endog=df['target'], exog=sm.add_constant(df[df.columns[0:6]])).fit()
-#
-#base_6t4
-#
-#stargazer = Stargazer(res)
-#
-#HTML(stargazer.render_html())
-#
-#
-#https://github.com/mwburke/stargazer/blob/master/examples.ipynb
-#
-
-#schauen wie texressin da rein

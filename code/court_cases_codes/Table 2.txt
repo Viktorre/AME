@@ -1,20 +1,18 @@
 \begin{tabular}{lllll}
 \toprule
-{} & (1)
-Preferred &    2 &    3 &    4 \\
+{} &                     (1) &                    (2) &                     (3) &                    (4) \\
 \midrule
-                                  &           (1) &  (2) &  (3) &  (4) \\
-Temperaturet/1000                 &             1 &    2 &    3 &    4 \\
-                                  &             1 &    2 &    3 &    4 \\
-Temperaturet-1/1000               &             1 &    2 &    3 &    4 \\
-                                  &             1 &    2 &    3 &    4 \\
-Temperaturet+1/1000               &             1 &    2 &    3 &    4 \\
-                                  &             1 &    2 &    3 &    4 \\
-F-statistic of joint significance &             1 &    2 &    3 &    4 \\
-of weather variables              &               &      &      &      \\
-P-value                           &             1 &    2 &    3 &    4 \\
+                                  &               Preferred &                  1-Day &                     lag &                  1-Day \\
+Temperaturet/1000                 &  -1.3630351247356456*** &  1.1075660485206702*** &  -2.2099823589696648*** &    -0.2783189854090095 \\
+                                  &   [0.15526943359849366] &  [0.21100238763733278] &    [0.2616048804062964] &    [0.351959255742172] \\
+Temperaturet-1/1000               &                       - &  -2.170313477012651*** &                       - &  -1.866125435753084*** \\
+                                  &                       - &  [0.17389871336273363] &                       - &   [0.2275197094105888] \\
+Temperaturet+1/1000               &                       - &                      - &   0.8179917392786492*** &   1.022442732509928*** \\
+                                  &                       - &                      - &                       - &                      - \\
+F-statistic of joint significance &                       1 &                      1 &                       1 &                      1 \\
+of weather variables              &                       1 &                      1 &                       1 &                      1 \\
+P-value                           &                       1 &                      1 &                       1 &                      1 \\
 \midrule
-Observations                      &             1 &    2 &    3 &    4 \\
+Observations                      &                       1 &                      1 &                       1 &                      1 \\
 \bottomrule
 \end{tabular}
-a
