@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  30 NOV 2021 16:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  30 NOV 2021 17:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -692,15 +692,11 @@ LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 8
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
-)
-Overfull \hbox (170.65764pt too wide) in paragraph at lines 127--145
-[][] 
- []
+) [1
 
-[1
-
-{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-[4] (./template_paper.bbl) [5] (./template_paper.aux) ) 
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] (./
+template_paper.bbl)
+[5] (./template_paper.aux) ) 
 Here is how much of TeX's memory you used:
  9000 strings out of 479485
  132300 string characters out of 5875916
@@ -709,11 +705,11 @@ Here is how much of TeX's memory you used:
  554712 words of font info for 80 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  70i,8n,76p,267b,347s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-d
-ist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/pal
-atino/uplb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pf
-b><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on template_paper.pdf (5 pages, 49896 bytes).
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r
+.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texliv
+e/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020/texmf-di
+st/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on template_paper.pdf (5 pages, 49824 bytes).
 PDF statistics:
  33 PDF objects out of 1000 (max. 8388607)
  22 compressed objects within 1 object stream

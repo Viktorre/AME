@@ -22,21 +22,21 @@ if __name__ == '__main__':
     Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
     
-    reg_linear_model1 = RegressionExecuter.reg_linear_model(regressor_list=
-                    RegressionSettings.return_vars_as_flat_list(
-                    ['letemp6t410','pollutants','dummies']))
-
-    reg_linear_model2 = RegressionExecuter.reg_linear_model(regressor_list=
-                    RegressionSettings.return_vars_as_flat_list(
-                    ['weather6t4','pollutants','dummies']))
-    
-    sm1 = RegressionExecuter.reg_cross_section(regressor_list=
-                    RegressionSettings.return_vars_as_flat_list(
-                    ['weather6t4','pollutants','dummies']))
-
-    sm2 = RegressionExecuter.reg_cross_section(regressor_list=
-                    RegressionSettings.return_vars_as_flat_list(
-                    ['weather6t4','pollutants','dummies']))
+#    reg_linear_model1 = RegressionExecuter.reg_linear_model(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['letemp6t410','pollutants','dummies']))
+#
+#    reg_linear_model2 = RegressionExecuter.reg_linear_model(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['weather6t4','pollutants','dummies']))
+#    
+#    sm1 = RegressionExecuter.reg_cross_section(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['weather6t4','pollutants','dummies']))
+#
+#    sm2 = RegressionExecuter.reg_cross_section(regressor_list=
+#                    RegressionSettings.return_vars_as_flat_list(
+#                    ['weather6t4','pollutants','dummies']))
 
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
@@ -60,6 +60,7 @@ if __name__ == '__main__':
                      'dew6t4','prcp6t4','wind6t4','skycover','dummies',
                      'pollutants']), dimensions=['city','month'])
     
+
     for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
         print(res)
 
@@ -68,14 +69,8 @@ if __name__ == '__main__':
 
 '''
 to dos:    
-    in stata ohne quiet rausfinden welche die params in den tbales sind!
-        fpr alle 4 genau schauen welche die drei params sind lag_6t4!!!
-    table in latex bringen
-    if toprule: \hline\hline
-    if midrule \hline
-    if F-stat: \hline
-    if obs: \hline
-    if bottomrule \hline
+    - in stata ohne qui reg summaries vgl
+    jetzt noch tex writer reinmachen
 '''
 
 

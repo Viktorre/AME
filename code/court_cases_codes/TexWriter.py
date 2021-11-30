@@ -35,40 +35,48 @@ def return_elements_for_result_table_from_reg(reg,title):
     dictionary = {}
     dictionary['     '] = title
     try:
-        dictionary['Temperaturet/1000'] = str(reg.params['temp6t410'])+\
-        asterisk_creator(reg.pvalues['temp6t410'])
+        dictionary['Temperaturet/1000'] = str(reg.params['temp6t410']\
+        .round(3))+asterisk_creator(reg.pvalues['temp6t410'])
     except:
-        dictionary['Temperaturet/1000'] = str(reg.params['avgtemp10'])+\
-        asterisk_creator(reg.pvalues['avgtemp10'])
+        dictionary['Temperaturet/1000'] = str(reg.params['avgtemp10']\
+        .round(3))+asterisk_creator(reg.pvalues['avgtemp10'])
     try:
-        dictionary[' '] = '['+str(reg.std_errors['temp6t410'])+']'
+        dictionary[' '] = '['+str(reg.std_errors['temp6t410']\
+                   .round(3))+']'
     except:
-        dictionary[' '] = '['+str(reg.std_errors['avgtemp10'])+']' 
+        dictionary[' '] = '['+str(reg.std_errors['avgtemp10']\
+                   .round(3))+']' 
     try:
-        dictionary['Temperaturet-1/1000'] = str(reg.params['ltemp6t410'])\
-        +asterisk_creator(reg.pvalues['ltemp6t410'])
+        dictionary['Temperaturet-1/1000'] = str(reg.params\
+                  ['ltemp6t410'].round(3))+asterisk_creator(\
+                  reg.pvalues['ltemp6t410'])
     except:
         dictionary['Temperaturet-1/1000'] = '-'
     try:
-        dictionary['  '] = '['+str(reg.std_errors['ltemp6t410'])+']'
+        dictionary['  '] = '['+str(reg.std_errors['ltemp6t410']\
+                   .round(3))+']'
     except:
         dictionary['  '] = '-'
     try:
-        dictionary['Temperaturet+1/1000'] = str(reg.params['letemp6t410'])+\
-        asterisk_creator(reg.pvalues['letemp6t410'])
+        dictionary['Temperaturet+1/1000'] = str(reg.params\
+                  ['letemp6t410'].round(3))+ asterisk_creator(reg.\
+                  pvalues['letemp6t410'])
     except:
         dictionary['Temperaturet+1/1000'] = '-'
     try:
-        dictionary['   '] = '['+str(reg.std_errors['lemp6t410'])+']'
+        dictionary['   '] = '['+str(reg.std_errors['lemp6t410']\
+                   .round(3))+']'
     except:
         dictionary['   '] = '-'
-    dictionary['F-statistic of joint significance'] = 1
-    dictionary['of weather variables'] = 1
-    dictionary['P-value'] = 1
-    dictionary['Observations'] = 1
+    dictionary['F-statistic of joint significance'] = reg.\
+        f_statistic.stat
+    dictionary['of weather variables'] = ' '
+    dictionary['P-value'] = reg.f_statistic.pval
+    dictionary['Observations'] = reg.nobs
     return dictionary
 
-def create_pandas_export_table_from_regs(reg_list,title_list):
+def create_pandas_export_table_from_regs(reg_list,title_list=
+                    ['Preferred','1-Day','lag','1-Day','lead','All']):
     '''
     this fct loops trough regression results and saves each one's 
     relevant numbers into a dictionary. Later these dicts are combined
@@ -84,20 +92,19 @@ def create_pandas_export_table_from_regs(reg_list,title_list):
     export_table = pd.DataFrame(export_table)
     return  export_table.T
 
-def export_table_as_latex_code(table,filename):
+def export_table_as_latex_code(reg_list,filename):
+    table = create_pandas_export_table_from_regs(reg_list)
+    print(table)
     raw_latex = table.to_latex()
     index = raw_latex.find('Observations')
     raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
     with open(filename+'.txt', 'a') as file:
         file.write(raw_latex)
 
-table = create_pandas_export_table_from_regs(
-        [base_6t4,lag_6t4,lead_6t4,all_6t4_one],
-        ['Preferred','1-Day','lag','1-Day','lead','All'])
 
-print(table)
-export_table_as_latex_code(table,'Table 2')
-table.to_csv('table.csv')
+
+#export_table_as_latex_code([base_6t4,lag_6t4,lead_6t4,all_6t4_one],\
+#                           'Table 2')
 
 
 
@@ -105,7 +112,6 @@ table.to_csv('table.csv')
 
 #import string
 #string.replace(our_str, 'you', 'me', 1)    
-kürzen, f stat rein, doubles lines rein
 
 
 
