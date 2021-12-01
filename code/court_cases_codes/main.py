@@ -80,7 +80,7 @@ to dos:
 questions for balietti:
     - do I explain deviations in my results?
     - I would like to do a real spatial regression
-    -
+    - (fertig formattiert) formatting okay?
 questions in paper:
     - why in tbale 2 not same specifications?    
 '''    

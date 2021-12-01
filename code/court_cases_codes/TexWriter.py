@@ -67,7 +67,7 @@ class TexWriter():
         return dictionary
     
     def create_pandas_export_table_from_regs(self,reg_list,title_list=
-                    ['Preferred','1-Day','lag','1-Day','lead','All']):
+                    ['Preferred','1-Day lag','1-Day lead','All']):
         '''
         this fct loops trough regression results and saves each one's 
         relevant numbers into a dictionary. Later these dicts are combined
