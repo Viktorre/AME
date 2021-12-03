@@ -52,133 +52,168 @@
 
 
 \begin{document}
-\maketitle
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Abstract
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{abstract}
-	\singlespacing
-	\noindent 
-	0. Abstract: summarize the key points of the paper.
-	\newline \noindent \textbf{Keywords:} xxx; xyz; zyx. 
-\end{abstract}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 1: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction}
-introduce the topic and state the aim of your work, stating clearly the
-research questions and the methodology used, give a brief overview of the results and the
-limitations of your analysis.
-a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm reject
-\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further increase the validity of the results.
-\newline Heyes and Saberian use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evluate the influence of climate on professionally made decisions. QUOTE HERE The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
-\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 2: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Literature review}
-summarize the current state of knowledge on the topic of your paper
-(including the latest relevant publications).
-\subsection{Title of subsection in Section 2}
-afasdasfasfasd (\cite{Landrigan.2017}). asdla (\cite{Test.01012022})
-\subsection{Title of subsection in Section 2}
-afasdasfasfasd.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 3: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Data}
-: Describe the main sources of your data, the data cleaning and merging process,
-include a table(s) of summary statistics and a brief description of these.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 4: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Empirical strategy}
-describe the empirical method used and its appropriateness in this
-context, state the main hypotheses to be tested.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 5: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
-present and comment on your results.
-
-\begin{tabular}{lllll}
-	\toprule
-	{} &        (1) &       (2) &       (3) &        (4) \\
-	\midrule
-	&  Preferred &     1-Day &       lag &      1-Day \\
-	Temperaturet/1000                 &  -1.363*** &  1.108*** &  -2.21*** &     -0.278 \\
-	&    [0.155] &   [0.211] &   [0.262] &    [0.352] \\
-	Temperaturet-1/1000               &          - &  -2.17*** &         - &  -1.866*** \\
-	&          - &   [0.174] &         - &    [0.228] \\
-	Temperaturet+1/1000               &          - &         - &  0.818*** &   1.022*** \\
-	&          - &         - &         - &          - \\
-	F-statistic of joint significance &   2417.651 &  2268.988 &  2257.756 &   2121.681 \\
-	of weather variables              &            &           &           &            \\
-	P-value                           &      0.000 &     0.000 &     0.000 &      0.000 \\
-	\midrule
-	Observations                      &     169006 &    169006 &    169006 &     169006 \\
-	\bottomrule
-\end{tabular}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 6: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Discussion}
-reflect on the meaning and policy implications of your results, think of potential
-limitations to your work and avenues for future research.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Section 7: 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{ Conclusion}
-summarize your main work and conclude.
-1. Select a paper that uses one of the empirical methods reviewed in class
-2. Get the raw data
-3. Replicate the data analysis
-4. Write a report summarizing your work.
-5. Include a literature review section in your report that summarizes the current state
-of knowledge on your topic.
-
-
-
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-% Appendix
-% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-\newpage
-
-\begin{subappendices}
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
-\counterwithin{equation}{section}
-\appendix
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section*{Appendix}\label{Appendix}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-DLETE THIS LATER use it for additional material that might support your analysis + (in the nal
-version) include a separate paragraph that provides a response to the referee's comments
-and mentions where, how, why, why not the paper has changed.
-\singlespacing
-\section{Summary statistics}\label{ASec:xxxxx}
+	\maketitle
 	
-\end{subappendices}	
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% References
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\newpage
-{\footnotesize 
-	\bibliographystyle{apalike}
-	\singlespacing
-	\bibliography{references2.bib}
-}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Abstract
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\begin{abstract}
+		\singlespacing
+		\noindent 
+		0. Abstract: summarize the key points of the paper.
+		\newline \noindent \textbf{Keywords:} xxx; xyz; zyx. 
+	\end{abstract}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 1: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Introduction}
+	introduce the topic and state the aim of your work, stating clearly the
+	research questions and the methodology used, give a brief overview of the results and the
+	limitations of your analysis.
+	a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm reject
+	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further increase the validity of the results.
+	\newline Heyes and Saberian use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evluate the influence of climate on professionally made decisions (\cite{Heyes.2019}). The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
+	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 2: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Literature review}
+	summarize the current state of knowledge on the topic of your paper
+	(including the latest relevant publications).
+	paper: see paper notes 
+	I: (all post 2019) 
+	MORGEN MIT GIT CITAVI FIXEN!!!!!!\newline
+	Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. Recently, in this branch of temperature x decisions literature Gavres? \cite{Gavresi.2021} show that higher outdoor temperature incrases risk appetite in (optimist) financial decisions. Chen \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and Hadi \cite{Hadi.2019} shows that extreme heat make consumers less rational (ie affectual). Even more heat effects are shown by Stevens \cite{Stevens.2021} on agression on social media and by Ryan \cite{Ryan.2020} on law officials behaviour. \newline
+	There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian already acknowledge in their paper (DOUBELCHECK THAT). More recent conributions in this branch are ...
+	
+	\cite{Stroom.2021} We find that heat exposure did not lead to  a difference in decision quality
+	\cite{Stroom.2021} find no significance indoor temp effect on cognitive rationality.  These results cast doubt on the validity of self-report as a proxy for performance under different indoor climate condition (men self-report effect but show none) 
+	\cite{Liu.2020} no effect indoor temp on fraud 
+	
+	
+	temp - courtcases:
+	\cite{Heyes.2019} underlying paper
+	
+	temp xx courcases:
+	\cite{Evans.2021} folgepaper! findet keinen outdoor temp effekt für
+	\cite{Spamann.2020} \newline direktes folgepaper: von 1990 bis 2019 keine wettereffekte!!!
+	
+	misc - courtcases:
+	
+	temp - decisions allg: 
+	\cite{Chen.2020} people worse in neurobehavioral cognitive tests when higher temperature indoors
+	\cite{Hadi.2019} extreme temps (indoor?) make consumers less rational (ie affectual) 
+	\cite{Gavresi.2021} higher outdoor temp incrases risk appetite in (optimist) financial decisions 
+	\cite{Stevens.2021} higher outdoor temp, more agression in social media 
+	\cite{Ryan.2020} outdoor temp positive effect on traffic citations
+	
+	temp xx courtcases:
+	\cite{Stroom.2021} We find that heat exposure did not lead to  a difference in decision quality
+	\cite{Stroom.2021} find no significance indoor temp effect on cognitive rationality.  These results cast doubt on the validity of self-report as a proxy for performance under different indoor climate condition (men self-report effect but show none) 
+	\cite{Liu.2020} no effect indoor temp on fraud 
+	
+	
+	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 3: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Data}
+	: Describe the main sources of your data, the data cleaning and merging process,
+	include a table(s) of summary statistics and a brief description of these.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 4: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Empirical strategy}
+	describe the empirical method used and its appropriateness in this
+	context, state the main hypotheses to be tested.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 5: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Results}
+	present and comment on your results.
+	
+	\begin{tabular}{lllll}
+		\toprule
+		{} &        (1) &       (2) &       (3) &        (4) \\
+		\midrule
+		&  Preferred &     1-Day &       lag &      1-Day \\
+		Temperaturet/1000                 &  -1.363*** &  1.108*** &  -2.21*** &     -0.278 \\
+		&    [0.155] &   [0.211] &   [0.262] &    [0.352] \\
+		Temperaturet-1/1000               &          - &  -2.17*** &         - &  -1.866*** \\
+		&          - &   [0.174] &         - &    [0.228] \\
+		Temperaturet+1/1000               &          - &         - &  0.818*** &   1.022*** \\
+		&          - &         - &         - &          - \\
+		F-statistic of joint significance &   2417.651 &  2268.988 &  2257.756 &   2121.681 \\
+		of weather variables              &            &           &           &            \\
+		P-value                           &      0.000 &     0.000 &     0.000 &      0.000 \\
+		\midrule
+		Observations                      &     169006 &    169006 &    169006 &     169006 \\
+		\bottomrule
+	\end{tabular}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 6: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Discussion}
+	reflect on the meaning and policy implications of your results, think of potential
+	limitations to your work and avenues for future research.
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% Section 7: 
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{ Conclusion}
+	\subsection{Title of subsection}
+	afasdasfasfasd.
+	summarize your main work and conclude.
+	1. Select a paper that uses one of the empirical methods reviewed in class
+	2. Get the raw data
+	3. Replicate the data analysis
+	4. Write a report summarizing your work.
+	5. Include a literature review section in your report that summarizes the current state
+	of knowledge on your topic.
+	
+	
+	
+	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+	% Appendix
+	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+	\newpage
+	
+	\begin{subappendices}
+		\counterwithin{figure}{section}
+		\counterwithin{table}{section}
+		\counterwithin{equation}{section}
+		\appendix
+		
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		\section*{Appendix}\label{Appendix}
+		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+		DLETE THIS LATER use it for additional material that might support your analysis + (in the nal
+		version) include a separate paragraph that provides a response to the referee's comments
+		and mentions where, how, why, why not the paper has changed.
+		\singlespacing
+		\section{Summary statistics}\label{ASec:xxxxx}
+		
+	\end{subappendices}	
+	
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% References
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\newpage
+	{\footnotesize 
+		\bibliographystyle{apalike}
+		\singlespacing
+		\bibliography{manual_bibfile.bib}
+	}
+	
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}
