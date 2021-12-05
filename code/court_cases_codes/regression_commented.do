@@ -46,7 +46,7 @@ encode nat_name, g (nati)
 
 global temp l2avgtemp l3avgtemp lavgtemp  temp6t4  le1avgtemp le2avgtemp le3avgtemp le3temp6t4  le2temp6t4  letemp6t4 ltemp6t4 l2temp6t4 l3temp6t4 avgtemp yearaftertemp gtemp yeartemp heat //create list of vars
 
-foreach var in $temp{ //create new vars 
+foreach var in $temp{ //with each element create new var which is /1000 
   
 g `var'10=`var'/1000
 }
@@ -62,12 +62,13 @@ global pollutants ozone co pm25
 
 
 
-bys city week month year:egen meantemp=mean(temp6t4)
+bys city week month year:egen meantemp=mean(temp6t4) //for jedes unique city+week+month+year calculate mean of tem6t4
 
+// i dp this seperately
 foreach var in $weather6t4{
 drop if `var'==.
 }
-
+// i dp this seperately
 foreach var in $pollutants{
 drop if `var'==.
 }
@@ -80,7 +81,7 @@ drop if `var'==.
 qui xi: reg res  $weatherdaily $pollutants $dummies , vce (cluster cm)
 estimate store base_daily
 
-g deviation=temp6t4-meantemp	
+g deviation=temp6t4-meantemp //self exp.	
 
 qui xi: reg res deviation $weathertemp $pollutants $dummies , cluster (cm)
 estimate store base_dev

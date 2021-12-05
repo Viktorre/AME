@@ -6,6 +6,7 @@ from RegressionSettings import RegressionSettings
 from Plotter import Plotter
 from RegressionExecuter import RegressionExecuter
 from TexWriter import TexWriter
+from SummaryStats import SummaryStats
 
 if __name__ == '__main__':
 
@@ -15,29 +16,12 @@ if __name__ == '__main__':
     df = DataImporter.data
     RegressionSettings = RegressionSettings()
     DataFormatter = DataFormatter()
-    df = DataFormatter.add_dummies_to_df(df,'dayofweek') #äre gut mit settings hier
+    df = DataFormatter.add_dummies_to_df(df,'dayofweek') #wäre gut mit settings hier
     df = DataFormatter.drop_na_by_col_names(df, 
                     RegressionSettings.return_vars_as_flat_list())
     Plotter = Plotter()
     Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
-    
-#    reg_linear_model1 = RegressionExecuter.reg_linear_model(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['letemp6t410','pollutants','dummies']))
-#
-#    reg_linear_model2 = RegressionExecuter.reg_linear_model(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['weather6t4','pollutants','dummies']))
-#    
-#    sm1 = RegressionExecuter.reg_cross_section(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['weather6t4','pollutants','dummies']))
-#
-#    sm2 = RegressionExecuter.reg_cross_section(regressor_list=
-#                    RegressionSettings.return_vars_as_flat_list(
-#                    ['weather6t4','pollutants','dummies']))
-
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
@@ -60,20 +44,29 @@ if __name__ == '__main__':
                      'dew6t4','prcp6t4','wind6t4','skycover','dummies',
                      'pollutants']), dimensions=['city','month'])
     
-
-    for res in [base_6t4,lag_6t4,lead_6t4,all_6t4_one]:
-        print(res)
+    table_2_regs = [base_6t4,lag_6t4,lead_6t4,all_6t4_one]
 
     TexWriter = TexWriter()
-    TexWriter.export_table_as_latex_code([base_6t4,lag_6t4,lead_6t4,\
-                                          all_6t4_one], 'Table 2')
+    TexWriter.export_reg_results_as_latex_code(table_2_regs, 'Table 2')
+
+    SummaryStats = SummaryStats()
+    
+    
+    
+    table_1 = SummaryStats.return_summary_of_varlist(df,['res',
+            'tempmean','heat','airpressure0','avgdewpt','precip0',
+            'windspeed0','skycover','ozone','co','pm25'])
+    TexWriter.export_any_pandas_table(table_1, 'Table 1')
 
 
 '''
 to dos:    
+    - summary stats var doppelchck
     - in stata ohne qui reg summaries vgl
-    - überlegen was als nächstes machen
-'''
+    - runden in summary stats
+    - cool: in stata schritt für schritt schauen was mein do file für data prep
+        macht und das aufschreiben, egal ob ichs dann noch in py mach ode rnicht
+    '''
 
 
 '''
@@ -81,6 +74,12 @@ questions for balietti:
     - do I explain deviations in my results?
     - I would like to do a real spatial regression
     - (fertig formattiert) formatting okay?
+        - why formatting not as yours?
+    - is it okay if I borrow parts of stata code for variable creation?
+    - summary stats stata code is missing. can my stats differ in var choice?
+        -> i would use most important vars from main regression
+
 questions in paper:
     - why in tbale 2 not same specifications?    
+
 '''    

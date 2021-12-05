@@ -1,0 +1,17 @@
+\begin{tabular}{lrr}
+\toprule
+{} &       Mean &  Std. Dev. \\
+\midrule
+res          &   0.162965 &   0.369334 \\
+tempmean     &  61.439452 &  14.859341 \\
+heat         &  57.398058 &  16.094140 \\
+airpressure0 &  29.661536 &   0.751446 \\
+avgdewpt     &  49.392714 &  16.657781 \\
+precip0      &   0.003891 &   0.034818 \\
+windspeed0   &   6.518397 &   4.402740 \\
+skycover     &   0.546602 &   0.280155 \\
+ozone        &   0.021916 &   0.012003 \\
+co           &   0.930650 &   0.504708 \\
+pm25         &  14.869682 &  11.204614 \\
+\bottomrule
+\end{tabular}

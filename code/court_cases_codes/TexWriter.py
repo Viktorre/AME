@@ -71,7 +71,8 @@ class TexWriter():
         '''
         this fct loops trough regression results and saves each one's 
         relevant numbers into a dictionary. Later these dicts are combined
-        via pandas concat and transposed to match latex format
+        via pandas concat and transposed to match latex format. This is
+        a helper function.
         '''
         export_table = pd.DataFrame([])
         for reg,index,title in zip(reg_list,
@@ -83,7 +84,11 @@ class TexWriter():
         export_table = pd.DataFrame(export_table)
         return  export_table.T
     
-    def export_table_as_latex_code(self, reg_list,filename):
+    def export_reg_results_as_latex_code(self, reg_list, filename):
+        '''
+        This fct only works with regression_summary_objects as elements
+        in reg_list argument as we want a very specific style of table
+        '''
         table = self.create_pandas_export_table_from_regs(reg_list)
         print(table)
         raw_latex = table.to_latex()
@@ -91,3 +96,16 @@ class TexWriter():
         raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
         with open(filename+'.txt', 'a') as file:
             file.write(raw_latex)
+            
+    def export_any_pandas_table(self, table, filename):
+        '''
+        This fct can export any kind of pandas table. I added some try
+        and except statements to style tables with certain information
+        '''
+        print(table)
+        raw_latex = table.to_latex()
+#        index = raw_latex.find('Observations')
+#        raw_latex = raw_latex[:index] + '\midrule\n' + raw_latex[index:]
+        with open(filename+'.txt', 'a') as file:
+            file.write(raw_latex)
+            
