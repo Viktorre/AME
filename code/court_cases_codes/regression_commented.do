@@ -1,47 +1,47 @@
-cd "C:/Users/fx236/Documents/AME_files/court_cases_data/data/Data/final"
+cd "C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final"
 
 
 use matched, clear
 
 
-cd "C:/Users/fx236/Documents/AME_files/AME/code/court_cases_codes/stata_exports"
+cd "C:/Users/fx236/Documents/AME/code/court_cases_codes/stata_exports"
 
 set matsize 11000 //set max number of vars
 
-bys date city: gen id=_n
-egen idtime=group(id date) //generate var idtime
+bys date city: gen id=_n //for jedes unique date+city ab 1 hochzählen
+egen idtime=group(id date) //group= jedes unique id+date gleicher index. idtime is only used for a ttest once
 
 
-g year=year(date) // g means generate variable
-g month=month(date)
-g week=week(date)
+g year=year(date) // welches jahr (2000 bis 2004)
+g month=month(date) // wievielter monat (1 bis 12)
+g week=week(date) // welche kq (1 bis 52)
 
-g yearmonth=string(year) + string(month)
-g cityweek=string(week) + city
-g cityyear= city + string(year) 
-g citymonth= city + string(month)
-g yearweek= string(week) + string(year)
+g yearmonth=string(year) + string(month)//zb20001 oder 200301 (eine 0 fehlt)
+g cityweek=string(week) + city // zb: 1LAS VEGAS
+g cityyear= city + string(year) // LAS VEGAS2000
+g citymonth= city + string(month) // LAS VEGAS1
+g yearweek= string(week) + string(year) // 12000
 
-g cityyearmonth= city + string(month) + string(year)
-encode cityyearmonth, g(cym)
+g cityyearmonth= city + string(month) + string(year) //LAS VEGAS12000 also city-month-year tatsächlich
+encode cityyearmonth, g(cym) // encode turs str into long, which is numeric with string labels
 
-g judgemonth=ij_name + string(month)
-encode judgemonth, g(jm)
+g judgemonth=ij_name + string(month) //ij_name is judge id // 721
+encode judgemonth, g(jm) //judgemonth as integer
 
-g judgemonthyear=ij_name + string(year) +string(month)
-encode judgemonthyear, g(jym)
+g judgemonthyear=ij_name + string(year) +string(month) // 7220001
+encode judgemonthyear, g(jym) //
 
-encode yearmonth, g(ym)
-encode cityweek, g(cw)
-encode cityyear, g(cy)
-encode citymonth, g(cm)
-encode yearweek, g(yw)
+encode yearmonth, g(ym) //all only encode
+encode cityweek, g(cw) //
+encode cityyear, g(cy) //
+encode citymonth, g(cm) //
+encode yearweek, g(yw) //
 
 
-g dayofweek=dow(date)
+g dayofweek=dow(date) //0=Sunday,...,6=Saturday
 
-encode city, g(ct)
-encode c_asy_type, g(type)
+encode city, g(ct) //3 encodes
+encode c_asy_type, g(type) //type of asylumn, ka was I,E usw heißt
 encode nat_name, g (nati)
 
 global temp l2avgtemp l3avgtemp lavgtemp  temp6t4  le1avgtemp le2avgtemp le3avgtemp le3temp6t4  le2temp6t4  letemp6t4 ltemp6t4 l2temp6t4 l3temp6t4 avgtemp yearaftertemp gtemp yeartemp heat //create list of vars
