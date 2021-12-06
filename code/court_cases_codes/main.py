@@ -75,10 +75,7 @@ to dos:
     - runden in summary stats
     - cool: in stata schritt für schritt schauen was mein do file für data prep
         macht und das aufschreiben, egal ob ichs dann noch in py mach ode rnicht
-    '''
 
-
-'''
 questions for balietti:
     - do I explain deviations in my results?
     - I would like to do a real spatial regression

@@ -123,7 +123,32 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Data}
 	: Describe the main sources of your data, the data cleaning and merging process,
-	include a table(s) of summary statistics and a brief description of these.
+	include a table(s) of summary statistics and a brief description of these. \newline
+	
+	The main dataset is constructed out of several sources. The first source, asylumlaw.org, contains the law variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. the pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court.
+	All variables are joined by date (daily) and city in the dataset machet.dta, thus that in the dataset every rows represents one case outcome marked by a respective date and location containing values for case and environment variables.
+	
+	Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city,judge,year,month,day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. \newline	
+	
+	
+	\begin{tabular}{lrr}
+		\toprule
+		{} &       Mean &  Std. Dev. \\
+		\midrule
+		res          &   0.162965 &   0.369334 \\
+		tempmean     &  61.439452 &  14.859341 \\
+		heat         &  57.398058 &  16.094140 \\
+		airpressure0 &  29.661536 &   0.751446 \\
+		avgdewpt     &  49.392714 &  16.657781 \\
+		precip0      &   0.003891 &   0.034818 \\
+		windspeed0   &   6.518397 &   4.402740 \\
+		skycover     &   0.546602 &   0.280155 \\
+		ozone        &   0.021916 &   0.012003 \\
+		co           &   0.930650 &   0.504708 \\
+		pm25         &  14.869682 &  11.204614 \\
+		\bottomrule
+	\end{tabular}
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
