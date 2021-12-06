@@ -16,7 +16,7 @@ g year=year(date) // welches jahr (2000 bis 2004)
 g month=month(date) // wievielter monat (1 bis 12)
 g week=week(date) // welche kq (1 bis 52)
 
-g yearmonth=string(year) + string(month)//zb20001 oder 200301 (eine 0 fehlt)
+g yearmonth=string(year) + string(month)
 g cityweek=string(week) + city // zb: 1LAS VEGAS
 g cityyear= city + string(year) // LAS VEGAS2000
 g citymonth= city + string(month) // LAS VEGAS1
@@ -64,7 +64,7 @@ global pollutants ozone co pm25
 
 bys city week month year:egen meantemp=mean(temp6t4) //for jedes unique city+week+month+year calculate mean of tem6t4
 
-// i dp this seperately
+// i do this seperately: maybe I should exclude this?
 foreach var in $weather6t4{
 drop if `var'==.
 }
@@ -90,7 +90,7 @@ estimate store base_dev
 qui xi:  reg res  $weather6t4 $pollutants $dummies , vce (cluster cm)
 estimate store base_6t4
 
-test temp6t410=press6t4=dew6t4=prcp6t4=wind6t4=skycove=0
+test temp6t410=press6t4=dew6t4=prcp6t4=wind6t4=skycove=0 // no var ceation
 
 
 qui xi: reg res ltemp6t410 $weather6t4  $dummies $pollutants , vce (cluster cm)
@@ -132,8 +132,8 @@ esttab base_6t4 lag_6t4 lead_6t4  all_6t4_one using fullbase_6t4.tex,replace kee
 **TABLE 3
 ****************************
 
-drop if type==.	
-drop if nati==.
+drop if type==.	//drop na
+drop if nati==. //drop na
 	
 qui reg res  $weather6t4 $pollutants  , vce (cluster cm)
 estimate store base_6t4_nothing
@@ -192,17 +192,17 @@ esttab base_6t4_nothing base_6t4_nati base_6t4_nati_dow base_6t4_nati_dow_type b
 *********************
 
 
-tabulate city, g(ct_dummy)
+tabulate city, g(ct_dummy) //create dummy for each city
 
 forvalues i=1(1) 43{
 g intraction`i'=avgtemp*ct_dummy`i'
-}
+} // jeder dummy mal avgtemp
 
 forvalues i=1(1) 43{
 g intractionblock`i'=temp6t4*ct_dummy`i'
-}
+} // jeder dummy mal temp6t4
 
-drop intractionblock30
+drop intractionblock30 // einen droppen
 
 qui reg res intractionblock* $weather6t4 $pollutants $dummies , cluster (cm)
 estimate store intraction
@@ -216,7 +216,7 @@ estimate store winter
 ****************************	
 	
 	
-g raintemp=temp6t4*skycover
+g raintemp=temp6t4*skycover // simple var creation
 	
 	
 reg res  $weather6t4 raintemp $pollutants $dummies , cluster (cm)
@@ -233,7 +233,7 @@ esttab base_6t4 base_daily base_dev intraction winter raintemp	 using city.tex,r
 ****************************
 	
 g female=0
-replace female=1 if gender=="female"
+replace female=1 if gender=="female" // create gender dummy 1=female
 	
 quietly reg res  $weather6t4  $dummies $pollutants if female==1 , vce (cluster cm)
 estimate store female
@@ -295,8 +295,8 @@ esttab base_cw base_ym base_cy base_city base_white base_judge  base_judgemonth 
 ***TABLE 6
 ***************************
 
-replace yearaftertemp=temp6t4 if yearaftertemp==.
-replace yeartemp=temp6t4 if yeartemp==.
+replace yearaftertemp=temp6t4 if yearaftertemp==. // two times if na value take value of temp6t4
+replace yeartemp=temp6t4 if yeartemp==. // two times if na value take value of temp6t4
 
 
 	
@@ -321,7 +321,7 @@ quietly reg res   $weather6t4  $dummies , vce (cluster cm)
 estimate store nopollution
 
 g ca=0
-replace ca=1 if city=="SAN PEDRO" | city=="SAN FRANCISCO" | city=="SAN DIEGO" | city=="LOS ANGELES" |city=="LAS VEGAS" | city=="LANCASTER" |city=="IMPERIAL"
+replace ca=1 if city=="SAN PEDRO" | city=="SAN FRANCISCO" | city=="SAN DIEGO" | city=="LOS ANGELES" |city=="LAS VEGAS" | city=="LANCASTER" |city=="IMPERIAL" // california dummy easy var creation
 
 
 quietly reg res  $weather6t4  $dummies $pollutants if ca==0 , vce (cluster cm)
@@ -345,7 +345,7 @@ qui reg res  $heat   $dummies $pollutants if heat10>=0.075 , cluster (cm)
 estimate store heat_75
 
 
-bys ij_name: egen rate=mean(res)
+bys ij_name: egen rate=mean(res) //avg grant rate by ij_name, das ist eine default var ich glaube für judges, aber nicht sicher und eig egal
 
 quietly reg res  $weather6t4  $dummies $pollutants if rate>0.081 & rate<=0.22 , vce (cluster cm)
 estimate store quartile
@@ -363,14 +363,14 @@ esttab base_6t4  nopollution noca clearsky norain norain2  heat_6t4 heat_75 quar
 
 	
 *****************************
-***Nonlinear Results: 
+***Nonlinear Results:   I STOPPED VAR CREATION STUFF HERE.
 *****************************	
 	
 
-recode avgtemp (min/20=20)(20/25=25) (25/30=30) (30/35=35) (35/40=40)(40/45=45)(45/50=50) (50/55=55) (55/60=60) (60/65=65) (65/70=70) (70/75=75) (75/80=80) (80/85=85) (85/max=max), gen(t2aveb)
-table t2aveb, c(min avgtemp max avgtemp count avgtemp)
-tab t2aveb, gen(t2avebdum)
-drop t2avebdum8
+recode avgtemp (min/20=20)(20/25=25) (25/30=30) (30/35=35) (35/40=40)(40/45=45)(45/50=50) (50/55=55) (55/60=60) (60/65=65) (65/70=70) (70/75=75) (75/80=80) (80/85=85) (85/max=max), gen(t2aveb) //create t2aveb mit ranges als 20,25,30,...
+table t2aveb, c(min avgtemp max avgtemp count avgtemp) // no var creation, but throws eror
+tab t2aveb, gen(t2avebdum) //irrelevant
+drop t2avebdum8 //irrelevant
 
 recode temp6t4 (min/20=20) (20/25=25) (25/30=30) (30/35=35) (35/40=40) (40/45=45)(45/50=50) (50/55=55) (55/60=60) (60/65=65) (65/70=70) (70/75=75) (75/80=80) (80/85=85) (85/max=max), gen(t6aveb)
 table t6aveb, c(min temp6t4 max temp6t4 count temp6t4)

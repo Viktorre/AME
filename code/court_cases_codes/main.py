@@ -60,6 +60,15 @@ if __name__ == '__main__':
 
 
 '''
+to dos before tuesday evenig:
+    - MONTAG write var creation chapter in data (assuming i do in stata)
+    - MONTAG fix f-statisitc in table
+    - MONTAG write shitty abstract
+    - MONTAG korrekturlesen intro und lit review
+    - data chapter schnelles draft tippen
+    - data Empirical strategy schnelles draft tippen
+    - data results schnelles draft tippen
+    - data results schnelles draft tippen
 to dos:    
     - summary stats var doppelchck
     - in stata ohne qui reg summaries vgl
@@ -80,6 +89,6 @@ questions for balietti:
         -> i would use most important vars from main regression
 
 questions in paper:
-    - why in tbale 2 not same specifications?    
+    - why in tbale 2 not same specifications in code?(doublecheck that aganin in dofile)   
 
 '''    
