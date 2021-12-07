@@ -8,20 +8,28 @@ from RegressionExecuter import RegressionExecuter
 from TexWriter import TexWriter
 from SummaryStats import SummaryStats
 import pandas as pd
+pd.set_option('display.max_columns', 10)
+pd.set_option('display.max_rows', 8)
 
 if __name__ == '__main__':
 
     DataImporter = DataImporter()
 #    DataImporter.put_dta_into_df('C:/Users/fx236/Documents/AME_files/court_cases_data/my_exports/final_dataset_stata_output.dta')
     DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
-    df = DataImporter.data#[pd.Timestamp('2000-01-01'):pd.Timestamp('2001-01-01')] 
+    df = DataImporter.data
     RegressionSettings = RegressionSettings()
     DataFormatter = DataFormatter()
     df = DataFormatter.add_dummies_to_df(df,'dayofweek') #wäre gut mit settings hier
     df = DataFormatter.drop_na_by_col_names(df, 
                     RegressionSettings.return_vars_as_flat_list())
-    Plotter = Plotter()
-    Plotter.plot_long_lat(df)    
+#    df = DataFormatter.slice_df_by_date(df,'2000-01-01','2001-01-01')
+#    df = DataFormatter.slice_df_by_date(df,'2001-01-01','2002-01-01')
+#    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2003-01-01')
+#    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2004-01-01')
+#    print(df)
+    
+#    Plotter = Plotter()
+#    Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
@@ -53,31 +61,30 @@ if __name__ == '__main__':
 
     
     
-#    SummaryStats = SummaryStats()
-#    
-#    table_1 = SummaryStats.return_summary_of_varlist(df,['res',
-#            'tempmean','heat','airpressure0','avgdewpt','precip0',
-#            'windspeed0','skycover','ozone','co','pm25'])
-#    TexWriter.export_any_pandas_table(table_1, 'Table 1')
+    SummaryStats = SummaryStats()
+    
+    table_1 = SummaryStats.return_summary_of_varlist(df,['res',
+            'tempmean','heat','airpressure0','avgdewpt','precip0',
+            'windspeed0','skycover','ozone','co','pm25'])
+    TexWriter.export_any_pandas_table(table_1, 'Table 1')
 
 
 '''
 to dos before tuesday evenig:
-    - 1. korrekturlesen intro und lit review
-    - 1.5 ein chapter ganz oder zumindest stickpunkte überall schreiben
-    - 2. test timeframe robustness (fun)
+    - DONE korrekturlesen intro und lit review
+    - DONE ein chapter ganz oder zumindest stickpunkte überall schreiben
+
     - 3. fragen ausformulieren + email text
     - 4. alles abend abschicken
+    
     - write shitty abstract
     - data Empirical strategy schnelles draft tippen
     - data results schnelles draft tippen
     - data summary schnelles draft tippen
 to dos:    
-    - summary stats var doppelchck
-    - in stata ohne qui reg summaries vgl
     - runden in summary stats
-    - cool: in stata schritt für schritt schauen was mein do file für data prep
-        macht und das aufschreiben, egal ob ichs dann noch in py mach ode rnicht
+    - courtcases per 
+    - 
 
 questions for balietti:
     - f-statisitc issue with subset regressors significance
@@ -91,7 +98,14 @@ questions for balietti:
     - do you want to have a runnging version of the code at the end? (libraries
         and dataset size)
     - should I comment sdev in my summary table? and how?
-    
+    - maybe doublecheck together in stata that table 2 commands are pooled ols
+    - do you have an idea why my effects have so different pvalues than paper?
+
+
+Dear Anca,
+
+I attached the current version of my paper. It would be great if you could haveI have the following questions 
+
 
 questions in paper:
     - why in tbale 2 not same specifications in code?(doublecheck that aganin in dofile)   

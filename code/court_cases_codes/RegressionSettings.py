@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-
 class RegressionSettings():
 
     def __init__(self, *args, **kwargs):
@@ -16,13 +15,12 @@ class RegressionSettings():
             'weather6t4' :['temp6t410','press6t4','dew6t4',
                            'prcp6t4','wind6t4','skycover'],
             'heat':['heat10','press6t4','prcp6t4','wind6t4',
-                          'skycover'],
+                    'skycover'],
             'dailyheat':['dailyheat','skycover','pressureavgsealevel',
                          'windspeed','precipitationwaterequiv'],
             'dummies':['dayofweek1','dayofweek3', 'dayofweek2', 
                        'dayofweek5', 'dayofweek4'],
             'pollutants' : ['ozone','co','pm25'],
-#            'deviation' : ['deviation'],
             'ltemp6t410' : ['ltemp6t410'],
             'letemp6t410' : ['letemp6t410'],
             'temp6t410' : ['temp6t410'],
@@ -30,11 +28,7 @@ class RegressionSettings():
             'dew6t4' : ['dew6t4'],
             'prcp6t4' : ['prcp6t4'],
             'wind6t4' : ['wind6t4'],
-            'skycover' : ['skycover'],
-#            '' : [''],
-#            '' : [''],
-#            '' : [''],
-            }
+            'skycover' : ['skycover'],}
 
     def return_vars_as_flat_list(self, keys='all keys'):
         '''in default, this fct will return elements of the entire
@@ -50,5 +44,3 @@ class RegressionSettings():
                 for element in self.var_dictionary[key]:
                     list_of_all_elements.append(element)            
         return list_of_all_elements
-                    
-                    

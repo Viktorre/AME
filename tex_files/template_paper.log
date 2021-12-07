@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  7 DEC 2021 13:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  7 DEC 2021 23:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -542,14 +542,17 @@ LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 5
 
 (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-) (./template_paper.aux)
+) (./template_paper.aux
+
+LaTeX Warning: Label `tab:title' multiply defined.
+
+)
 \openout1 = `template_paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/pxmi/m/it on input line 54.
 LaTeX Font Info:    Trying to load font information for OML+pxmi on input line 
 54.
-
-(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
+ (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
 File: omlpxmi.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    ... okay on input line 54.
@@ -650,7 +653,13 @@ Package caption Info: End \AtBeginDocument code.
  [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 98--104
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 9
+7.
+
+(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 97--103
 
  []
 
@@ -683,27 +692,25 @@ LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 1
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
-)
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-24.
-
-(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ) [3] [4] [5]
-(./template_paper.bbl) [6] (./template_paper.aux) ) 
+(./template_paper.bbl) [6] (./template_paper.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8818 strings out of 479485
- 131048 string characters out of 5875916
- 695912 words of memory out of 5000000
- 25628 multiletter control sequences out of 15000+600000
- 557396 words of font info for 86 fonts, out of 8000000 for 9000
+ 8828 strings out of 479485
+ 131198 string characters out of 5875916
+ 695959 words of memory out of 5000000
+ 25636 multiletter control sequences out of 15000+600000
+ 557989 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,6n,73p,1022b,208s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2020/texmf-dist/
-fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texmf-dist/fonts/type1/urw/palatin
-o/uplb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c
-:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on template_paper.pdf (6 pages, 70913 bytes).
+ 66i,6n,73p,1022b,309s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texm
+f-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2020/texmf-dist/fonts/ty
+pe1/urw/palatino/uplr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatin
+o/uplri8a.pfb>
+Output written on template_paper.pdf (6 pages, 73277 bytes).
 PDF statistics:
  36 PDF objects out of 1000 (max. 8388607)
  24 compressed objects within 1 object stream

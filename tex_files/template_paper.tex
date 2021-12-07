@@ -94,14 +94,14 @@
 	% Section 3: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Data}
-	\textit{Describe the main sources of your data, the data cleaning and merging process,
-		include a table(s) of summary statistics and a brief description of these. }
+	\textit{Describe the main sources of your data, the data cleaning and merging process, include a table(s) of summary statistics and a brief description of these. Note: missing explanation of avg temp units 10°F and bins.}
 	\newline
 	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
 	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case and environment characteristics. \newline
 	Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. The issue of missing values is addressed by dropping every row that contains NA for at least one variable used in at least one regression. Note that this reduces the effective number of observations to 169006.
 	\newline	
 	\begin{center}
+	\captionof{table}{Summary Statistics} \label{tab:title}
 	\begin{tabular}{lrr}
 		\toprule
 		{} &       Mean &  Std. Dev. \\
@@ -132,13 +132,19 @@
 	% Section 5: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Results}
-	\textit{present and comment on your results.}
+	\textit{present and comment on your results.} \newline
+	Table 2 contains the results of the regression using the default specification. All four regressions are use pooled OLS to estimate the effects of average temperature and its one-day lag as well as lead in different combinations. Also, all specifications control for a set of averaged weather characteristics (skycover, air pressure, wind, precipitation, dewpoint), air pollution (ozone, co, pm) and weekday dummies. 
+	In (1), the estimated slope parameter is -1.363. This value means that a 10°F (5.4°C) increase in daily average temperature during a judge decision reduces the probablilty of a positive outcome by 1.363\% (ceterus paribus). Considering that the overall average grant rate is 16.3\%, 10°F warmer temperature implies a 8.36\% (0.01363/0.163) decrease in expected grant rate. This effect is significant at 1\% and so are all other effects in in (2) and (3). Analogously to the just interpreted parameter, the lag or lead estimates quantify the effect of the average temperature the day before or after the decision. In (4), all three regressors are used jointly which leads to significant estimates only for lag and lean. This means that in this dataset when controlling for the temperature the day after and before, the daily average temperature when the decision is made has no effect on its outcome. 
+	\textit{I am surprised my results differ that much from the original.}	
+	
+
 	
 	\begin{center}
+	\captionof{table}{Fixed effect estimates: 6 AM - 4 PM average} \label{tab:title} 
 	\begin{tabular}{lllll}
 		\toprule
 		{} &        (1) &       (2) &       (3) &        (4) \\
-		&  Preferred &     1-Day &       lag &      1-Day \\
+		&  Preferred &    1-Day lag &   1-Day lead &          All \\
 		\midrule
 		Temperaturet/1000                 &  -1.363*** &  1.108*** &  -2.21*** &     -0.278 \\
 		&    [0.155] &   [0.211] &   [0.262] &    [0.352] \\
@@ -153,6 +159,7 @@
 		Observations                      &     169006 &    169006 &    169006 &     169006 \\
 		\bottomrule
 	\end{tabular}
+	%\label{Standard errors are clustered on city-month in brackets. * significant at 10\%, ** significant at 5\% *** significant at 1\%.}
 	\end{center}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -190,9 +197,10 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\section*{Appendix}\label{Appendix}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\textit{}use it for additional material that might support your analysis + (in the final version) include a separate paragraph that provides a response to the referee's comments and mentions where, how, why, why not the paper has changed.
+		\textit{use it for additional material that might support your analysis + (in thefinal version) include a separate paragraph that provides a response to the referee's comments and mentions where, how, why, why not the paper has changed.}
 		\singlespacing
 		\section{Summary statistics}\label{ASec:xxxxx}
+		
 		
 	\end{subappendices}	
 	

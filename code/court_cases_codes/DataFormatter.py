@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-#import pandas as pd
-#import numpy as np
 
 class DataFormatter():
 
@@ -24,3 +22,6 @@ class DataFormatter():
     def drop_na_by_col_names(self, df, var_list):
         df = df.dropna(subset=var_list)
         return df
+    
+    def slice_df_by_date(self,df,start,end):
+        return df.loc[(df['date'] >= start) & (df['date'] < end)]
