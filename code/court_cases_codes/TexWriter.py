@@ -53,14 +53,14 @@ class TexWriter():
             ['letemp6t410'].round(3))+ self.asterisk_creator(reg.\
             pvalues['letemp6t410'])
         except:
-            dictionary['Temperaturet+1/1000'] = '-'
+            dictionary['Temperaturet+1/1000'] = '-'            
         try:
-            dictionary['   '] = '['+str(reg.std_errors['lemp6t410']\
+            dictionary['   '] = '['+str(reg.std_errors['letemp6t410']\
                        .round(3))+']'
         except:
             dictionary['   '] = '-'
         dictionary['F-statistic of joint significance'] = reg.\
-            f_statistic.stat
+            f_statistic.stat#https://www.youtube.com/watch?v=FyRZY9Bi9n8&ab_channel=PhilChan
         dictionary['of weather variables'] = ' '
         dictionary['P-value'] = reg.f_statistic.pval
         dictionary['Observations'] = reg.nobs

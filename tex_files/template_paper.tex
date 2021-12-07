@@ -61,9 +61,9 @@
 	\begin{abstract}
 		\singlespacing
 		\noindent 
-		0. Abstract: summarize the key points of the paper.
+		\textit{(note: cursive indicates my comments) 0. Abstract: summarize the key points of the paper.}
 		\lipsum[1]
-		\newline \noindent \textbf{Keywords:} xxx; xyz; zyx. 
+		\newline \noindent \textbf{Keywords:} decision-making; temperature; fixed-effects regression; spatial panel data
 	\end{abstract} \newpage
 	
 	
@@ -71,66 +71,37 @@
 	% Section 1: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Introduction}
-	introduce the topic and state the aim of your work, stating clearly the
-	research questions and the methodology used, give a brief overview of the results and the
-	limitations of your analysis.
-	a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm reject
-	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further increase the validity of the results.
-	\newline Heyes and Saberian use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evluate the influence of climate on professionally made decisions (\cite{Heyes.2019}). The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
-	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
+	\textit{introduce the topic and state the aim of your work, stating clearly the
+	research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
+	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further analyise the validity of the results.
+	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of climate on professionally made decisions. The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
+	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper \textit{(not yet implemented)} further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 2: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Literature review}
-	summarize the current state of knowledge on the topic of your paper
-	(including the latest relevant publications).
-	paper: see paper notes 
-	I: (all post 2019) 
-	MORGEN MIT GIT CITAVI FIXEN!!!!!!\newline
-	Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. More recently, in this branch of temperature x decisions literature Gavresi \cite{Gavresi.2021} shows that higher outdoor temperature incrases risk appetite in (optimist) financial decisions. Chen \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and Hadi \cite{Hadi.2019} shows that extreme heat makes consumers less rational (ie affectual). Even more temperature effects are shown by Stevens \cite{Stevens.2021} on agression on social media and by Ryan \cite{Ryan.2020} on law officials behaviour. \newline
-	There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian already acknowledge in their paper (DOUBELCHECK THAT). More recent conributions in this branch are Stroom (\cite{Stroom.2021}), who finds no relation between indoor temperatur and cognitive rationality, and Liu (\cite{Liu.2020}), who observes no effect of heat on fraudulent behaiour. \newline
-	Concerning temperature effects on juridical outcomes specifically, DOUBLECHECK- Heyes and Saberian are the first to conduct a full empirical analysis. This motivated Evans ({Evans.2021}) to do his own empirical analysis about criminal court cases in Australia, which resulst in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper Spaman (\cite{Spamann.2020}) recalculates its results withing a larger timeframe (1990 - 2019) and finds no significant effects.
-	
-	
-	temp - courtcases:
-	\cite{Heyes.2019} underlying paper
-	
-	temp xx courcases:
-	\cite{Evans.2021} folgepaper! findet keinen outdoor temp effekt für
-	\cite{Spamann.2020} \newline direktes folgepaper: von 1990 bis 2019 keine wettereffekte!!!
-	
-	misc - courtcases:
-	
-	temp - decisions allg: 
-	\cite{Chen.2020} people worse in neurobehavioral cognitive tests when higher temperature indoors
-	\cite{Hadi.2019} extreme temps (indoor?) make consumers less rational (ie affectual) 
-	\cite{Gavresi.2021} higher outdoor temp incrases risk appetite in (optimist) financial decisions 
-	\cite{Stevens.2021} higher outdoor temp, more agression in social media 
-	\cite{Ryan.2020} outdoor temp positive effect on traffic citations
-	
-	temp xx courtcases:
-	\cite{Stroom.2021} We find that heat exposure did not lead to  a difference in decision quality ??? zweimal gleiches?
-	\cite{Stroom.2021} find no significance indoor temp effect on cognitive rationality.  These results cast doubt on the validity of self-report as a proxy for performance under different indoor climate condition (men self-report effect but show none) 
-	\cite{Liu.2020} no effect indoor temp on fraud 
-	
-	
-	
-	
-	
+	\textit{introduce the topic and state the aim of your work, stating clearly the
+	research questions and the methodology used, give a brief overview of the results and the
+	limitations of your analysis.
+	a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm rejectsummarize the current state of knowledge on the topic of your paper
+	(including the latest relevant publications).all post 2019}
+	\newline
+	Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. More recently, in this branch of temperature x decisions literature  \cite{Gavresi.2021} show that higher outdoor temperature increases risk appetite in (optimist) financial decisions. \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and  \cite{Hadi.2019} show that extreme heat makes consumers less rational (ie affectual). Even more temperature effects are shown by \cite{Stevens.2021} on agression on social media and by \cite{Ryan.2020} on law officials behaviour. \newline
+	There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian omit in their paper. Recent contributions in this branch are \cite{Stroom.2021}, who find no relation between indoor temperature and cognitive rationality, and \cite{Liu.2020}, who observe no effect of heat on fraudulent behaiour. \textit{(maybe give here some older literature too, as heyes and saberian do not mention it in their literature review)} \newline
+	Concerning temperature effects on juridical outcomes specifically, Heyes and Saberian are the first to conduct a full empirical analysis. This motivated  \cite{Evans.2021} to do their own empirical analysis about criminal court cases in Australia, which resulted in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper \cite{Spamann.2020} recalculate its results within a larger timeframe (1990 - 2019) and finds no significant effects.
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 3: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Data}
-	: Describe the main sources of your data, the data cleaning and merging process,
-	include a table(s) of summary statistics and a brief description of these. \newline
-	
-	The main dataset is constructed out of several sources. The first source, asylumlaw.org, contains the law variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. the pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court.
-	All variables are joined by date (daily) and city in the dataset machet.dta, thus that in the dataset every rows represents one case outcome marked by a respective date and location containing values for case and environment variables.
-	
-	Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city,judge,year,month,day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. \newline	
-	
-	
+	\textit{Describe the main sources of your data, the data cleaning and merging process,
+		include a table(s) of summary statistics and a brief description of these. }
+	\newline
+	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
+	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case and environment characteristics. \newline
+	Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. The issue of missing values is addressed by dropping every row that contains NA for at least one variable used in at least one regression. Note that this reduces the effective number of observations to 169006.
+	\newline	
+	\begin{center}
 	\begin{tabular}{lrr}
 		\toprule
 		{} &       Mean &  Std. Dev. \\
@@ -148,30 +119,33 @@
 		pm25         &  14.869682 &  11.204614 \\
 		\bottomrule
 	\end{tabular}
+	\end{center}
 	
+	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum. As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Empirical strategy}
-	describe the empirical method used and its appropriateness in this
+	\textit{}describe the empirical method used and its appropriateness in this
 	context, state the main hypotheses to be tested.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 5: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Results}
-	present and comment on your results.
+	\textit{present and comment on your results.}
 	
+	\begin{center}
 	\begin{tabular}{lllll}
 		\toprule
 		{} &        (1) &       (2) &       (3) &        (4) \\
-		\midrule
 		&  Preferred &     1-Day &       lag &      1-Day \\
+		\midrule
 		Temperaturet/1000                 &  -1.363*** &  1.108*** &  -2.21*** &     -0.278 \\
 		&    [0.155] &   [0.211] &   [0.262] &    [0.352] \\
 		Temperaturet-1/1000               &          - &  -2.17*** &         - &  -1.866*** \\
 		&          - &   [0.174] &         - &    [0.228] \\
 		Temperaturet+1/1000               &          - &         - &  0.818*** &   1.022*** \\
-		&          - &         - &         - &          - \\
+		&            - &            - &      [0.203] &      [0.205] \\
 		F-statistic of joint significance &   2417.651 &  2268.988 &  2257.756 &   2121.681 \\
 		of weather variables              &            &           &           &            \\
 		P-value                           &      0.000 &     0.000 &     0.000 &      0.000 \\
@@ -179,28 +153,27 @@
 		Observations                      &     169006 &    169006 &    169006 &     169006 \\
 		\bottomrule
 	\end{tabular}
-	
+	\end{center}
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 6: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Discussion}
-	reflect on the meaning and policy implications of your results, think of potential
-	limitations to your work and avenues for future research.
+	\textit{reflect on the meaning and policy implications of your results, think of potential limitations to your work and avenues for future research.}
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 7: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{ Conclusion}
-	\subsection{Title of subsection}
-	afasdasfasfasd.
-	summarize your main work and conclude.
-	1. Select a paper that uses one of the empirical methods reviewed in class
-	2. Get the raw data
-	3. Replicate the data analysis
-	4. Write a report summarizing your work.
-	5. Include a literature review section in your report that summarizes the current state
-	of knowledge on your topic.
-	
+	\subsection{testsubsection}
+	\textit{	summarize your main work and conclude.
+		1. Select a paper that uses one of the empirical methods reviewed in class
+		2. Get the raw data
+		3. Replicate the data analysis
+		4. Write a report summarizing your work.
+		5. Include a literature review section in your report that summarizes the current state
+		of knowledge on your topic.
+	}
+
 	
 	
 	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
@@ -217,9 +190,7 @@
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 		\section*{Appendix}\label{Appendix}
 		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		DLETE THIS LATER use it for additional material that might support your analysis + (in the nal
-		version) include a separate paragraph that provides a response to the referee's comments
-		and mentions where, how, why, why not the paper has changed.
+		\textit{}use it for additional material that might support your analysis + (in the final version) include a separate paragraph that provides a response to the referee's comments and mentions where, how, why, why not the paper has changed.
 		\singlespacing
 		\section{Summary statistics}\label{ASec:xxxxx}
 		
