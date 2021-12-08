@@ -14,28 +14,32 @@ pd.set_option('display.max_rows', 12)
 if __name__ == '__main__':
 
     DataImporter = DataImporter()
-#    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/final/matched.dta')
-    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
-    df = DataImporter.data
     RegressionSettings = RegressionSettings()
     DataFormatter = DataFormatter()
-#    df = DataFormatter.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
-#            'heat', 'ltemp6t4', 'letemp6t4', 'temp6t4'])
-#    df = DataFormatter.add_dimension_vars_to_df(df)
+    Plotter = Plotter()
+    TexWriter = TexWriter()
+
+    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/final/matched.dta')
+#    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
+    df = DataFormatter.slice_df_by_date(DataImporter.data,'2000-01-01'
+                                                        ,'2001-01-01')
+#    df = DataFormatter.slice_df_by_date(DataImporter.data,'2001-01-01'
+#                                                        ,'2002-01-01')
+#    df = DataFormatter.slice_df_by_date(DataImporter.data,'2002-01-01'
+#                                                        ,'2003-01-01')
+#    df = DataFormatter.slice_df_by_date(DataImporter.data,'2003-01-01'
+#                                                        ,'2004-01-01')
+#    df = DataImporter.data
+    df = DataFormatter.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
+            'heat', 'ltemp6t4', 'letemp6t4'])
+    df = DataFormatter.add_dimension_vars_to_df(df)
     df = DataFormatter.add_dummies_to_df(df,'dayofweek') #wäre gut mit settings hier
     df = DataFormatter.drop_na_by_col_names(df,RegressionSettings.\
             return_vars_as_flat_list(keys='all variables'))
     
-#    df = DataFormatter.slice_df_by_date(df,'2000-01-01','2001-01-01')
-#    df = DataFormatter.slice_df_by_date(df,'2001-01-01','2002-01-01')
-#    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2003-01-01')
-#    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2004-01-01')
-#    print(df)
-    ÜBERLEGEN WARUM POLS FEHLER WIRFT;)
-    Plotter = Plotter()
-#    Plotter.plot_year_dist_of_df(df)
+    Plotter.plot_year_dist_of_df(df)
 #    Plotter.plot_long_lat(df)    
-    RegressionExecuter = RegressionExecuter(df)    
+    RegressionExecuter = RegressionExecuter(df)  
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
@@ -61,23 +65,22 @@ if __name__ == '__main__':
     table_2_regs = [base_6t4,lag_6t4,lead_6t4,all_6t4_one]
 
 
-    TexWriter = TexWriter()
     TexWriter.export_reg_results_as_latex_code(table_2_regs, 'Table 2')
 
     
     
-    SummaryStats = SummaryStats()
-    
-    table_1 = SummaryStats.return_summary_of_varlist(df,['res',
-            'tempmean','heat','airpressure0','avgdewpt','precip0',
-            'windspeed0','skycover','ozone','co','pm25'])
-    TexWriter.export_any_pandas_table(table_1, 'Table 1')
+#    SummaryStats = SummaryStats()
+#    
+#    table_1 = SummaryStats.return_summary_of_varlist(df,['res',
+#            'tempmean','heat','airpressure0','avgdewpt','precip0',
+#            'windspeed0','skycover','ozone','co','pm25'])
+#    TexWriter.export_any_pandas_table(table_1, 'Table 1')
 
 
 '''
 to dos:    
     - matched data
-    - courtcases date in py visualisieren
+    - paper lesenum zu wissen welche restuls noch replizieren
     - runden in summary stats
     - 
 

@@ -2,7 +2,7 @@
 
 #import pandas as pd
 # from sklearn.linear_model import LinearRegression
-import statsmodels.api as sm
+#import statsmodels.api as sm
 from linearmodels.panel import PooledOLS
 from linearmodels import OLS
 
@@ -11,16 +11,18 @@ class RegressionExecuter():
     def __init__(self, data, *args, **kwargs):           
         self.df = data
                 
-    def reg_cross_section(self, regressor_list):
-        '''base regression'''
-        mod = sm.OLS(self.df['res'], self.df[regressor_list])
-        return mod.fit()#.summary()
+#    def reg_cross_section(self, regressor_list):
+#        '''base regression'''
+#        mod = sm.OLS(self.df['res'], self.df[regressor_list])
+#        return mod.fit()#.summary()
     
-    def reg_panel(self, regressor_list,dimensions):
+    def reg_panel(self, regressor_list, dimensions):
         '''panel regression'''   
         df = self.df.set_index(dimensions)
-        print(df)
-        mod = PooledOLS(df['res'],df[regressor_list] )
+#        regressor_list.append('res')
+#        df = df.dropna(subset=regressor_list)
+#        regressor_list.pop()
+        mod = PooledOLS(df['res'],df[regressor_list])
         return mod.fit()
         
     def reg_linear_model(self, regressor_list):
