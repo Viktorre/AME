@@ -15,11 +15,11 @@ class RegressionExecuter():
         '''base regression'''
         mod = sm.OLS(self.df['res'], self.df[regressor_list])
         return mod.fit()#.summary()
-                
     
     def reg_panel(self, regressor_list,dimensions):
         '''panel regression'''   
         df = self.df.set_index(dimensions)
+        print(df)
         mod = PooledOLS(df['res'],df[regressor_list] )
         return mod.fit()
         

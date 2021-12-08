@@ -9,26 +9,31 @@ from TexWriter import TexWriter
 from SummaryStats import SummaryStats
 import pandas as pd
 pd.set_option('display.max_columns', 10)
-pd.set_option('display.max_rows', 8)
+pd.set_option('display.max_rows', 12)
 
 if __name__ == '__main__':
 
     DataImporter = DataImporter()
-#    DataImporter.put_dta_into_df('C:/Users/fx236/Documents/AME_files/court_cases_data/my_exports/final_dataset_stata_output.dta')
+#    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/final/matched.dta')
     DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
     df = DataImporter.data
     RegressionSettings = RegressionSettings()
     DataFormatter = DataFormatter()
+#    df = DataFormatter.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
+#            'heat', 'ltemp6t4', 'letemp6t4', 'temp6t4'])
+#    df = DataFormatter.add_dimension_vars_to_df(df)
     df = DataFormatter.add_dummies_to_df(df,'dayofweek') #wäre gut mit settings hier
-    df = DataFormatter.drop_na_by_col_names(df, 
-                    RegressionSettings.return_vars_as_flat_list())
+    df = DataFormatter.drop_na_by_col_names(df,RegressionSettings.\
+            return_vars_as_flat_list(keys='all variables'))
+    
 #    df = DataFormatter.slice_df_by_date(df,'2000-01-01','2001-01-01')
 #    df = DataFormatter.slice_df_by_date(df,'2001-01-01','2002-01-01')
 #    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2003-01-01')
 #    df = DataFormatter.slice_df_by_date(df,'2002-01-01','2004-01-01')
 #    print(df)
-    
-#    Plotter = Plotter()
+    ÜBERLEGEN WARUM POLS FEHLER WIRFT;)
+    Plotter = Plotter()
+#    Plotter.plot_year_dist_of_df(df)
 #    Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)    
     
@@ -70,20 +75,10 @@ if __name__ == '__main__':
 
 
 '''
-to dos before tuesday evenig:
-    - DONE korrekturlesen intro und lit review
-    - DONE ein chapter ganz oder zumindest stickpunkte überall schreiben
-
-    - 3. fragen ausformulieren + email text
-    - 4. alles abend abschicken
-    
-    - write shitty abstract
-    - data Empirical strategy schnelles draft tippen
-    - data results schnelles draft tippen
-    - data summary schnelles draft tippen
 to dos:    
+    - matched data
+    - courtcases date in py visualisieren
     - runden in summary stats
-    - courtcases per 
     - 
 
 questions for balietti:
@@ -101,13 +96,7 @@ questions for balietti:
     - maybe doublecheck together in stata that table 2 commands are pooled ols
     - do you have an idea why my effects have so different pvalues than paper?
 
-
-Dear Anca,
-
-I attached the current version of my paper. It would be great if you could haveI have the following questions 
-
-
 questions in paper:
     - why in tbale 2 not same specifications in code?(doublecheck that aganin in dofile)   
-
+        i think only (4) is different
 '''    

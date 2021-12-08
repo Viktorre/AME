@@ -30,12 +30,12 @@ class RegressionSettings():
             'wind6t4' : ['wind6t4'],
             'skycover' : ['skycover'],}
 
-    def return_vars_as_flat_list(self, keys='all keys'):
+    def return_vars_as_flat_list(self, keys='all variables'):
         '''in default, this fct will return elements of the entire
         dictionary. keys=... lets you specify certain parts if needed
         '''
         list_of_all_elements = []
-        if keys == 'all keys':
+        if keys == 'all variables':
             for key in self.var_dictionary.keys():
                 for element in self.var_dictionary[key]:
                     list_of_all_elements.append(element)
