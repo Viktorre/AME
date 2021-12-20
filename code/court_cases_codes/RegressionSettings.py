@@ -19,7 +19,7 @@ class RegressionSettings():
             'dailyheat':['dailyheat','skycover','pressureavgsealevel',
                          'windspeed','precipitationwaterequiv'],
             'dummies':['dayofweek1','dayofweek3', 'dayofweek2', 
-                       'dayofweek5', 'dayofweek4'],
+                       'dayofweek5', 'dayofweek4','dayofweek6'],
             'pollutants' : ['ozone','co','pm25'],
             'ltemp6t410' : ['ltemp6t410'],
             'letemp6t410' : ['letemp6t410'],

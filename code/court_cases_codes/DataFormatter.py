@@ -6,6 +6,23 @@ class DataFormatter():
     def __init__(self, *args, **kwargs):
         pass
     
+    def return_formatted_df(self,df,setting_name,RegressionSettings):
+        if setting_name == "table1":
+            print("formatted dataframe for "+setting_name)
+            print(RegressionSettings.return_vars_as_flat_list(
+                                             keys=['weather6t4','pollutants']))
+            df = self.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
+                    'heat', 'ltemp6t4', 'letemp6t4'])
+            
+            df = self.drop_na_by_col_names(df,RegressionSettings.\
+                    return_vars_as_flat_list(keys=['weather6t4','pollutants']))
+            df = self.add_dimension_vars_to_df(df)
+            
+            for var in ['dayofweek','nat_name','c_asy_type','year','citymonth','chair']:                
+                df = self.add_dummies_to_df(df,var) #wäre gut mit settings hier
+        return df
+        
+
     def add_dummies_to_df(self,df,dummy_name):
         for unique_val in df[dummy_name].unique():
             temp_column = []
@@ -15,6 +32,7 @@ class DataFormatter():
                 else:
                     temp_column.append(0)
             df[dummy_name+str(int(unique_val))] = temp_column
+            print("'"+dummy_name+str(int(unique_val))+"',")
         return df
     
     def create_missing_vars(self,df):

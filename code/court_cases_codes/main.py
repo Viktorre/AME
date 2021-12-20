@@ -21,22 +21,20 @@ if __name__ == '__main__':
 
     DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/final/matched.dta')
 #    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
-    df = DataFormatter.slice_df_by_date(DataImporter.data,'2000-01-01'
-                                                        ,'2001-01-01')
+#    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/data_before_table1.dta')
+
+#    df = DataFormatter.slice_df_by_date(DataImporter.data,'2000-01-01'
+#                                                        ,'2001-01-01')
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2001-01-01'
 #                                                        ,'2002-01-01')
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2002-01-01'
 #                                                        ,'2003-01-01')
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2003-01-01'
 #                                                        ,'2004-01-01')
-#    df = DataImporter.data
-    df = DataFormatter.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
-            'heat', 'ltemp6t4', 'letemp6t4'])
-    df = DataFormatter.add_dimension_vars_to_df(df)
-    df = DataFormatter.add_dummies_to_df(df,'dayofweek') #wäre gut mit settings hier
-    df = DataFormatter.drop_na_by_col_names(df,RegressionSettings.\
-            return_vars_as_flat_list(keys='all variables'))
     
+    df = DataFormatter.return_formatted_df(DataImporter.data,"table1",
+                                           RegressionSettings)
+    do dummy problem tomorrow
     Plotter.plot_year_dist_of_df(df)
 #    Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)  
@@ -75,6 +73,9 @@ if __name__ == '__main__':
 #            'tempmean','heat','airpressure0','avgdewpt','precip0',
 #            'windspeed0','skycover','ozone','co','pm25'])
 #    TexWriter.export_any_pandas_table(table_1, 'Table 1')
+
+
+
 
 
 '''
