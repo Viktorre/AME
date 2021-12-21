@@ -19,7 +19,7 @@ class DataFormatter():
             df = self.add_dimension_vars_to_df(df)
             
             for var in ['dayofweek','nat_name','c_asy_type','year','citymonth','chair']:                
-                df = self.add_dummies_to_df(df,var) #wäre gut mit settings hier
+                df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
         return df
         
 
@@ -34,6 +34,24 @@ class DataFormatter():
             df[dummy_name+str(int(unique_val))] = temp_column
             print("'"+dummy_name+str(int(unique_val))+"',")
         return df
+    
+    def add_dummies_to_df_numeric(self,df,dummy_name):
+        """ this fct loops through all unique values (in no specific
+        order) and creates new dummy column identfied by asending 
+        numbers."""
+        dummy_counter = 0 
+        for unique_val in df[dummy_name].unique():
+            temp_column = []
+            for row in df[dummy_name]:
+                if row == unique_val:
+                    temp_column.append(1)
+                else:
+                    temp_column.append(0)
+            df[dummy_name+str(dummy_counter)] = temp_column#changes order!
+            print("'"+dummy_name+str(dummy_counter)+"',")
+            dummy_counter+=1
+        return df
+    
     
     def create_missing_vars(self,df):
         pass 

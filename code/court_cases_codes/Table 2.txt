@@ -214,3 +214,183 @@ P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &
 Observations                      &       207207 &       169009 &       207207 &       207207 \\
 \bottomrule
 \end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.925*** &     1.107*** &     -2.19*** &    -0.851*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.314*** \\
+                                  &            - &      [0.174] &            - &      [0.203] \\
+Temperaturet+1/1000               &            - &            - &     1.165*** &     1.357*** \\
+                                  &            - &            - &      [0.181] &      [0.184] \\
+F-statistic of joint significance &      2772.74 &      2127.21 &      2602.52 &      2452.37 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.934*** &     1.106*** &    -2.187*** &    -0.838*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.323*** \\
+                                  &            - &      [0.174] &            - &      [0.204] \\
+Temperaturet+1/1000               &            - &            - &     1.154*** &     1.347*** \\
+                                  &            - &            - &      [0.182] &      [0.184] \\
+F-statistic of joint significance &      2773.04 &       2127.2 &      2602.75 &      2452.62 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.925*** &     1.107*** &     -2.19*** &    -0.851*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.314*** \\
+                                  &            - &      [0.174] &            - &      [0.203] \\
+Temperaturet+1/1000               &            - &            - &     1.165*** &     1.357*** \\
+                                  &            - &            - &      [0.181] &      [0.184] \\
+F-statistic of joint significance &      2772.74 &      2127.21 &      2602.52 &      2452.37 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.925*** &     1.107*** &     -2.19*** &    -0.851*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.314*** \\
+                                  &            - &      [0.174] &            - &      [0.203] \\
+Temperaturet+1/1000               &            - &            - &     1.165*** &     1.357*** \\
+                                  &            - &            - &      [0.181] &      [0.184] \\
+F-statistic of joint significance &      2772.74 &      2127.21 &      2602.52 &      2452.37 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.934*** &     1.106*** &    -2.187*** &    -0.838*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.323*** \\
+                                  &            - &      [0.174] &            - &      [0.204] \\
+Temperaturet+1/1000               &            - &            - &     1.154*** &     1.347*** \\
+                                  &            - &            - &      [0.182] &      [0.184] \\
+F-statistic of joint significance &      2773.04 &       2127.2 &      2602.75 &      2452.62 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.934*** &     1.106*** &    -2.187*** &    -0.838*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.323*** \\
+                                  &            - &      [0.174] &            - &      [0.204] \\
+Temperaturet+1/1000               &            - &            - &     1.154*** &     1.347*** \\
+                                  &            - &            - &      [0.182] &      [0.184] \\
+F-statistic of joint significance &      2773.04 &       2127.2 &      2602.75 &      2452.62 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.947*** &     1.105*** &    -2.187*** &    -0.827*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &    -2.171*** &            - &    -1.333*** \\
+                                  &            - &      [0.174] &            - &      [0.204] \\
+Temperaturet+1/1000               &            - &            - &     1.142*** &     1.336*** \\
+                                  &            - &            - &      [0.182] &      [0.184] \\
+F-statistic of joint significance &      2773.49 &      2127.19 &       2603.1 &         2453 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -1.374*** &     1.112*** &     -2.17*** &       -0.448 \\
+                                  &      [0.144] &      [0.211] &       [0.24] &      [0.319] \\
+Temperaturet-1/1000               &            - &    -2.166*** &            - &    -1.686*** \\
+                                  &            - &      [0.174] &            - &      [0.207] \\
+Temperaturet+1/1000               &            - &            - &     0.776*** &     0.955*** \\
+                                  &            - &            - &      [0.187] &      [0.188] \\
+F-statistic of joint significance &      2780.67 &      2127.23 &      2608.16 &      2459.42 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -1.394*** &     1.111*** &     -2.17*** &       -0.429 \\
+                                  &      [0.144] &      [0.211] &       [0.24] &      [0.319] \\
+Temperaturet-1/1000               &            - &    -2.168*** &            - &    -1.704*** \\
+                                  &            - &      [0.174] &            - &      [0.207] \\
+Temperaturet+1/1000               &            - &            - &     0.755*** &     0.937*** \\
+                                  &            - &            - &      [0.187] &      [0.188] \\
+F-statistic of joint significance &      2781.37 &       2127.2 &      2608.74 &      2460.07 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lllll}
+\toprule
+{} &          (1) &          (2) &          (3) &          (4) \\
+\midrule
+                                  &    Preferred &    1-Day lag &   1-Day lead &          All \\
+Temperaturet/1000                 &    -0.934*** &     1.106*** &    -2.187*** &    -0.838*** \\
+                                  &      [0.136] &      [0.211] &       [0.24] &      [0.317] \\
+Temperaturet-1/1000               &            - &     -2.17*** &            - &    -1.323*** \\
+                                  &            - &      [0.174] &            - &      [0.204] \\
+Temperaturet+1/1000               &            - &            - &     1.154*** &     1.347*** \\
+                                  &            - &            - &      [0.182] &      [0.184] \\
+F-statistic of joint significance &      2773.04 &       2127.2 &      2602.75 &      2452.62 \\
+of weather variables              &              &              &              &              \\
+P-value                           &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 &  1.11022e-16 \\
+\midrule
+Observations                      &       207207 &       169009 &       207207 &       207207 \\
+\bottomrule
+\end{tabular}

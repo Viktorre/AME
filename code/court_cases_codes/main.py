@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-from DataFormatter import DataFormatter
 from RegressionSettings import RegressionSettings
 from Plotter import Plotter
 from RegressionExecuter import RegressionExecuter
@@ -15,7 +14,6 @@ if __name__ == '__main__':
 
     DataImporter = DataImporter()
     RegressionSettings = RegressionSettings()
-    DataFormatter = DataFormatter()
     Plotter = Plotter()
     TexWriter = TexWriter()
 
@@ -32,10 +30,18 @@ if __name__ == '__main__':
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2003-01-01'
 #                                                        ,'2004-01-01')
     
+    from DataFormatter import DataFormatter
+    DataFormatter = DataFormatter()
     df = DataFormatter.return_formatted_df(DataImporter.data,"table1",
                                            RegressionSettings)
-    do dummy problem tomorrow
-    Plotter.plot_year_dist_of_df(df)
+    
+#    for col in ['dayofweek1','dayofweek3', 'dayofweek2', 
+#                       'dayofweek5', 'dayofweek4','dayofweek6']:
+#        print(df[col].value_counts())
+#    
+    keep working on dummies...
+    
+#    Plotter.plot_year_dist_of_df(df)
 #    Plotter.plot_long_lat(df)    
     RegressionExecuter = RegressionExecuter(df)  
     
@@ -61,7 +67,6 @@ if __name__ == '__main__':
                      'pollutants']), dimensions=['city','month'])
     
     table_2_regs = [base_6t4,lag_6t4,lead_6t4,all_6t4_one]
-
 
     TexWriter.export_reg_results_as_latex_code(table_2_regs, 'Table 2')
 
