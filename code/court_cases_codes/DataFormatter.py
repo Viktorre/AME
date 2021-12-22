@@ -8,17 +8,19 @@ class DataFormatter():
     
     def return_formatted_df(self,df,setting_name,RegressionSettings):
         if setting_name == "table1":
-            print("formatted dataframe for "+setting_name)
-            print(RegressionSettings.return_vars_as_flat_list(
-                                             keys=['weather6t4','pollutants']))
+            print("formatting dataframe for "+setting_name)
             df = self.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
                     'heat', 'ltemp6t4', 'letemp6t4'])
             
             df = self.drop_na_by_col_names(df,RegressionSettings.\
-                    return_vars_as_flat_list(keys=['weather6t4','pollutants']))
+                    return_vars_as_flat_list(keys=['weather6t4',
+                                                   'pollutants']))
             df = self.add_dimension_vars_to_df(df)
             
-            for var in ['dayofweek','nat_name','c_asy_type','year','citymonth','chair']:                
+            for var in ['dayofweek','nat_name','c_asy_type','year',
+                        'citymonth','chair']:     
+                print("add dummies for :",var,' (',
+                                    len(df[var].unique()),')')
                 df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
         return df
         
@@ -32,7 +34,7 @@ class DataFormatter():
                 else:
                     temp_column.append(0)
             df[dummy_name+str(int(unique_val))] = temp_column
-            print("'"+dummy_name+str(int(unique_val))+"',")
+#            print("'"+dummy_name+str(int(unique_val))+"',")
         return df
     
     def add_dummies_to_df_numeric(self,df,dummy_name):
@@ -48,7 +50,7 @@ class DataFormatter():
                 else:
                     temp_column.append(0)
             df[dummy_name+str(dummy_counter)] = temp_column#changes order!
-            print("'"+dummy_name+str(dummy_counter)+"',")
+#            print("'"+dummy_name+str(dummy_counter)+"',")
             dummy_counter+=1
         return df
     
@@ -96,3 +98,5 @@ class DataFormatter():
         df['dayofweek'] = df['date'].dt.dayofweek.astype(float)
         return df
 
+
+        

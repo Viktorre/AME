@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-from RegressionSettings import RegressionSettings
 from Plotter import Plotter
-from RegressionExecuter import RegressionExecuter
+#from RegressionExecuter import RegressionExecuter
 from TexWriter import TexWriter
 from SummaryStats import SummaryStats
 import pandas as pd
@@ -13,7 +12,6 @@ pd.set_option('display.max_rows', 12)
 if __name__ == '__main__':
 
     DataImporter = DataImporter()
-    RegressionSettings = RegressionSettings()
     Plotter = Plotter()
     TexWriter = TexWriter()
 
@@ -30,19 +28,17 @@ if __name__ == '__main__':
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2003-01-01'
 #                                                        ,'2004-01-01')
     
+    from RegressionSettings import RegressionSettings
+    RegressionSettings = RegressionSettings()
     from DataFormatter import DataFormatter
     DataFormatter = DataFormatter()
-    df = DataFormatter.return_formatted_df(DataImporter.data,"table1",
-                                           RegressionSettings)
-    
-#    for col in ['dayofweek1','dayofweek3', 'dayofweek2', 
-#                       'dayofweek5', 'dayofweek4','dayofweek6']:
-#        print(df[col].value_counts())
-#    
-    keep working on dummies...
-    
+    df = DataFormatter.return_formatted_df(DataImporter.data.\
+        sample(frac=0.1,random_state=1),"table1", RegressionSettings)
+    try different fracs and try export environment
 #    Plotter.plot_year_dist_of_df(df)
-#    Plotter.plot_long_lat(df)    
+#    Plotter.plot_long_lat(df)
+    
+    from RegressionExecuter import RegressionExecuter    
     RegressionExecuter = RegressionExecuter(df)  
     
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
