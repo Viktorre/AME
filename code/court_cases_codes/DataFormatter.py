@@ -17,8 +17,13 @@ class DataFormatter():
                                                    'pollutants']))
             df = self.add_dimension_vars_to_df(df)
             
-            for var in ['dayofweek','nat_name','c_asy_type','year',
-                        'citymonth','chair']:     
+            for var in ['dayofweek',
+#                        'nat_name',
+                        'c_asy_type',
+                        'year',
+#                        'citymonth',
+#                        'chair'
+                        ]:     
                 print("add dummies for :",var,' (',
                                     len(df[var].unique()),')')
                 df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier

@@ -19,9 +19,9 @@ class RegressionExecuter():
     def reg_panel(self, regressor_list, dimensions):
         '''panel regression'''   
         df = self.df.set_index(dimensions)
-#        regressor_list.append('res')
-#        df = df.dropna(subset=regressor_list)
-#        regressor_list.pop()
+        regressor_list = self.\
+        private_function_exclude_regressors_that_are_not_int_df(
+                self.df,regressor_list)
         mod = PooledOLS(df['res'],df[regressor_list])
         return mod.fit()
         
@@ -29,9 +29,16 @@ class RegressionExecuter():
         '''base regression'''
         mod = OLS(self.df['res'], self.df[regressor_list])
         return mod.fit()#.summary()
-        
     # https://bashtage.github.io/linearmodels/panel/examples/examples.html
         
+        
+    def private_function_exclude_regressors_that_are_not_int_df(self,
+                                                    df, regressors):
+        for reg in regressors:
+            if not reg in df.columns:
+                print(reg,'dropped from regression due to no data')
+                regressors.remove(reg)
+        return regressors
 
 
 

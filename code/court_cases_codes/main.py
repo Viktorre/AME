@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-from Plotter import Plotter
+#from Plotter import Plotter
 #from RegressionExecuter import RegressionExecuter
 from TexWriter import TexWriter
-from SummaryStats import SummaryStats
+#from SummaryStats import SummaryStats
+import time
 import pandas as pd
 pd.set_option('display.max_columns', 10)
 pd.set_option('display.max_rows', 12)
 
 if __name__ == '__main__':
-
+    startTime = time.time()
     DataImporter = DataImporter()
-    Plotter = Plotter()
     TexWriter = TexWriter()
-
+    
     DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/final/matched.dta')
 #    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/dataset/paper_data_line_192.dta')
 #    DataImporter.put_dta_into_df('C:/Users/user/Documents/B.A. Governance Sem.6/Heidelberg Master/Applied Methods Enviornment/data_court decisions/Data/data_before_table1.dta')
@@ -27,43 +27,69 @@ if __name__ == '__main__':
 #                                                        ,'2003-01-01')
 #    df = DataFormatter.slice_df_by_date(DataImporter.data,'2003-01-01'
 #                                                        ,'2004-01-01')
-    
+
     from RegressionSettings import RegressionSettings
     RegressionSettings = RegressionSettings()
     from DataFormatter import DataFormatter
     DataFormatter = DataFormatter()
-    df = DataFormatter.return_formatted_df(DataImporter.data.\
-        sample(frac=0.1,random_state=1),"table1", RegressionSettings)
-    try different fracs and try export environment
+#    df = DataFormatter.return_formatted_df(DataImporter.data.\
+#        sample(frac=0.5,random_state=1),"table1", RegressionSettings)
+    df = DataFormatter.return_formatted_df(DataImporter.data,
+                                           "table1", RegressionSettings)
 #    Plotter.plot_year_dist_of_df(df)
 #    Plotter.plot_long_lat(df)
+    executionTime = (time.time() - startTime)
+    print('Execution time in seconds: ' + str(executionTime))
+    startTime = time.time() 
+
+    
+    
+    
+    
     
     from RegressionExecuter import RegressionExecuter    
     RegressionExecuter = RegressionExecuter(df)  
-    
+#    mal schauen ob es wirklich an de dummies liegt das perfekte combi?
+    # wieso geht dann base reg doch?
+    'ValueError: exog does not have full column rank'
+    #either object to float, or lin combinatios
     base_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['weather6t4','pollutants','dummies']),
                     dimensions=['city','month'])
 
+    print('base_6t4',base_6t4)
+    executionTime = (time.time() - startTime)
+    print('Execution time in seconds: ' + str(executionTime))
+
+
     lag_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
+                            
                     ['ltemp6t410','weatherdaily','pollutants',
                      'dummies']), dimensions=['city','month'])
-    
+    print('lag_6t4',lag_6t4)
+    executionTime = (time.time() - startTime)
+    print('Execution time in seconds: ' + str(executionTime))
+
     lead_6t4 = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['letemp6t410','weather6t4','pollutants',
                      'dummies']), dimensions=['city','month'])
+    print('lead_6t4',lead_6t4 )
+    executionTime = (time.time() - startTime)
+    print('Execution time in seconds: ' + str(executionTime))
+
     
     all_6t4_one = RegressionExecuter.reg_panel(regressor_list=
                     RegressionSettings.return_vars_as_flat_list(
                     ['ltemp6t410','temp6t410','letemp6t410','press6t4',
                      'dew6t4','prcp6t4','wind6t4','skycover','dummies',
                      'pollutants']), dimensions=['city','month'])
-    
-    table_2_regs = [base_6t4,lag_6t4,lead_6t4,all_6t4_one]
+    print('lead_6t4',)
 
+    table_2_regs = [base_6t4,lag_6t4,lead_6t4,all_6t4_one]
+#
     TexWriter.export_reg_results_as_latex_code(table_2_regs, 'Table 2')
 
     
