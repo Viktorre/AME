@@ -125,26 +125,24 @@
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Empirical strategy}
-	\textit{}describe the empirical method used and its appropriateness in this
-	context, state the main hypotheses to be tested.
+	\textit{}describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
 	
-	0. main hyp to test
+	0. main hyp to test:
 	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted.
 
 	1. method: pols with fixed effects.
+	The following model tests the main hypothesis, 
 	\newline
 	\begin{equation}
 		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
 	\end{equation}
-	
-	
+	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details) and case-specific characteristics, like for instance nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for autocorrelation over time and spatial autocorrelation. 
+
 	2. why appropriate
-	easy control, easy interpretation
-	Therefore, b1 is the
-	change in the probability of success given a one-unit increase in x1.
-	
+	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields handy interpretations for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making and temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Also, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
+		
 	3. my further analysis (to be continued)
-	
+	Apart from the normal method, I also propose spatial lag model using the 50 states, and yearly subsamples of the main dataset.
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 5: 
