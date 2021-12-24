@@ -3,48 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: template_paper.aux
 The style file: apalike.bst
 Database file #1: manual_bibfile.bib
-Warning--I didn't find a database entry for "DespinaGavresiAnastasiaLitinaChristosA.Makridis.2021"
 Warning--empty journal in Evans.2021
 Warning--empty journal in Spamann.2020
-You've used 10 entries,
+You've used 11 entries,
             1935 wiz_defined-function locations,
-            535 strings with 5612 characters,
-and the built_in function-call counts, 3675 in all, are:
-= -- 353
-> -- 153
-< -- 5
-+ -- 54
-- -- 50
-* -- 317
-:= -- 662
-add.period$ -- 28
-call.type$ -- 10
-change.case$ -- 75
-chr.to.int$ -- 10
-cite$ -- 12
-duplicate$ -- 135
-empty$ -- 250
-format.name$ -- 66
-if$ -- 693
+            538 strings with 5619 characters,
+and the built_in function-call counts, 3950 in all, are:
+= -- 378
+> -- 160
+< -- 6
++ -- 56
+- -- 52
+* -- 334
+:= -- 713
+add.period$ -- 31
+call.type$ -- 11
+change.case$ -- 80
+chr.to.int$ -- 11
+cite$ -- 13
+duplicate$ -- 149
+empty$ -- 273
+format.name$ -- 69
+if$ -- 747
 int.to.chr$ -- 1
 int.to.str$ -- 0
-missing$ -- 10
-newline$ -- 51
-num.names$ -- 30
-pop$ -- 62
+missing$ -- 12
+newline$ -- 56
+num.names$ -- 33
+pop$ -- 70
 preamble$ -- 1
-purify$ -- 75
+purify$ -- 81
 quote$ -- 0
-skip$ -- 107
+skip$ -- 117
 stack$ -- 0
-substring$ -- 242
-swap$ -- 8
+substring$ -- 254
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 60
+type$ -- 64
 warning$ -- 2
-while$ -- 29
+while$ -- 31
 width$ -- 0
-write$ -- 124
-(There were 3 warnings)
+write$ -- 136
+(There were 2 warnings)

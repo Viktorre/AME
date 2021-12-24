@@ -71,8 +71,7 @@
 	% Section 1: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Introduction}
-	\textit{introduce the topic and state the aim of your work, stating clearly the
-	research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
+	\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
 	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further analyise the validity of the results.
 	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of climate on professionally made decisions. The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
 	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper \textit{(not yet implemented)} further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
@@ -128,6 +127,25 @@
 	\section{Empirical strategy}
 	\textit{}describe the empirical method used and its appropriateness in this
 	context, state the main hypotheses to be tested.
+	
+	0. main hyp to test
+	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted.
+
+	1. method: pols with fixed effects.
+	\newline
+	\begin{equation}
+		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
+	\end{equation}
+	
+	
+	2. why appropriate
+	easy control, easy interpretation
+	Therefore, b1 is the
+	change in the probability of success given a one-unit increase in x1.
+	
+	3. my further analysis (to be continued)
+	
+	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 5: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
