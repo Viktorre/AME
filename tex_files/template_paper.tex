@@ -125,23 +125,18 @@
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Empirical strategy}
-	\textit{}describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
+	\textit{describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
+		struktur absätze: 0. main hyp to test: 1. method: pols with fixed effects: 2. why appropriate: 3. my further analysis (to be continued):
+	}
 	
-	0. main hyp to test:
-	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted.
-
-	1. method: pols with fixed effects.
-	The following model tests the main hypothesis, 
+	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted. The following model tests the main hypothesis, 
 	\newline
 	\begin{equation}
 		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
 	\end{equation}
-	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details) and case-specific characteristics, like for instance nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for autocorrelation over time and spatial autocorrelation. 
-
-	2. why appropriate
-	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields handy interpretations for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making and temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Also, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
-		
-	3. my further analysis (to be continued)
+	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details about both) and case-specific characteristics, such as nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
+	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
+	
 	Apart from the normal method, I also propose spatial lag model using the 50 states, and yearly subsamples of the main dataset.
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -182,7 +177,13 @@
 	% Section 6: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Discussion}
-	\textit{reflect on the meaning and policy implications of your results, think of potential limitations to your work and avenues for future research.}
+	\textit{reflect on the meaning and policy implications of your results, think of potential limitations to your work and avenues for future research.
+		1. meaning and implications like in op. 
+		2. potential limits like in op like samplesize, also shortcomings in specification due to var availabilty like op and also methodology (for example latent factors).
+		3. future research more datasets to see link temp->court cases. link more to climate change
+	}
+	The results of this paper are in line with the findings from Heyes and Saberian and so are its implications. The results imply that highly important decisions might no be arbitrary. These shortcomings decrease overall societal welfare and efficiency. 
+	As noted in the literature review, other authors have shown that the data selection as done by Heyes and Saberian is flawed. As this analysis uses the same dataset, it suffers from the same obvious limitation. Another limitation might come from the model specification. In that regard there could exist omitted variables that bias the coefficient of intereset either due to unavailabilty of data (variables) or a too parsimonious methodology. Considering for instance each judges sentiment towards immigration, there is no doubt that omitting this characteristic could cause a bias. Certainly, there exists no dataset for this variable. Also, judge fixed effects are insufficient to control for this surely also time-varying characteristic. The same issue might arise for other unobserved factors, which are all put into the error term and threaten the validity of the model. Mentioning the error term, the analysis lacks any attempts to "mine" (as a general term) the data in question. A feasible idea would be to extend (1) by latent factors as proposed by \cite{bai2009panel}. This method mines the error term for latent factors (principal components) which, if omitted, would bias the regression. This is just one example to illustrate there are ways to further exploit the dataset to get an estimate for temperature with a little bias as possible. 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 7: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
