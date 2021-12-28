@@ -1,0 +1,22 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{4}{c}}
+\hline\hline
+            &\multicolumn{1}{c}{(1)}&\multicolumn{1}{c}{(2)}&\multicolumn{1}{c}{(3)}&\multicolumn{1}{c}{(4)}\\
+            &\multicolumn{1}{c}{base}&\multicolumn{1}{c}{1-Daylag}&\multicolumn{1}{c}{1-Day lead}&\multicolumn{1}{c}{all}\\
+\hline
+temp6t410   &      -0.928\sym{**} &      -1.219\sym{*}  &      -0.646         &      -0.929         \\
+            &     [0.431]         &     [0.667]         &     [0.701]         &     [0.892]         \\
+[1em]
+ltemp6t410  &                     &       0.281         &                     &       0.250         \\
+            &                     &     [0.481]         &                     &     [0.481]         \\
+[1em]
+letemp6t410 &                     &                     &      -0.292         &      -0.267         \\
+            &                     &                     &     [0.515]         &     [0.517]         \\
+\hline
+\(N\)       &       65572         &       65572         &       65572         &       65572         \\
+\hline\hline
+\multicolumn{5}{l}{\footnotesize Standard errors in brackets}\\
+\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+\end{tabular}
+}
