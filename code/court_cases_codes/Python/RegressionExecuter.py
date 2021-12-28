@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-#import pandas as pd
+import pandas as pd
+import geopandas
 # from sklearn.linear_model import LinearRegression
 #import statsmodels.api as sm
 from linearmodels.panel import PooledOLS

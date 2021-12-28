@@ -183,8 +183,8 @@ estimate store base_6t4_date
 esttab base_6t4_nothing base_6t4_nati base_6t4_nati_dow base_6t4_nati_dow_type base_6t4_nati_dow_type_j base_6t4_nati_dow_type_j_cm base_6t4_city_ym base_6t4_cym  base_6t4_jm_ct_year base_6t4_date base_6t4 using FEmoving.tex,replace keep(temp6t410 ) se brackets star(* 0.10 ** 0.05 *** 0.01) ///
 	mtitles("nothing" "nat" "dow" "type" "judge" "cm" "city/ym" "cym"  "jm/c/y" "date" "base" )	
 
-	
 
+*********************************** ende was ich brauch
 	
 	
 *********************
