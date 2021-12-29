@@ -4,7 +4,7 @@ cd "C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final"
 use matched, clear
 
 
-cd "C:/Users/fx236/Documents/AME/code/court_cases_codes/stata_exports"
+cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports"
 
 set matsize 11000 //set max number of vars
 

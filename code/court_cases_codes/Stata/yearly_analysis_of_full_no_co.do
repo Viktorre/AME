@@ -4,7 +4,7 @@ cd "C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final"
 use matched, clear
 
 
-cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/full data"
+cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/full data without co2"
 
 set matsize 11000 //set max number of vars
 
@@ -61,7 +61,8 @@ global weather6t4  temp6t410 press6t4 dew6t4 prcp6t4 wind6t4 skycover
 global heat heat10 press6t4  prcp6t4 wind6t4 skycover
 global dailyheat dailyheat skycover pressureavgsealevel windspeed precipitationwaterequiv 
 global dummies i.dayofweek  i.nati i.type i.year i.cm i.chair
-global pollutants ozone co pm25
+//global pollutants ozone co pm25
+global pollutants ozone pm25 //co excluded!
 
 
 
