@@ -44,6 +44,7 @@
 
 
 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \title{Recreation of Temperature and Decisions: Evidence from 207,000
 	Court Cases}
@@ -65,41 +66,43 @@
 		\lipsum[1]
 		\newline \noindent \textbf{Keywords:} decision-making; temperature; fixed-effects regression; spatial panel data
 	\end{abstract} \newpage
+
+
 	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 1: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Introduction}
-	\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
-	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further analyise the validity of the results.
-	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of climate on professionally made decisions. The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
-	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper \textit{(not yet implemented)} further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 2: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Literature review}
-	\textit{introduce the topic and state the aim of your work, stating clearly the
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 1: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Introduction}
+\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
+\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2018. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I reimplement the entire analysis in Python and add a few more model specifications to further analyise the validity of the results.
+\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of climate on professionally made decisions. The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and case outcome.
+\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients differ in values but not in direction and significance. The added specifications omitted by the original paper \textit{(not yet implemented)} further confirm the underlying relation between climate and decisions. Moreover, I contribute a more accessible technical infrastructure in Python for other researchers to also replicate these results.  
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 2: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Literature review}
+\textit{introduce the topic and state the aim of your work, stating clearly the
 	research questions and the methodology used, give a brief overview of the results and the
 	limitations of your analysis.
 	a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm rejectsummarize the current state of knowledge on the topic of your paper
 	(including the latest relevant publications).all post 2019}
-	\newline
-	Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. More recently, in this branch of temperature x decisions literature  \cite{Gavresi.2021} show that higher outdoor temperature increases risk appetite in (optimist) financial decisions. \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and  \cite{Hadi.2019} show that extreme heat makes consumers less rational (ie affectual). Even more temperature effects are shown by \cite{Stevens.2021} on agression on social media and by \cite{Ryan.2020} on law officials behaviour. \newline
-	There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian omit in their paper. Recent contributions in this branch are \cite{Stroom.2021}, who find no relation between indoor temperature and cognitive rationality, and \cite{Liu.2020}, who observe no effect of heat on fraudulent behaiour. \textit{(maybe give here some older literature too, as heyes and saberian do not mention it in their literature review)} \newline
-	Concerning temperature effects on juridical outcomes specifically, Heyes and Saberian are the first to conduct a full empirical analysis. This motivated  \cite{Evans.2021} to do their own empirical analysis about criminal court cases in Australia, which resulted in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper \cite{Spamann.2020} recalculate its results within a larger timeframe (1990 - 2019) and finds no significant effects.
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 3: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Data}
-	\textit{Describe the main sources of your data, the data cleaning and merging process, include a table(s) of summary statistics and a brief description of these. Note: missing explanation of avg temp units 10°F and bins.}
-	\newline
-	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
-	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case and environment characteristics. \newline
-	Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. The issue of missing values is addressed by dropping every row that contains NA for at least one variable used in at least one regression. Note that this reduces the effective number of observations to 169006.
-	\newline	
-	\begin{center}
+\newline
+Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. More recently, in this branch of temperature x decisions literature  \cite{Gavresi.2021} show that higher outdoor temperature increases risk appetite in (optimist) financial decisions. \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and  \cite{Hadi.2019} show that extreme heat makes consumers less rational (ie affectual). Even more temperature effects are shown by \cite{Stevens.2021} on agression on social media and by \cite{Ryan.2020} on law officials behaviour. \newline
+There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian omit in their paper. Recent contributions in this branch are \cite{Stroom.2021}, who find no relation between indoor temperature and cognitive rationality, and \cite{Liu.2020}, who observe no effect of heat on fraudulent behaiour. \textit{(maybe give here some older literature too, as heyes and saberian do not mention it in their literature review)} \newline
+Concerning temperature effects on juridical outcomes specifically, Heyes and Saberian are the first to conduct a full empirical analysis. This motivated  \cite{Evans.2021} to do their own empirical analysis about criminal court cases in Australia, which resulted in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper \cite{Spamann.2020} recalculate its results within a larger timeframe (1990 - 2019) and finds no significant effects.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 3: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Data}
+\textit{Describe the main sources of your data, the data cleaning and merging process, include a table(s) of summary statistics and a brief description of these. Note: missing explanation of avg temp units 10°F and bins.}
+\newline
+The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
+All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case and environment characteristics. \newline
+Once matched.dta is created, the (stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 207207 observations for 666 variables. The issue of missing values is addressed by dropping every row that contains NA for at least one variable used in at least one regression. Note that this reduces the effective number of observations to 169006.
+\newline	
+\begin{center}
 	\captionof{table}{Summary Statistics} \label{tab:title}
 	\begin{tabular}{lrr}
 		\toprule
@@ -118,38 +121,38 @@
 		pm25         &  14.869682 &  11.204614 \\
 		\bottomrule
 	\end{tabular}
-	\end{center}
-	
-	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum. As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 4: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Empirical strategy}
-	\textit{describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
-		struktur absätze: 0. main hyp to test: 1. method: pols with fixed effects: 2. why appropriate: 3. my further analysis (to be continued):
-	}
-	
-	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted. The following model tests the main hypothesis, 
-	\newline
-	\begin{equation}
-		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
-	\end{equation}
-	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details about both) and case-specific characteristics, such as nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
-	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
-	
-	Apart from the normal method, I also propose spatial lag model using the 50 states, and yearly subsamples of the main dataset.
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 5: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Results}
-	\textit{present and comment on your results.} \newline
-	Table 2 contains the results of the regression using the default specification. All four regressions are use pooled OLS to estimate the effects of average temperature and its one-day lag as well as lead in different combinations. Also, all specifications control for a set of averaged weather characteristics (skycover, air pressure, wind, precipitation, dewpoint), air pollution (ozone, co, pm) and weekday dummies. 
-	In (1), the estimated slope parameter is -1.363. This value means that a 10°F (5.4°C) increase in daily average temperature during a judge decision reduces the probablilty of a positive outcome by 1.363\% (ceterus paribus). Considering that the overall average grant rate is 16.3\%, 10°F warmer temperature implies a 8.36\% (0.01363/0.163) decrease in expected grant rate. This effect is significant at 1\% and so are all other effects in in (2) and (3). Analogously to the just interpreted parameter, the lag or lead estimates quantify the effect of the average temperature the day before or after the decision. In (4), all three regressors are used jointly which leads to significant estimates only for lag and lean. This means that in this dataset when controlling for the temperature the day after and before, the daily average temperature when the decision is made has no effect on its outcome. 
-	\textit{I am surprised my results differ that much from the original.}	
-	
+\end{center}
 
-	
+Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum. As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 4: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Empirical strategy}
+\textit{describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
+	struktur absätze: 0. main hyp to test: 1. method: pols with fixed effects: 2. why appropriate: 3. my further analysis (to be continued):
+}
+
+The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted. The following model tests the main hypothesis, 
+\newline
+\begin{equation}
+	g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
+\end{equation}
+where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details about both) and case-specific characteristics, such as nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
+The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
+
+Apart from the normal method, I also propose spatial lag model using the 50 states, and yearly subsamples of the main dataset.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 5: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Results}
+\textit{present and comment on your results.} \newline
+Table 2 contains the results of the regression using the default specification. All four regressions are use pooled OLS to estimate the effects of average temperature and its one-day lag as well as lead in different combinations. Also, all specifications control for a set of averaged weather characteristics (skycover, air pressure, wind, precipitation, dewpoint), air pollution (ozone, co, pm) and weekday dummies. 
+In (1), the estimated slope parameter is -1.363. This value means that a 10°F (5.4°C) increase in daily average temperature during a judge decision reduces the probablilty of a positive outcome by 1.363\% (ceterus paribus). Considering that the overall average grant rate is 16.3\%, 10°F warmer temperature implies a 8.36\% (0.01363/0.163) decrease in expected grant rate. This effect is significant at 1\% and so are all other effects in in (2) and (3). Analogously to the just interpreted parameter, the lag or lead estimates quantify the effect of the average temperature the day before or after the decision. In (4), all three regressors are used jointly which leads to significant estimates only for lag and lean. This means that in this dataset when controlling for the temperature the day after and before, the daily average temperature when the decision is made has no effect on its outcome. 
+\textit{I am surprised my results differ that much from the original.}	
+
+
+
 	\begin{center}
 	\captionof{table}{Fixed effect estimates: 6 AM - 4 PM average} \label{tab:title} 
 	\begin{tabular}{lllll}
@@ -172,70 +175,75 @@
 	\end{tabular}
 	%\label{Standard errors are clustered on city-month in brackets. * significant at 10\%, ** significant at 5\% *** significant at 1\%.}
 	\end{center}
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 6: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Discussion}
-	\textit{reflect on the meaning and policy implications of your results, think of potential limitations to your work and avenues for future research.
-		1. meaning and implications like in op. 
-		2. potential limits like in op like samplesize, also shortcomings in specification due to var availabilty like op and also methodology (for example latent factors).
-		3. future research more datasets to see link temp->court cases. link more to climate change
-	}
 
-	The results of this paper are in line with the findings from Heyes and Saberian and so are its implications. The results imply that highly important decisions might no be arbitrary. These shortcomings decrease overall societal welfare and efficiency. 
-	As noted in the literature review, other authors have shown that the data selection as done by Heyes and Saberian is flawed. As this analysis uses the same dataset, it suffers from the same obvious limitation. Another limitation might come from the model specification. In that regard there could exist omitted variables that bias the coefficient of intereset either due to unavailabilty of data (variables) or a too parsimonious methodology. Considering for instance each judges sentiment towards immigration, there is no doubt that omitting this characteristic could cause a bias. Certainly, there exists no dataset for this variable. Also, judge fixed effects are insufficient to control for this surely also time-varying characteristic. The same issue might arise for other unobserved factors, which are all put into the error term and threaten the validity of the model. Mentioning the error term, the analysis lacks any attempts to "mine" (as a general term) the data in question. A feasible idea would be to extend (1) by latent factors as proposed by \cite{bai2009panel}. This method mines the error term for latent factors (principal components) which, if omitted, would bias the regression. This is just one example to illustrate there are ways to further exploit the dataset to get an estimate for temperature with as little bias as possible. 
-	
-	More research on the link between temperature and decision making is needed to clarify the ongoing debate about it. Especially in the context of court cases more empiric contributions would help, as those a yet scarce. Furthermore, future research can also examine the relation decisions/ human cognitive output and climate change. This is outstandingly relevant as average global temperatures as well as local weather volatility are expected to rise. The relation between decisions and climate change might even be impactful enough to be included in the integrated modelling approaches (IMAGE) of global temperature forecasts. Going back to the basic relation between decisions and current weather, another topic for research would be to mitigate the methodological shortcomings mentioned above. This could be done either through mining techniques to achieve a more adequate model specification, or use other analysis/estimation methods. Examples for the latter would be regression trees or neural networks.
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% Section 7: 
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{ Conclusion}
-	\subsection{testsubsection}
-	\textit{	summarize your main work and conclude.
-		1. Select a paper that uses one of the empirical methods reviewed in class
-		2. Get the raw data
-		3. Replicate the data analysis
-		4. Write a report summarizing your work.
-		5. Include a literature review section in your report that summarizes the current state
-		of knowledge on your topic.
-	}
+	\textit{maybe put this in data chapter:} The variable co2 has approx. 50,000 observations missing. See the Figure 1 for time distribution of said characteristic. Heyes and Saberian omit this issue. By including this variable in their analysis they lose a signficant part of their sample. Table1A shows the base result without co2 as a control variable. Estimates differ slightly in their values, whereas direction and significance of all effects remain unchanged. Considering that co2 is one of three pollution control variables (eg co2 and pm25 have a 85\% correlation), it is likely that excluding one would not change the base result significantly. 
 
+	\cite{Spamann.2020} have already strongly undermined the validity of the results by Heyes and Saberian using a larger scope for their sample selection and not finding significant temperature effects. Table2A lists the first column of the base result (ie base model without lags/leads) for yearly subsamples of the main dataset. As for the year 2001 there is no co2 available in the dataset, it is omitted for that year. Each yearly result yields negative coefficients for the relation between temperature and grant rate, yet for all years except 2003 this effect is not significant. Hence, applying a smaller scope for the sample selection also puts the original results in question. When combining the findings of Spamann with Table2A, a potential interpretation could be that by chance Heyes and Saberian happened to find significant effects in exactly their sample scope (2000-2004). A short side note here is that the original analysis controls for years with year-dummies. \textit{sind die significant? also not sure about this next sentence...} Assuming those are significant, these fixed effects only control for yearly differences in the dependent variable, but not for differences in the regressors. \textit{mention in discussion oder ka wo yearly subsample vs year fixed effects? mal schauen wie stark da die coefficients sind.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 6: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discussion}
+\textit{reflect on the meaning and policy implications of your results, think of potential limitations to your work and avenues for future research.
+	1. meaning and implications like in op. 
+	2. potential limits like in op like samplesize, also shortcomings in specification due to var availabilty like op and also methodology (for example latent factors).
+	3. future research more datasets to see link temp->court cases. link more to climate change
+}
+
+The results of this paper are in line with the findings from Heyes and Saberian and so are its implications. The results imply that highly important decisions might no be arbitrary. These shortcomings decrease overall societal welfare and efficiency. 
+As noted in the literature review, other authors have shown that the data selection as done by Heyes and Saberian is flawed. As this analysis uses the same dataset, it suffers from the same obvious limitation. Another limitation might come from the model specification. In that regard there could exist omitted variables that bias the coefficient of intereset either due to unavailabilty of data (variables) or a too parsimonious methodology. Considering for instance each judges sentiment towards immigration, there is no doubt that omitting this characteristic could cause a bias. Certainly, there exists no dataset for this variable. Also, judge fixed effects are insufficient to control for this surely also time-varying characteristic. The same issue might arise for other unobserved factors, which are all put into the error term and threaten the validity of the model. Mentioning the error term, the analysis lacks any attempts to "mine" (as a general term) the data in question. A feasible idea would be to extend (1) by latent factors as proposed by \cite{bai2009panel}. This method mines the error term for latent factors (principal components) which, if omitted, would bias the regression. This is just one example to illustrate there are ways to further exploit the dataset to get an estimate for temperature with as little bias as possible. 
+
+More research on the link between temperature and decision making is needed to clarify the ongoing debate about it. Especially in the context of court cases more empiric contributions would help, as those a yet scarce. Furthermore, future research can also examine the relation decisions/ human cognitive output and climate change. This is outstandingly relevant as average global temperatures as well as local weather volatility are expected to rise. The relation between decisions and climate change might even be impactful enough to be included in the integrated modelling approaches (IMAGE) of global temperature forecasts. Going back to the basic relation between decisions and current weather, another topic for research would be to mitigate the methodological shortcomings mentioned above. This could be done either through mining techniques to achieve a more adequate model specification, or use other analysis/estimation methods. Examples for the latter would be regression trees or neural networks.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Section 7: 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{ Conclusion}
+\subsection{testsubsection}
+\textit{	summarize your main work and conclude.
+	1. Select a paper that uses one of the empirical methods reviewed in class
+	2. Get the raw data
+	3. Replicate the data analysis
+	4. Write a report summarizing your work.
+	5. Include a literature review section in your report that summarizes the current state
+	of knowledge on your topic.
+}
+
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% Appendix
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\newpage
+
+\begin{subappendices}
+	\counterwithin{figure}{section}
+	\counterwithin{table}{section}
+	\counterwithin{equation}{section}
+	\appendix
+	
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section*{Appendix}\label{Appendix}
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\textit{use it for additional material that might support your analysis + (in thefinal version) include a separate paragraph that provides a response to the referee's comments and mentions where, how, why, why not the paper has changed.}
+	\singlespacing
+	\section{Summary statistics}\label{ASec:xxxxx}
 	
 	
-	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-	% Appendix
-	% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
-	\newpage
-	
-	\begin{subappendices}
-		\counterwithin{figure}{section}
-		\counterwithin{table}{section}
-		\counterwithin{equation}{section}
-		\appendix
-		
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\section*{Appendix}\label{Appendix}
-		%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-		\textit{use it for additional material that might support your analysis + (in thefinal version) include a separate paragraph that provides a response to the referee's comments and mentions where, how, why, why not the paper has changed.}
-		\singlespacing
-		\section{Summary statistics}\label{ASec:xxxxx}
-		
-		
-	\end{subappendices}	
-	
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	% References
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\newpage
-	{\footnotesize 
-		\bibliographystyle{apalike}
-		\singlespacing
-		\bibliography{manual_bibfile.bib}
-	}
-	
-	
-	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{subappendices}	
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% References
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+{\footnotesize 
+	\bibliographystyle{apalike}
+	\singlespacing
+	\bibliography{manual_bibfile.bib}
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \end{document}

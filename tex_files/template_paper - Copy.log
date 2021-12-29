@@ -2,8 +2,8 @@ This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**template_paper.tex
-(./template_paper.tex
+**"template_paper - Copy.tex"
+(./template_paper - Copy.tex
 LaTeX2e <2020-10-01> patch level 2
 L3 programming layer <2020-10-27> xparse <2020-03-03>
 (c:/texlive/2020/texmf-dist/tex/latex/base/article.cls
@@ -542,14 +542,18 @@ LaTeX Font Info:    Trying to load font information for OT1+ppl on input line 5
 
 (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1ppl.fd
 File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
-) (./template_paper.aux)
-\openout1 = `template_paper.aux'.
+)
+(./template_paper - Copy.aux
+
+LaTeX Warning: Label `tab:title' multiply defined.
+
+)
+\openout1 = `"template_paper - Copy.aux"'.
 
 LaTeX Font Info:    Checking defaults for OML/pxmi/m/it on input line 55.
 LaTeX Font Info:    Trying to load font information for OML+pxmi on input line 
 55.
-
-(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
+ (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/omlpxmi.fd
 File: omlpxmi.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    ... okay on input line 55.
@@ -647,24 +651,75 @@ Package caption Info: longtable package is loaded.
 Package: ltcaption 2020/05/30 v1.4b longtable captions (AR)
 )
 Package caption Info: End \AtBeginDocument code.
+ [1
 
-! I can't write on file `template_paper.pdf'.
-(Press Enter to retry, or Control-Z to exit; default file extension is `.pdf')
-Please type another file name for output
-! Emergency stop.
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  
-l.68 	\end{abstract} \newpage
-                             
-*** (job aborted, file error in nonstop mode)
+{c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 9
+9.
 
- 
+(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 99--105
+
+ []
+
+[2]
+LaTeX Font Info:    Trying to load font information for OT1+pxr on input line 1
+07.
+ (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/ot1pxr.fd
+File: ot1pxr.fd 2000/12/14 v1.0
+)
+LaTeX Font Info:    Trying to load font information for U+pxsya on input line 1
+07.
+
+(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsya.fd
+File: upxsya.fd 2000/12/14 v1.0
+)
+LaTeX Font Info:    Trying to load font information for U+pxsyb on input line 1
+07.
+
+(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyb.fd
+File: utxsyb.fd 2000/12/14 v1.0
+)
+LaTeX Font Info:    Trying to load font information for U+pxmia on input line 1
+07.
+
+(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxmia.fd
+File: upxmia.fd 2000/12/14 v1.0
+)
+LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 1
+07.
+
+(c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyc.fd
+File: upxsyc.fd 2000/12/14 v1.0
+) [3]
+Underfull \hbox (badness 10000) in paragraph at lines 135--137
+
+ []
+
+[4] [5] [6] [7] (./template_paper - Copy.bbl) [8] (./template_paper - Copy.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 8612 strings out of 479485
- 127988 string characters out of 5875916
- 686583 words of memory out of 5000000
- 25470 multiletter control sequences out of 15000+600000
- 538198 words of font info for 37 fonts, out of 8000000 for 9000
+ 8842 strings out of 479485
+ 131498 string characters out of 5875916
+ 697040 words of memory out of 5000000
+ 25642 multiletter control sequences out of 15000+600000
+ 561589 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,5n,73p,267b,208s stack positions out of 5000i,500n,10000p,200000b,80000s
-!  ==> Fatal error occurred, no output PDF file produced!
+ 66i,6n,73p,1398b,309s stack positions out of 5000i,500n,10000p,200000b,80000s
+{c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texm
+f-dist/fonts/type1/public/pxfonts/rpxmi.pfb><c:/texlive/2020/texmf-dist/fonts/t
+ype1/public/pxfonts/rpxr.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palati
+no/uplb8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><
+c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
+Output written on "template_paper - Copy.pdf" (8 pages, 84756 bytes).
+PDF statistics:
+ 56 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+
