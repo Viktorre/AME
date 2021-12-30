@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  30 DEC 2021 13:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  30 DEC 2021 15:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -717,7 +717,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--137
  []
 
 [4] [5] [6] [7]
-Overfull \hbox (112.23366pt too wide) in paragraph at lines 265--279
+Overfull \hbox (112.23366pt too wide) in paragraph at lines 266--280
  [] 
  []
 
@@ -740,7 +740,7 @@ pe1/public/pxfonts/rpxmi.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/pxf
 onts/rpxr.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><
 c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (12 pages, 91094 bytes).
+Output written on seminar_paper_reif.pdf (12 pages, 91995 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
