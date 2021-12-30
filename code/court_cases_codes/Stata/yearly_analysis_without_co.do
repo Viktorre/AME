@@ -2,7 +2,7 @@
 ////// prepare data
 cd "C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final"
 use matched, clear
-cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/yearly"
+cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/yearly without co2"
 
 //cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/full data"
 //keep if city=="NEW YORK"
@@ -44,7 +44,7 @@ global weather6t4  temp6t410 press6t4 dew6t4 prcp6t4 wind6t4 skycover
 global heat heat10 press6t4  prcp6t4 wind6t4 skycover
 global dailyheat dailyheat skycover pressureavgsealevel windspeed precipitationwaterequiv 
 global dummies i.dayofweek  i.nati i.type i.year i.cm i.chair
-global pollutants ozone co pm25
+global pollutants ozone pm25 //co
 bys city week month year:egen meantemp=mean(temp6t4) //for jedes unique city+week+month+year calculate mean of tem6t4
 // i do this seperately: maybe I should exclude this?
 foreach var in $weather6t4{
@@ -58,6 +58,13 @@ keep if year == 2000
 **TABLE 1 and Figure 5
 qui xi:  reg res  $weather6t4 $pollutants $dummies , vce (cluster cm)
 estimate store base_6t4_2000
+
+///////// 2001
+preserve
+keep if year == 2001
+**TABLE 1 and Figure 5
+qui xi:  reg res  $weather6t4 $pollutants $dummies , vce (cluster cm)
+estimate store base_6t4_2001
 
 ///////// 2002
 restore
@@ -88,5 +95,5 @@ estimate store base_6t4_2004
 
 ////////// combine all results
 
-esttab base_6t4_2000 base_6t4_2002 base_6t4_2003 base_6t4_2004  using years.tex, replace keep($weather6t4 $pollutants temp6t410 ) se brackets  star(* 0.10 ** 0.05 *** 0.01) ///
-mtitles("2000" "2002" "2003" "2004")	
+esttab base_6t4_2000 base_6t4_2001 base_6t4_2002 base_6t4_2003 base_6t4_2004  using years.tex, replace keep($weather6t4 $pollutants temp6t410 ) se brackets  star(* 0.10 ** 0.05 *** 0.01) ///
+mtitles("2000" "2001" "2002" "2003" "2004")	
