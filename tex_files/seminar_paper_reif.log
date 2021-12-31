@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  30 DEC 2021 15:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  31 DEC 2021 16:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -673,51 +673,51 @@ Package caption Info: End \AtBeginDocument code.
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 9
-9.
+8.
 
 (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
-Underfull \hbox (badness 10000) in paragraph at lines 99--105
+Underfull \hbox (badness 10000) in paragraph at lines 98--104
 
  []
 
 [2]
 LaTeX Font Info:    Trying to load font information for OT1+pxr on input line 1
-07.
+06.
  (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/ot1pxr.fd
 File: ot1pxr.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+pxsya on input line 1
-07.
+06.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsya.fd
 File: upxsya.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+pxsyb on input line 1
-07.
+06.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyb.fd
 File: utxsyb.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+pxmia on input line 1
-07.
+06.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxmia.fd
 File: upxmia.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 1
-07.
+06.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 ) [3]
-Underfull \hbox (badness 10000) in paragraph at lines 135--137
+Underfull \hbox (badness 10000) in paragraph at lines 134--136
 
  []
 
 [4] [5] [6] [7]
-Overfull \hbox (112.23366pt too wide) in paragraph at lines 266--280
+Overfull \hbox (112.23366pt too wide) in paragraph at lines 265--279
  [] 
  []
 
@@ -740,7 +740,7 @@ pe1/public/pxfonts/rpxmi.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/pxf
 onts/rpxr.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><
 c:/texlive/2020/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020
 /texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (12 pages, 91995 bytes).
+Output written on seminar_paper_reif.pdf (12 pages, 92376 bytes).
 PDF statistics:
  72 PDF objects out of 1000 (max. 8388607)
  51 compressed objects within 1 object stream
