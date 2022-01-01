@@ -3,8 +3,8 @@ cd "C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final"
 
 use matched, clear
 
+cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/full data no na drop"
 
-cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports/full data without co2"
 
 set matsize 11000 //set max number of vars
 
@@ -15,9 +15,6 @@ egen idtime=group(id date) //group= jedes unique id+date gleicher index. idtime 
 g year=year(date) // welches jahr (2000 bis 2004)
 g month=month(date) // wievielter monat (1 bis 12)
 g week=week(date) // welche kq (1 bis 52)
-
-
-//keep if year == 2001
 
 g yearmonth=string(year) + string(month)
 g cityweek=string(week) + city // zb: 1LAS VEGAS
@@ -61,8 +58,7 @@ global weather6t4  temp6t410 press6t4 dew6t4 prcp6t4 wind6t4 skycover
 global heat heat10 press6t4  prcp6t4 wind6t4 skycover
 global dailyheat dailyheat skycover pressureavgsealevel windspeed precipitationwaterequiv 
 global dummies i.dayofweek  i.nati i.type i.year i.cm i.chair
-//global pollutants ozone co pm25
-global pollutants ozone pm25 //co excluded!
+global pollutants ozone co pm25
 
 
 
@@ -128,8 +124,6 @@ esttab base_6t4 lag_6t4 lead_6t4  all_6t4_one using fullbase_6t4.tex,replace kee
 **TABLE 3
 ****************************
 
-
-	
 qui reg res  $weather6t4 $pollutants  , vce (cluster cm)
 estimate store base_6t4_nothing
 
@@ -177,4 +171,10 @@ estimate store base_6t4_date
 
 esttab base_6t4_nothing base_6t4_nati base_6t4_nati_dow base_6t4_nati_dow_type base_6t4_nati_dow_type_j base_6t4_nati_dow_type_j_cm base_6t4_city_ym base_6t4_cym  base_6t4_jm_ct_year base_6t4_date base_6t4 using FEmoving.tex,replace keep(temp6t410 ) se brackets star(* 0.10 ** 0.05 *** 0.01) ///
 	mtitles("nothing" "nat" "dow" "type" "judge" "cm" "city/ym" "cym"  "jm/c/y" "date" "base" )	
+
+
+
+
+
+
 

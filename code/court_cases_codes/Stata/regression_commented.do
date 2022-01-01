@@ -6,6 +6,7 @@ use matched, clear
 
 cd "C:/Users/fx236/Documents/AME_git/AME/code/court_cases_codes/stata_exports"
 
+
 set matsize 11000 //set max number of vars
 
 bys date city: gen id=_n //for jedes unique date+city ab 1 hochzählen
