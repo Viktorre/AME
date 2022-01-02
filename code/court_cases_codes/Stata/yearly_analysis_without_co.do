@@ -60,6 +60,7 @@ qui xi:  reg res  $weather6t4 $pollutants $dummies , vce (cluster cm)
 estimate store base_6t4_2000
 
 ///////// 2001
+restore 
 preserve
 keep if year == 2001
 **TABLE 1 and Figure 5
