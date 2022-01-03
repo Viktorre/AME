@@ -10,5 +10,5 @@ class SummaryStats():
         summary = pd.concat([df[varlist].mean(),df[varlist].std()],
                              axis=1)
         summary.columns = ['Mean','Std. Dev.']
-        return summary
+        return summary.round(3)
         

@@ -16,7 +16,6 @@ class DataFormatter():
                     # return_vars_as_flat_list(keys=['weather6t4',
                                                    # 'pollutants']))
             df = self.add_dimension_vars_to_df(df)
-            print(df)
             for var in ['dayofweek',
                         'nat_name',
                         'c_asy_type',
