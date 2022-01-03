@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from DataImporter import DataImporter
-from Plotter import Plotter
 from TexWriter import TexWriter
 from SummaryStats import SummaryStats
 import time
@@ -13,21 +12,21 @@ if __name__ == '__main__':
     startTime = time.time()
     DataImporter = DataImporter()
     TexWriter = TexWriter()
-    
-    DataImporter.put_dta_into_df('C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final/matched.dta')
-
+    data_source_path = 'C:/Users/fx236/Documents/AME_files/data_court decisions/Data/final/matched.dta'
+    DataImporter.put_dta_into_df(data_source_path)
     from RegressionSettings import RegressionSettings
     RegressionSettings = RegressionSettings()
     from DataFormatter import DataFormatter
     DataFormatter = DataFormatter()
     print(DataImporter.data)
-#    df = DataFormatter.return_formatted_df(DataImporter.data.\
-#        sample(frac=0.5,random_state=1),"table1", RegressionSettings)
     df = DataFormatter.return_formatted_df(DataImporter.data,
                                            "table1", RegressionSettings)
-    Plotter.plot_year_dist_of_df(df)
+
+    from Plotter import Plotter
+
     Plotter.double_plot_year_dist_with_and_whithout_co(df)
     
+    Plotter.plot_na_dist_of_n_cols_with_most_na(df,RegressionSettings)
     
 
 #    SummaryStats = SummaryStats()

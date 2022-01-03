@@ -16,22 +16,36 @@ class Plotter():
 
     def double_plot_year_dist_with_and_whithout_co(df):
         no_co = df.dropna(subset=['co'])
-        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12,6))      
+        fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(8,4))      
         axes[0].bar(df.groupby(df["date"].dt.year).count()['id1'].\
                      index,df.groupby(df["date"].dt.year).count()\
                          ['id1'].values)
         axes[1].bar(no_co.groupby(no_co["date"].dt.year).count()['id1'].\
                      index,no_co.groupby(no_co["date"].dt.year).count()\
                          ['id1'].values)   
-        axes[0].set_title('co NA values dropped (Heyes and Saberian)')
+        axes[0].set_title('co NA values included')
         axes[0].set_ylabel('N')
         axes[0].set_xlabel('Year')             
-        axes[1].set_title('co NA values included')
+        axes[1].set_title('co NA values dropped (Heyes and Saberian)')
         axes[1].set_ylabel('N')
         axes[1].set_xlabel('Year')                              
         fig.tight_layout()
+        fig.savefig('double_plot_year_dist_with_and_whithout_co.png')
         plt.show()
-                                 
+        plt.clf() 
+                      
+    def plot_na_dist_of_n_cols_with_most_na(df,RegressionSettings):
+        cols = RegressionSettings.return_vars_as_flat_list(keys=\
+                        ['weatherdaily','pollutants'])
+        cols.insert(0, "res")
+        df[cols].rename(columns={'pressureavgsealevel': 'pressurevg...', 
+                           'precipitationwaterequiv': 'precipitation...'})\
+        .isnull().sum(axis=0).plot(kind='bar',figsize=(8,4))
+        plt.ylabel('NA values')
+        plt.title('Distribution of NA values for relevant variables')
+        plt.tight_layout()
+        plt.savefig('plot_na_dist_of_n_cols_with_most_na.png')
+
                                  
     def plot_long_lat(df):
         plt.figure(figsize = (10,8))
