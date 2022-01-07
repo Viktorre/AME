@@ -29,3 +29,9 @@ if __name__ == '__main__':
             'windspeed0','skycover','ozone','co','pm25'])
     TexWriter = TexWriter()
     TexWriter.export_any_pandas_table(table_1, 'Table 1')
+    
+    
+
+for col in df.columns:
+    if df[col].is_unique:
+        print(col)

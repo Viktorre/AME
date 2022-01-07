@@ -1,0 +1,29 @@
+Call:
+Eup.default(formula = res ~ temp6t410 + press6t4 + dew6t4 + prcp6t4 + 
+    wind6t4 + skycover + ozone + co, dim.criterion = "PC3")
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-0.4740 -0.1570 -0.0728  0.0437  1.0200 
+
+
+ Slope-Coefficients:
+             Estimate   Std.Err Z value    Pr(>z)    
+(Intercept)  0.163000  0.001630 100.000 < 2.2e-16 ***
+temp6t410   -1.360000  0.298000  -4.570  4.83e-06 ***
+press6t4    -0.000608  0.002310  -0.263  0.792000    
+dew6t4       0.000585  0.000270   2.170  0.030200 *  
+prcp6t4      0.357000  0.130000   2.750  0.005940 ** 
+wind6t4      0.002010  0.000544   3.690  0.000222 ***
+skycover     0.028700  0.006410   4.490  7.24e-06 ***
+ozone        1.150000  0.161000   7.110  1.13e-12 ***
+co           0.019900  0.003630   5.480  4.37e-08 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Additive Effects Type:  none  
+
+Dimension of the Unobserved Factors: 2  
+
+Residual standard error: 0.3594 on 47395 degrees of freedom,  
+R-squared: 0.5305 

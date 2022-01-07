@@ -25,7 +25,7 @@ class DataFormatter():
                         ]:     
                 print("add dummies for :",var,' (',
                                     len(df[var].unique()),')')
-                df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
+                # df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
         return df
         
 
@@ -101,6 +101,3 @@ class DataFormatter():
                                 + df['month'].astype(str)
         df['dayofweek'] = df['date'].dt.dayofweek.astype(float)
         return df
-
-
-        
