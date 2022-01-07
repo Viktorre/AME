@@ -97,6 +97,16 @@
 	\section{Data}
 	\textit{Describe the main sources of your data, the data cleaning and merging process, include a table(s) of summary statistics and a brief description of these. Note: missing explanation of avg temp units 10°F and bins.}
 	\newline
+	%[269269 rows x 572 columns]
+	%[269269 rows x 588 columns]
+	%add dummies for : dayofweek  ( 7 )
+	%add dummies for : nat_name  ( 215 )
+	%add dummies for : c_asy_type  ( 4 )
+	%add dummies for : year  ( 5 )
+	%add dummies for : citymonth  ( 516 )
+	%add dummies for : chair  ( 259 )
+	%[269269 rows x 1594 columns]
+
 	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
 	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case as well as environment characteristics. \newline
 	Once matched.dta is created by joining all datasources, the (Stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 206924 observations for 666? variables (1500? including dummies that Stata creates within the regression).
@@ -424,9 +434,9 @@
 		
 		
 		\begin{center}
-			\captionof{table}{Fixed effect estimates: 6 AM - 4 PM average} \label{tab:title} 
+			\captionof{table}{Latent factor estimates} \label{tab:title} 
 			{
-				
+			\verbatiminput{R_out.txt}
 			}
 		\end{center}
 		
