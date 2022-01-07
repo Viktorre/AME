@@ -72,6 +72,7 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 1: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\section{Introduction}
 	\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the limitations of your analysis.}
 	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2019. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I analyse the dataset in Python, recreate the most relevant tables from the original paper in Stata and implement an example for a more sophisticated specification in R.
 	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of outdoor temperature on professionally made decisions. The authors use a large set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and likeliness that a case has a positive outcome, meaning that asylum is granted.
@@ -95,7 +96,7 @@
 	\newline
 	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date (No combinations of those builds unqiue keys). For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
 	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case as well as environment characteristics. \newline
-	Once matched.dta is created by joining all datasources, it contains 269269 observations for 572 characteristics. The (Stata) code then puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 206924 observations for 588 variables (including 6 specific non-numeric characteristics, for which Stata will temporarily create a total of 1006 dummy variables within the regression).
+	Once matched.dta is created by joining all datasources, it contains 269269 observations for 572 characteristics. The (Stata) code then puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions and interactions between variables. The final dataset contains 206924 usable observations for 588 variables (including 6 specific non-numeric characteristics, for which Stata will temporarily create a total of 1006 dummy variables within the regression).
 	\newline	
 	\begin{center}
 		\captionof{table}{Summary Statistics} \label{tab:title}
@@ -103,39 +104,44 @@
 			\toprule
 			{} &       Mean &  Std. Dev. \\
 			\midrule
-			res          &   0.162965 &   0.369334 \\
-			tempmean     &  61.439452 &  14.859341 \\
-			heat         &  57.398058 &  16.094140 \\
-			airpressure0 &  29.661536 &   0.751446 \\
-			avgdewpt     &  49.392714 &  16.657781 \\
-			precip0      &   0.003891 &   0.034818 \\
-			windspeed0   &   6.518397 &   4.402740 \\
-			skycover     &   0.546602 &   0.280155 \\
-			ozone        &   0.021916 &   0.012003 \\
-			co           &   0.930650 &   0.504708 \\
-			pm25         &  14.869682 &  11.204614 \\
+			res          &   0.165 &      0.371 \\
+			tempmean     &  61.577 &     15.124 \\
+			heat         &  57.642 &     16.393 \\
+			airpressure0 &  29.657 &      0.780 \\
+			avgdewpt     &  50.116 &     16.777 \\
+			precip0      &   0.004 &      0.039 \\
+			windspeed0   &   6.655 &      4.434 \\
+			skycover     &   0.556 &      0.276 \\
+			ozone        &   0.022 &      0.012 \\
+			co           &   0.916 &      0.496 \\
+			pm25         &  14.751 &     11.374 \\
 			\bottomrule
 		\end{tabular}
 	\end{center}
-	
+
 	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum. As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. For instance over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
-	\newline Figure B.1 (appendix) shows the distribution of NA values across variables in the dataset. Whereas all variables show rather complete observations, the variable "co" (carbon monoxide) contains approx. 50000 missing values. That issue is addressed in Stata within the regression by dropping every row that contains NA for at least one included variable. The variable carbon monoxide is here especially noteworthy, as all its missing values are from the year 2001. If co is used as a explanatory variable in a regression, Stata will drop all observations from 2001 for the estimation. To illustrate this loss of data, Figure B.2 shows on the left hand side the yearly observation count of the dataset without any NA values dropped and on the right hand side the same count with carbon monoxide NA values dropped. Note that excluding "co" as a regressor sets the effective number of observations to 250651.
+	\newline Figure B.1 (appendix) shows the distribution of NA values across variables in the dataset. Whereas all variables show rather complete observations, the variable "co" (carbon monoxide) contains approx. 50000 missing values. That issue is addressed in Stata within the regression by dropping every row that contains NA for at least one included variable. The variable carbon monoxide is here especially noteworthy, as its missing values cover all data from the year 2001. Subsequently, if "co" is used as a explanatory variable in a regression, Stata will drop all observations from 2001 for the estimation. To illustrate this loss of data, Figure B.2 shows on the left hand side the yearly observation count of the dataset without any NA values dropped and on the right hand side the same count with carbon monoxide NA values dropped. Note that excluding "co" as a regressor sets the effective number of observations to 250651.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Empirical strategy}
-	\textit{describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested. (checken ob spezfik auch die von table 2 ist... besonders )
-		struktur absätze: 0. main hyp to test: 1. method: pols with fixed effects: 2. why appropriate: 3. my further analysis (to be continued):
-	}
-	
-	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response estimated by Pooled OLS (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted. \textit{here one fitting sentence to describe what POLS does to handel panel data}. The following model tests the main hypothesis, 
+	\textit{describe the empirical method used and its appropriateness in this context, state the main hypotheses to be tested.}
+	The main hypothesis to be tested is whether outdoor temperature has an impact on professional high-stakes decisions. In a more empiric logic, this hypothesis is tested using a linear probability model for binary response estimated by Pooled OLS (for a detailed description see \cite{wooldridge2010econometric}). The probability model allows for each regressor to influence the likelihood that the dependent variable takes the value of 1. A value of 1 means that asylum is granted. The following model tests the main hypothesis, 
 	\newline
 	\begin{equation}
 		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \epsilon_{it}
 	\end{equation}
-	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W\), \(P\) and \(X\) are a set of control variables representing weather, pollution (see table 1 for details about both) and case-specific characteristics, such as nationality of applicant. \(\gamma\), \(\psi\) and \(\theta\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
-	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood(\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
-	Apart from the normal specification, I also propose a slightly altered version of (1), in which "co" is excluded from \(P\) to account for the missing value issue explained in the Data chapter. Moreover, I estimate (1) with yearly subsamples of the dataset to evaluate the model's validity in a smaller sampling scope.
+	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters of each regressor (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W_{it}\), \(P_{it}\) and \(X_{it}\) are a set of control variables representing weather, pollution (see table 1 for details about both) and case-specific characteristics, such as nationality of applicant. \(\gamma_{i}\), \(\psi_{ct}\) and \(\theta{t}\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon_{it}\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
+	The fixed effects model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood (\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
+	\newline Apart from the normal specification, I also propose a slightly altered version of (1), in which "co" is excluded from \(P\) to account for the missing value issue explained in the Data chapter. Moreover, I estimate (1) with yearly subsamples of the dataset to evaluate the model's validity in a smaller sampling scope. As an alternative specification, which extends (1), I propose the following latent factor model:
+	\begin{equation}
+		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta{t} + \upsilon_{it} + \epsilon_{it}
+	\end{equation}
+	, where 
+	\begin{equation}
+		\upsilon_{it} = \sum_{l=1}^d \lambda_{ il } f_{ lt }
+	\end{equation}
+	where \(\lambda_{ il }\) are unobserved individual loading parameters. \(f_{ lt }\) represent unobserved common factors of the model and  \(d\) is the unknown factor dimension. It is important to notice that  \(\lambda_{ il }\) and \(f_{ lt }\) are  unobserved, because they are principal components drawn from the error term . As  in (1), the model treats the parameters of the regressors and the unobserved effects as fixed coefficients and estimates them. As the unobserved effects are not part of the error term, they are allowed to correlate with the regressors in any possible way. See \cite{bai2009panel} for details.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 5: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
