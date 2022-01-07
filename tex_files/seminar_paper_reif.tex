@@ -63,7 +63,7 @@
 		\singlespacing
 		\noindent 
 		\textit{(note: cursive indicates my comments) 0. Abstract: summarize the key points of the paper.}
-		I replicate the main results of the paper "Temperature and Decisions: Evidence from 207,000 Court Cases" by \cite{Heyes.2019} and evaluate the validity of their analysis. The paper's underlying specification to model the effect of outdoor temperature on asylum court case outcomes is a panel model including control variables for weather, pollution and case characteristics as well as several fixed effects for entities, time and space dynamics. I find the same effects as Heyes and Saberian. Yet through a more thorough analysis (sampling, specification and data issues) get results that question the validity of the original findings. Using yearly subsamples of the entire dataset (2000-2004) yields temperature effects that are not significantly different from zero for all but one year.
+		I replicate the main results of the paper "Temperature and Decisions: Evidence from 207,000 Court Cases" by \cite{Heyes.2019} and evaluate the validity of its empirical findings. The paper's underlying specification to model the effect of outdoor temperature on asylum court case outcomes is a panel model including control variables for weather, pollution and case characteristics as well as several fixed effects for entities, time and space dynamics. I find the same effects as Heyes and Saberian. Yet through a more thorough analysis (sampling, specification and data issues) get results that question the validity of the original findings. Using yearly subsamples of the entire dataset (2000-2004) yields temperature effects that are not significantly different from zero for all but one year.
 		\newline \noindent \textbf{Keywords:} decision-making; temperature; fixed-effects regression; spatial panel data
 	\end{abstract} \newpage
 
@@ -72,24 +72,20 @@
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 1: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-	\section{Introduction}
-	\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the	limitations of your analysis. a what my paper does, b what underlying paper does (and why relevant?), c what i can confirm reject}
-	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2019. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I analyse the dataset in Python, recreate the most relevant tables from the original paper in Stata and implement some variations to further analyize the validity of the results.
-	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of outdoor temperature on professionally made decisions. The authors use a holistic set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and likeliness that a case has a positive outcome, meaning that asylum is granted.
-	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients are very similar in values and perfectly equal in direction and significance. Moreover, I find that the underlying analysis has some data issues, which if taken care of, lead to results that do not contradict the main finding. A more critical finding on my side was that taking subsamples of the dataset yields insignificant temperature effects. This finding strongly questions the validity of the original results. \textit{vllt so wie in papern noch aufzählen was ich danach mach}
+	\textit{introduce the topic and state the aim of your work, stating clearly the research questions and the methodology used, give a brief overview of the results and the limitations of your analysis.}
+	\newline This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2019. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I analyse the dataset in Python, recreate the most relevant tables from the original paper in Stata and implement an example for a more sophisticated specification in R.
+	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of outdoor temperature on professionally made decisions. The authors use a large set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and likeliness that a case has a positive outcome, meaning that asylum is granted.
+	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients are equal in value, direction and significance. Moreover, I find that the underlying analysis has some (minor) data issues, which if taken care of, lead to results that do not contradict the main finding. A more critical insight on my side was that taking subsamples of the dataset yields insignificant temperature effects. This finding strongly questions the validity of the original results. 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 2: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Literature review}
 	\textit{introduce the topic and state the aim of your work, stating clearly the
 		research questions and the methodology used, give a brief overview of the results and the
-		limitations of your analysis.
-		a what my paper does, b what underlying aper does (and why relevant?), c what i can confirm rejectsummarize the current state of knowledge on the topic of your paper
-		(including the latest relevant publications).all post 2019}
-	\newline
+		limitations of your analysis.}
 	Heyes and Saberian already give an exhaustive overview in their paper from 2019. Their work is in line with numerous publications showing that temperature - both indoors and outside - does have a significant effect and human decisions and rationality. More recently, in this branch of temperature x decisions literature  \cite{Gavresi.2021} show that higher outdoor temperature increases risk appetite in (optimist) financial decisions. \cite{Chen.2020} find that people perform worse in neurobehavioral cognitive tests when exposed to higher temperature indoors and  \cite{Hadi.2019} show that extreme heat makes consumers less rational (ie affectual). Even more temperature effects are shown by \cite{Stevens.2021} on agression on social media and by \cite{Ryan.2020} on law officials behaviour. \newline
 	There is also a group of researchers who disprove the link between temperature and decisions, which Heyes and Saberian omit in their paper. Recent contributions in this branch are \cite{Stroom.2021}, who find no relation between indoor temperature and cognitive rationality, and \cite{Liu.2020}, who observe no effect of heat on fraudulent behaiour. \textit{(maybe give here some older literature too, as heyes and saberian do not mention it in their literature review)} \newline
-	Concerning temperature effects on juridical outcomes specifically, Heyes and Saberian are the first to conduct a full empirical analysis. This motivated  \cite{Evans.2021} to do their own empirical analysis about criminal court cases in Australia, which resulted in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper \cite{Spamann.2020} recalculate its results within a larger timeframe (1990 - 2019) and finds no significant effects.
+	Concerning temperature effects on juridical outcomes specifically, Heyes and Saberian are the first to conduct a full empirical analysis. This motivated  \cite{Evans.2021} to do their own empirical analysis about criminal court cases in Australia, which resulted in no significant effect between weather variables and decision making. Also, as direct response to the underyling paper \cite{Spamann.2020} recalculates its results within a larger timeframe (1990 - 2019) and finds no significant effects.
 	
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 3: 
@@ -97,21 +93,9 @@
 	\section{Data}
 	\textit{Describe the main sources of your data, the data cleaning and merging process, include a table(s) of summary statistics and a brief description of these. Note: missing explanation of avg temp units 10°F and bins.}
 	\newline
-	%[269269 rows x 572 columns]
-	%[269269 rows x 588 columns]
-	%add dummies for : dayofweek  ( 7 )
-	%add dummies for : nat_name  ( 215 )
-	%add dummies for : c_asy_type  ( 4 )
-	%add dummies for : year  ( 5 )
-	%add dummies for : citymonth  ( 516 )
-	%add dummies for : chair  ( 259 )
-	%[269269 rows x 1594 columns]
-
-	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date \textit{(I still have to check here what the unique key is or how i phrase that)}. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
+	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date (No combinations of those builds unqiue keys). For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily form 6AM to 4PM. Each environment observation is at maxium 32 kilometers away from the respective court location.
 	All variables are joined by date (daily) and city in the dataset machet.dta, thus that every row represents one case outcome marked by a respective date and location containing values for case as well as environment characteristics. \newline
-	Once matched.dta is created by joining all datasources, the (Stata) code puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 206924 observations for 666? variables (1500? including dummies that Stata creates within the regression).
-	Figure 1 shows the distribution of NA values across variables in the dataset. Whereas all variables show rather complete observations, the variable "co" (carbon monoxide) contains 50000? missing values.
-	That issue is addressed in Stata within the regression by dropping every row that contains NA for at least one variable. The variable carbon monoxide is here especially noteworthy, as all its missing values are from the year 2001. If co is used as a explanatory variable in a regression, Stata will drop all observations from 2001 for the estimation. To illustrate this loss of data, Figure 2 shows on the left hand side the yearly observation count of the dataset without any NA values dropped and on the right hand side the same count with carbon monoxide NA values dropped. Note that excluding co as a regressor sets the effective number of observations to ???. \textit{mention here correlation between pollution control vars!}
+	Once matched.dta is created by joining all datasources, it contains 269269 observations for 572 characteristics. The (Stata) code then puts certain temperature variables into promils and creates variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions, dummies and interactions between variables and/or dummies. The final dataset contains 206924 observations for 588 variables (including 6 specific non-numeric characteristics, for which Stata will temporarily create a total of 1006 dummy variables within the regression).
 	\newline	
 	\begin{center}
 		\captionof{table}{Summary Statistics} \label{tab:title}
@@ -135,6 +119,7 @@
 	\end{center}
 	
 	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum. As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. For instance over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
+	\newline Figure B.1 (appendix) shows the distribution of NA values across variables in the dataset. Whereas all variables show rather complete observations, the variable "co" (carbon monoxide) contains approx. 50000 missing values. That issue is addressed in Stata within the regression by dropping every row that contains NA for at least one included variable. The variable carbon monoxide is here especially noteworthy, as all its missing values are from the year 2001. If co is used as a explanatory variable in a regression, Stata will drop all observations from 2001 for the estimation. To illustrate this loss of data, Figure B.2 shows on the left hand side the yearly observation count of the dataset without any NA values dropped and on the right hand side the same count with carbon monoxide NA values dropped. Note that excluding "co" as a regressor sets the effective number of observations to 250651.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 4: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -264,6 +249,7 @@
 		\singlespacing
 		\section{Additional Tables}\label{ASec:xxxxx}
 		
+
 		
 		\begin{center}
 			\captionof{table}{Fixed effect estimates: 6 AM - 4 PM average} \label{tab:title} 
@@ -448,9 +434,21 @@
 			}
 		\end{center}
 		
-		
-		
-		
+	\newpage 
+	\section{Figures}\label{BSec:xxxxx}	
+		\begin{center}
+		\captionof{figure}{NA distribution} \label{tab:title} 
+		{
+		\includegraphics[scale=0.85]{plot_na_dist_of_n_cols_with_most_na.png}		
+		}
+		\end{center}
+	
+		\begin{center}
+		\captionof{figure}{Yearly observation count} \label{tab:title} 
+		{
+		\includegraphics[scale=0.85]{double_plot_year_dist_with_and_whithout_co.png}	
+		}
+		\end{center}		
 		
 		
 	\end{subappendices}	
