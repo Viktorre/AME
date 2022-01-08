@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  7 JAN 2022 17:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  8 JAN 2022 15:08
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -723,13 +723,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 128--131
  []
 
 [4] [5] [6] [7] [8]
-Overfull \hbox (112.23366pt too wide) in paragraph at lines 266--280
+Overfull \hbox (86.76413pt too wide) in paragraph at lines 259--273
  [] 
  []
 
 [9] [10] [11]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-32.
+25.
  (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
@@ -740,13 +740,13 @@ File: "R_out.txt"  (verbatim)
 File: plot_na_dist_of_n_cols_with_most_na.png Graphic file (type png)
 <use plot_na_dist_of_n_cols_with_most_na.png>
 Package pdftex.def Info: plot_na_dist_of_n_cols_with_most_na.png  used on input
- line 449.
+ line 442.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
 <double_plot_year_dist_with_and_whithout_co.png, id=56, 578.16pt x 289.08pt>
 File: double_plot_year_dist_with_and_whithout_co.png Graphic file (type png)
 <use double_plot_year_dist_with_and_whithout_co.png>
 Package pdftex.def Info: double_plot_year_dist_with_and_whithout_co.png  used o
-n input line 456.
+n input line 449.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
  [14 <./plot_na_dist_of_n_cols_with_most_na.png> <./double_plot_year_dist_with_
 and_whithout_co.png>] (./seminar_paper_reif.bbl) [15]
@@ -762,7 +762,7 @@ Here is how much of TeX's memory you used:
  25710 multiletter control sequences out of 15000+600000
  569932 words of font info for 122 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,9n,73p,1394b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,9n,73p,1450b,444s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texm
 f-dist/fonts/type1/public/pxfonts/pxex.pfb><c:/texlive/2020/texmf-dist/fonts/ty
 pe1/public/pxfonts/pxsy.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/pxfo
@@ -771,7 +771,7 @@ c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/
 texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2020/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/pal
 atino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (15 pages, 151565 bytes).
+Output written on seminar_paper_reif.pdf (15 pages, 151883 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  65 compressed objects within 1 object stream
