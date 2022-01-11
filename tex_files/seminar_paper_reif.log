@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  10 JAN 2022 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  11 JAN 2022 17:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -748,10 +748,10 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8921 strings out of 479485
- 132881 string characters out of 5875916
+ 8927 strings out of 479485
+ 133022 string characters out of 5875916
  617359 words of memory out of 5000000
- 25709 multiletter control sequences out of 15000+600000
+ 25715 multiletter control sequences out of 15000+600000
  568943 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  66i,9n,73p,1363b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -763,7 +763,7 @@ c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/
 texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2020/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/pal
 atino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (16 pages, 151640 bytes).
+Output written on seminar_paper_reif.pdf (16 pages, 152306 bytes).
 PDF statistics:
  98 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream

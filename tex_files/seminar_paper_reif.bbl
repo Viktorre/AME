@@ -67,4 +67,17 @@ Wooldridge, J.~M. (2010).
 \newblock {\em Econometric analysis of cross section and panel data}.
 \newblock MIT press.
 
+\bibitem[Zhang and de~Dear, 2017]{zhang2017university}
+Zhang, F. and de~Dear, R. (2017).
+\newblock University students' cognitive performance under temperature cycles
+  induced by direct load control events.
+\newblock {\em Indoor air}, 27(1):78--93.
+
+\bibitem[Zhang et~al., 2017]{ZHANG2017176}
+Zhang, F., Haddad, S., Nakisa, B., Rastgoo, M.~N., Candido, C., Tjondronegoro,
+  D., and {de Dear}, R. (2017).
+\newblock The effects of higher temperature setpoints during summer on office
+  workers' cognitive load and thermal comfort.
+\newblock {\em Building and Environment}, 123:176--188.
+
 \end{thebibliography}
