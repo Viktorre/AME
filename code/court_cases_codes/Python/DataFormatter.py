@@ -11,7 +11,6 @@ class DataFormatter():
             print("formatting dataframe for "+setting_name)
             df = self.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
                     'heat', 'ltemp6t4', 'letemp6t4'])
-            
             df = self.drop_na_by_col_names(df,RegressionSettings.\
                     return_vars_as_flat_list(keys=['weather6t4',
                                                     'pollutants']))
