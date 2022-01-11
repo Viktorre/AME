@@ -7,7 +7,7 @@ import pandas as pd
 from RegressionSettings import RegressionSettings
 from Plotter import Plotter
 from SummaryStats import SummaryStats
-pd.set_option('display.max_columns', 10)
+pd.set_option('display.max_columns', 8)
 pd.set_option('display.max_rows', 12)
 
 if __name__ == '__main__':
@@ -29,9 +29,3 @@ if __name__ == '__main__':
             'windspeed0','skycover','ozone','co','pm25'])
     TexWriter = TexWriter()
     TexWriter.export_any_pandas_table(table_1, 'Table 1')
-    
-    
-
-for col in df.columns:
-    if df[col].is_unique:
-        print(col)

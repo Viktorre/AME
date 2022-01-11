@@ -42,9 +42,14 @@ class RegressionSettings():
         keys=... lets you specify certain parts.
         '''
         list_of_all_elements = []
-        for key in keys:
-            for element in self.var_dictionary[key]:
-                list_of_all_elements.append(element)            
+        if keys=='all variables':
+            for key in self.var_dictionary.keys():
+                for element in self.var_dictionary[key]:
+                    list_of_all_elements.append(element)  
+        else:
+            for key in keys:
+                for element in self.var_dictionary[key]:
+                    list_of_all_elements.append(element)  
         return list_of_all_elements
 
 

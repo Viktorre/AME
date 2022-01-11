@@ -12,9 +12,9 @@ class DataFormatter():
             df = self.add_promil_vars_to_df(df,['avgtemp', 'temp6t4', 
                     'heat', 'ltemp6t4', 'letemp6t4'])
             
-            # df = self.drop_na_by_col_names(df,RegressionSettings.\
-                    # return_vars_as_flat_list(keys=['weather6t4',
-                                                   # 'pollutants']))
+            df = self.drop_na_by_col_names(df,RegressionSettings.\
+                    return_vars_as_flat_list(keys=['weather6t4',
+                                                    'pollutants']))
             df = self.add_dimension_vars_to_df(df)
             for var in ['dayofweek',
                         'nat_name',
@@ -25,7 +25,7 @@ class DataFormatter():
                         ]:     
                 print("add dummies for :",var,' (',
                                     len(df[var].unique()),')')
-                # df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
+                df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
         return df
         
 

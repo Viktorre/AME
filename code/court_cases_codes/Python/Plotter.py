@@ -56,7 +56,5 @@ class Plotter():
         plt.ylabel('Latitude', fontsize=14)
         plt.title('Spatial Plot', fontsize=17)
         plt.show()
-        plt.savefig('long_lat_plot.pdf')
-#https://towardsdatascience.com/geopandas-101-plot-any-data-with-a-latitude-and-longitude-on-a-map-98e01944b972
-# or try to get long lat into shape file or usa shp into long lat...        
+        plt.savefig('long_lat_plot.pdf')  
         

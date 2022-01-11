@@ -117,3 +117,105 @@ co           &   0.916 &      0.496 \\
 pm25         &  14.751 &     11.374 \\
 \bottomrule
 \end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.165 &      0.371 \\
+tempmean     &  61.577 &     15.124 \\
+heat         &  57.642 &     16.393 \\
+airpressure0 &  29.657 &      0.780 \\
+avgdewpt     &  50.116 &     16.777 \\
+precip0      &   0.004 &      0.039 \\
+windspeed0   &   6.655 &      4.434 \\
+skycover     &   0.556 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.916 &      0.496 \\
+pm25         &  14.751 &     11.374 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.164 &      0.371 \\
+tempmean     &  61.703 &     15.235 \\
+heat         &  57.776 &     16.412 \\
+airpressure0 &  29.662 &      0.765 \\
+avgdewpt     &  49.969 &     17.044 \\
+precip0      &   0.004 &      0.033 \\
+windspeed0   &   6.718 &      4.467 \\
+skycover     &   0.554 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.918 &      0.496 \\
+pm25         &  14.957 &     11.570 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.164 &      0.371 \\
+tempmean     &  61.703 &     15.235 \\
+heat         &  57.776 &     16.412 \\
+airpressure0 &  29.662 &      0.765 \\
+avgdewpt     &  49.969 &     17.044 \\
+precip0      &   0.004 &      0.033 \\
+windspeed0   &   6.718 &      4.467 \\
+skycover     &   0.554 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.918 &      0.496 \\
+pm25         &  14.957 &     11.570 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.164 &      0.371 \\
+tempmean     &  61.703 &     15.235 \\
+heat         &  57.776 &     16.412 \\
+airpressure0 &  29.662 &      0.765 \\
+avgdewpt     &  49.969 &     17.044 \\
+precip0      &   0.004 &      0.033 \\
+windspeed0   &   6.718 &      4.467 \\
+skycover     &   0.554 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.918 &      0.496 \\
+pm25         &  14.957 &     11.570 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.164 &      0.371 \\
+tempmean     &  61.703 &     15.235 \\
+heat         &  57.776 &     16.412 \\
+airpressure0 &  29.662 &      0.765 \\
+avgdewpt     &  49.969 &     17.044 \\
+precip0      &   0.004 &      0.033 \\
+windspeed0   &   6.718 &      4.467 \\
+skycover     &   0.554 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.918 &      0.496 \\
+pm25         &  14.957 &     11.570 \\
+\bottomrule
+\end{tabular}
+\begin{tabular}{lrr}
+\toprule
+{} &    Mean &  Std. Dev. \\
+\midrule
+res          &   0.164 &      0.371 \\
+tempmean     &  61.703 &     15.235 \\
+heat         &  57.776 &     16.412 \\
+airpressure0 &  29.662 &      0.765 \\
+avgdewpt     &  49.969 &     17.044 \\
+precip0      &   0.004 &      0.033 \\
+windspeed0   &   6.718 &      4.467 \\
+skycover     &   0.554 &      0.276 \\
+ozone        &   0.022 &      0.012 \\
+co           &   0.918 &      0.496 \\
+pm25         &  14.957 &     11.570 \\
+\bottomrule
+\end{tabular}
