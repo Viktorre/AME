@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  11 JAN 2022 17:48
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/W32TeX) (preloaded format=pdflatex 2020.11.5)  13 JAN 2022 12:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -675,86 +675,91 @@ Package caption Info: End \AtBeginDocument code.
  [1
 
 {c:/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 9
-5.
-
-(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-)
-Underfull \hbox (badness 10000) in paragraph at lines 95--101
+Underfull \hbox (badness 10000) in paragraph at lines 90--94
 
  []
 
 [2]
-LaTeX Font Info:    Trying to load font information for OT1+pxr on input line 1
-03.
+LaTeX Font Info:    Trying to load font information for OT1+pxr on input line 9
+6.
  (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/ot1pxr.fd
 File: ot1pxr.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+pxsya on input line 1
-03.
+LaTeX Font Info:    Trying to load font information for U+pxsya on input line 9
+6.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsya.fd
 File: upxsya.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+pxsyb on input line 1
-03.
+LaTeX Font Info:    Trying to load font information for U+pxsyb on input line 9
+6.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyb.fd
 File: utxsyb.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+pxmia on input line 1
-03.
+LaTeX Font Info:    Trying to load font information for U+pxmia on input line 9
+6.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxmia.fd
 File: upxmia.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 1
-03.
+LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 9
+6.
 
 (c:/texlive/2020/texmf-dist/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
+)
+LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
+15.
+
+(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ts1ppl.fd
+File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 ) [3]
-Underfull \hbox (badness 10000) in paragraph at lines 128--131
+Underfull \hbox (badness 10000) in paragraph at lines 121--123
 
  []
 
-[4] [5] [6] [7] [8] [9] [10] [11] [12]
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-35.
+[4] [5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 212--214
 
-(c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+ []
+
+[7] [8] [9] [10] [11]
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
+30.
+ (c:/texlive/2020/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 File: "R_out.txt"  (verbatim)
- [13]
-<plot_na_dist_of_n_cols_with_most_na.png, id=54, 578.16pt x 289.08pt>
+
+[12]
+<plot_na_dist_of_n_cols_with_most_na.png, id=49, 578.16pt x 289.08pt>
 File: plot_na_dist_of_n_cols_with_most_na.png Graphic file (type png)
 <use plot_na_dist_of_n_cols_with_most_na.png>
 Package pdftex.def Info: plot_na_dist_of_n_cols_with_most_na.png  used on input
- line 445.
+ line 440.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
-<double_plot_year_dist_with_and_whithout_co.png, id=56, 578.16pt x 289.08pt>
+<double_plot_year_dist_with_and_whithout_co.png, id=51, 578.16pt x 289.08pt>
 File: double_plot_year_dist_with_and_whithout_co.png Graphic file (type png)
 <use double_plot_year_dist_with_and_whithout_co.png>
 Package pdftex.def Info: double_plot_year_dist_with_and_whithout_co.png  used o
-n input line 452.
+n input line 447.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
- [14 <./plot_na_dist_of_n_cols_with_most_na.png> <./double_plot_year_dist_with_
-and_whithout_co.png>] [15] (./seminar_paper_reif.bbl) [16] (./seminar_paper_rei
-f.aux)
+ [13 <./plot_na_dist_of_n_cols_with_most_na.png> <./double_plot_year_dist_with_
+and_whithout_co.png>] [14] (./seminar_paper_reif.bbl) [15]
+(./seminar_paper_reif.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 8927 strings out of 479485
- 133022 string characters out of 5875916
+ 8922 strings out of 479485
+ 132969 string characters out of 5875916
  617359 words of memory out of 5000000
- 25715 multiletter control sequences out of 15000+600000
- 568943 words of font info for 120 fonts, out of 8000000 for 9000
+ 25713 multiletter control sequences out of 15000+600000
+ 567285 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 66i,9n,73p,1363b,383s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 66i,9n,73p,1363b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}<c:/texlive/2020/texm
 f-dist/fonts/type1/public/pxfonts/pxex.pfb><c:/texlive/2020/texmf-dist/fonts/ty
 pe1/public/pxfonts/pxsy.pfb><c:/texlive/2020/texmf-dist/fonts/type1/public/pxfo
@@ -763,10 +768,10 @@ c:/texlive/2020/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><c:/texlive/2020/
 texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb><c:/texlive/2020/texmf-dist/font
 s/type1/urw/palatino/uplr8a.pfb><c:/texlive/2020/texmf-dist/fonts/type1/urw/pal
 atino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (16 pages, 152306 bytes).
+Output written on seminar_paper_reif.pdf (15 pages, 148043 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 67 compressed objects within 1 object stream
+ 95 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
