@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.20)  20 JAN 2022 18:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.20)  23 JAN 2022 15:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -686,12 +686,12 @@ Here is how much of TeX's memory you used:
  27739 multiletter control sequences out of 15000+600000
  408765 words of font info for 38 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,5n,67p,1007b,210s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,5n,67p,1159b,210s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/reifv/AppData/Local/Programs/MiKTeX/fo
 nts/enc/dvips/base/8r.enc}<C:/Users/reifv/AppData/Local/Programs/MiKTeX/fonts/t
 ype1/urw/palatino/uplb8a.pfb><C:/Users/reifv/AppData/Local/Programs/MiKTeX/font
 s/type1/urw/palatino/uplr8a.pfb>
-Output written on template_referee_report.pdf (2 pages, 43026 bytes).
+Output written on template_referee_report.pdf (2 pages, 43154 bytes).
 PDF statistics:
  20 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
