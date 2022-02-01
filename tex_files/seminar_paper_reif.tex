@@ -62,7 +62,7 @@
 	\begin{abstract}
 		\singlespacing
 		\noindent 
-		I replicate the main results of the paper "Temperature and Decisions: Evidence from 207,000 Court Cases" by \cite{Heyes.2019} and evaluate the validity of its empirical findings. The paper's underlying specification to model the effect of outdoor temperature on asylum court case outcomes is a panel model including control variables for weather, pollution and case characteristics as well as several fixed effects for entities, time and space dynamics. I find the same effects as Heyes and Saberian. Yet through a more thorough analysis (sampling, specification and data issues) get results that question the validity of the original findings. Using yearly subsamples of the entire dataset (2000-2004) yields temperature effects that are not significantly different from zero for all but one year.
+		I replicate the main results of the paper "Temperature and Decisions: Evidence from 207,000 Court Cases" by \cite{Heyes.2019} and evaluate the validity of its empirical findings. The paper's underlying specification to model the effect of outdoor temperature on asylum court case outcomes is a panel model including control variables for weather, pollution and case characteristics as well as several fixed effects for entities, time and space dynamics. I find the same temperature effects as Heyes and Saberian. Yet through a more thorough analysis (sampling, specification and data issues) get results that question the validity of the original findings. Using yearly subsamples of the entire dataset (2000-2004) yields temperature effects that are not significantly different from zero for all but one year.
 		\newline \noindent \textbf{Keywords:} decision-making; temperature; panel data regression; latent factors
 	\end{abstract} \newpage
 
@@ -72,7 +72,7 @@
 	% Section 1: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Introduction}
-	This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000” by Heyes and Saberian in 2019. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I analyse the dataset in Python, recreate the most relevant tables from the original paper in Stata and implement an example for a more sophisticated specification in R.
+	This paper examines the robustness of the results in the article “Temperature and Decisions: Evidence from 207,000 Court Cases” by Heyes and Saberian in 2019. Using the same dataset, this paper recreates the main findings. The aim of this paper is to either empirically confirm the results of Heyes and Saberian or to disprove them and illuminate the reasons for that. I analyse the dataset in Python, recreate the most relevant tables from the original paper in Stata and implement an example for a more sophisticated specification in R.
 	\newline \cite{Heyes.2019} use a dataset of 207,000 court cases in the U.S. for a holistic regression analysis to evaluate the influence of outdoor temperature on professionally made decisions. The authors use a large set of explanatory variables including various fixed effects - over time, across judges and locations, etc - to control for heterogeneity in the regression of court case outcome on temperature. In this analysis they find a significant relation between temperature and likeliness that a case has a positive outcome, meaning that asylum is granted.
 	\newline I am able to replicate the paper’s main finding. In my analysis, estimated coefficients are equal in value, direction and significance. Moreover, I find that the underlying analysis has some (minor) data issues, which if taken care of, lead to results that do not contradict the main finding. A more critical insight on my side was that taking subsamples of the dataset yields insignificant temperature effects. This finding strongly questions the validity of the original results. 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -87,32 +87,33 @@
 	% Section 3: 
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	\section{Data}
-	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date (No combinations of those builds unique keys). For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, hourly data is averaged daily from 6AM to 4PM. Each environment observation is at maximum 32 kilometers away from the respective court location.
+	The main dataset is constructed out of several sources. asylumlaw.org contains the law data in the form of the variables case outcome, case type and nationality of applicant structured along the dimensions judge, city and date. For the environment data, the National Oceanic and Atmospheric Administration yields air temperature, dew point, air pressure, precipitation and wind speed sorted hourly by datetime and location. The variable cloud cover is available at the Northeast Regional Climate Center. The pollution variables quantity of micro particles, carbon monoxide and ozone are delivered by United States Environmental Protection Agency. Some of the environment data is collected hourly and some daily. As the law variables are in a daily format, the hourly environment data is averaged daily from 6AM to 4PM. Each environment observation is at maximum 32 kilometers away from the respective court location.
 	All variables are joined by date (daily) and city in the dataset matched.dta, such that every row represents one case outcome marked by a respective date and location enhanced by case-related as well as environmental characteristics. \newline
 	Once matched.dta is created by joining all data sources, it contains 269269 observations for 572 characteristics. The (Stata) code then converts certain temperature variables into promils and creates auxiliary variables for all relevant dimensions (city, judge, year, month, day), averages of some characteristics across various dimensions and interactions between variables. The final dataset contains 206924 usable observations for 588 variables (the model uses 6 specific non-numeric characteristics as fixed effects, for which Stata will temporarily create a total of 1006 dummy columns within the regression, thus that the total number of variables will be 1596).
 	\newline	
 	\begin{center}
 		\captionof{table}{Summary Statistics} \label{tab:title}
 		\begin{tabular}{lrr}
-			\toprule
+			\hline\hline
 			{} &       Mean &  Std. Dev. \\
-			\midrule
-			res          &   0.165 &      0.371 \\
-			tempmean     &  61.577 &     15.124 \\
+			\hline
+			case outcome$^1$          &   0.165 &      0.371 \\
+			mean temperature     &  61.577 &     15.124 \\
 			heat         &  57.642 &     16.393 \\
-			airpressure0 &  29.657 &      0.780 \\
-			avgdewpt     &  50.116 &     16.777 \\
-			precip0      &   0.004 &      0.039 \\
-			windspeed0   &   6.655 &      4.434 \\
+			airpressure &  29.657 &      0.780 \\
+			average dewpoint     &  50.116 &     16.777 \\
+			precipitation      &   0.004 &      0.039 \\
+			windspeed   &   6.655 &      4.434 \\
 			skycover     &   0.556 &      0.276 \\
 			ozone        &   0.022 &      0.012 \\
 			co           &   0.916 &      0.496 \\
 			pm25         &  14.751 &     11.374 \\
-			\bottomrule
+			\hline\hline
+			\multicolumn{3}{l}{\footnotesize $^1$ binary variable: =1 if asylum is granted. }\\
 		\end{tabular}
 	\end{center}
 
-	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum (represented by the variable "res"). As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. For instance over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
+	Table 1 shows summary statistics for the most relevant variables. About 16 percent of all cases end in granting the applicant asylum (represented by the variable "case outcome". Heyes and Saberian use the namespace "res" for that variable.). As noted by Heyes and Saberian, the grant rate differs greatly across judges and location. For instance over the study period in the Los Angeles courthouse there are five judges that granted asylum to fewer than 4 percent while three others granted in over 67 percent. The mean over the entire dataset for daily average temperature is 61.4°F, which is around 14°C.
 	\newline Figure B.1 (appendix) shows the distribution of NA values across variables in the dataset. Whereas all variables show rather complete observations, the variable "co" (carbon monoxide) contains approx. 50000 missing values. That issue is addressed in Stata within the regression by dropping every row that contains NA for at least one included variable. The variable carbon monoxide is here especially noteworthy, as its missing values cover all data from the year 2001. Subsequently, if "co" is used as an explanatory variable in a regression, Stata will drop all observations from 2001 for the estimation. To illustrate this loss of data, Figure B.2 shows on the left-hand side the yearly observation count of the dataset without any NA values dropped and on the right-hand side the same count with carbon monoxide NA values dropped. Note that excluding "co" as a regressor sets the effective number of observations to 250651.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 4: 
@@ -123,8 +124,8 @@
 	\begin{equation}
 		g_{ it } = \beta_{0} + \beta_{1 }temp_{it} + W_{it}\beta_{2} + P_{it}\beta_{3} + X_{it}\beta_{4} + \gamma_{i} + \psi_{ct} + \theta_{t} + \epsilon_{it}
 	\end{equation}
-	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters the regressors (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W_{it}\), \(P_{it}\) and \(X_{it}\) are a set of control variables. \(W_{it}\) includes averaged weather characteristics (skycover, air pressure, wind, precipitation, dewpoint), \(P_{it}\) represents air pollution (ozone, co, pm) and \(X_{it}\) includes all case specific dummies (weekday, nationality of applicant, case type, year, city-month interaction). \(\gamma_{i}\), \(\psi_{ct}\) and \(\theta_{t}\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon_{it}\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. 
-	The fixed effects regression model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood (\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
+	where the dimensions \(i\), \(t\) and \(c\) represent application, date and city respectively. Thus, the regressand \(g_{ it }\) is the outcome of an application \(i\) on the date \(t\) having the value 1 if asylum was granted and 0 otherwise. \(\beta_{j}\) are the \(j\) slope parameters the regressors (or element of respective regressor matrix) and \(\beta_{0}\) is used as the intercept. \(temp\) is the main regressor of interest, whereas \(W_{it}\), \(P_{it}\) and \(X_{it}\) are a set of control variables. \(W_{it}\) includes averaged weather characteristics (skycover, air pressure, wind, precipitation, dewpoint), \(P_{it}\) represents air pollution (ozone, co, pm) and \(X_{it}\) includes all case specific dummies (weekday, nationality of applicant, case type, year, city-month interaction). \(\gamma_{i}\), \(\psi_{ct}\) and \(\theta_{t}\) are included to control for judge-specific fixed effects (ie which judge is ruling the case), time fixed effects (weekday and years) and city-by-month effects. \(\epsilon_{it}\) contains unobserved heterogeneity along the dimensions of case and date. This serves to control for time and spatial autocorrelation. Moreover, in the estimation errors are clustered over time (months) and spatially (cities) to control for potential correlations along these dimensions.
+	\newline The fixed effects regression model is especially suitable for this analysis for two reasons. Firstly, it yields a handy interpretation for the coefficient of interest, which is in turn also comparable to several other studies, that used the same approach to model decision making or temperature effects. As this is a probability model, the effect on the dependent variable will always be a change in likelihood (\%). Moreover, it is easy to determine and interpret significance of all controls and fixed effects. Secondly, this model can include many characteristics fixed in their respective dimensions. Thusly, as done by Heyes and Saberian, the fixed effects model allows for a holistic approach when testing and including numerous fixed effects.
 	\newline Apart from the normal specification, I also propose a slightly altered version of (1), in which "co" is excluded from \(P_{it}\) to account for the missing value issue explained in the Data chapter. As carbon monoxide is one of several pollution controls, its exclusion should not cause a strong omitted variable bias. Moreover, I estimate (1) with yearly subsamples of the dataset to evaluate the model's validity in a smaller sampling scope. This yearly analysis is motivated by the findings from \cite{Spamann.2020}. The intuition is that if a larger scope yields  results, that question the original finding, then using a smaller scope might also find relevant differences.
 	\newline As an alternative specification, which extends (1), I propose the inclusion of latent factors. This is helpful if the model is underspecified due to relevant variables not being available. Here, one feasible omitted variable could be for instance judges' general mood and feeling of well-being, which arguably changes across judges, over time or spatially and influences asylum case outcomes. This regressor - or any other - can still be controlled for by deducting latent factors from the error term. In that way less biased estimates can be achieved, even though is it unknown which characteristics each of these factors represent. The following is the latent factor model
 	\begin{equation}
@@ -187,8 +188,7 @@
 				\hline
 				\(N\)       &      206924         &      206924         &      206924         &      206924         \\
 				\hline\hline
-				\multicolumn{5}{l}{\footnotesize Standard errors in brackets}\\
-				\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+				\multicolumn{5}{l}{\footnotesize Standard errors in brackets. \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 			\end{tabular}
 		}
 		%\label{Standard errors are clustered on city-month in brackets. * significant at 10\%, ** significant at 5\% *** significant at 1\%.}
@@ -196,7 +196,8 @@
 
 	Table A.1 (see appendix) lists several alternative specifications and is equal to the results by Heyes and Saberian.
 	Table A.2 shows the results of re-estimating Table 2 without "co" as a control variable. Temperature effects change slightly in value whereas direction and significance remain unchanged. This implies that including the observations (blocked before by the NA values in "co") from 2001 and omitting "co" as control yields similar results.
-	\newline \cite{Spamann.2020} have already strongly undermined the validity of the results by Heyes and Saberian using a larger scope for their sample selection and not finding significant temperature effects. Table A.3 lists the first column of the base result (ie base model without lags/leads) for yearly subsamples of the main dataset. As for the year 2001 there is no co2 available in the dataset, it is omitted for that year. Each yearly result yields negative coefficients for the relation between temperature and grant rate, yet for all years except 2003 this effect is not significant. Hence, applying a smaller scope for the sample selection also puts the original results in question. When combining the findings of Spamann with Table A.2, a potential interpretation could be that by chance Heyes and Saberian found significant effects in exactly their sample scope (2000-2004). A short side note here is that the original analysis controls for years with dummies. Those are significant, yet these fixed effects only control for yearly differences in the dependent variable between the base year (2000) and each other year. This does not control for for differences in the regressors, and therefore not control for different yearly temperature effects (as seen Table A.3) either.
+	\newline \cite{Spamann.2020} have already strongly undermined the validity of the results by Heyes and Saberian using a larger scope for their sample selection and not finding significant temperature effects. Table A.3 lists the first column of the base result (ie base model without lags/leads) for yearly subsamples of the main dataset. As for the year 2001 there are no observations for co available in the dataset, it is omitted for that year. Each yearly result yields negative coefficients for the relation between temperature and grant rate, yet for all years except 2003 this effect is not significant. Hence, applying a smaller scope for the sample selection also puts the original results in question. When combining the findings of Spamann with Table A.2, a potential interpretation could be that the sample scope (2000-2004) by Heyes and Saberian spuriously caused the found significant effects.
+	A short side note here is that the original analysis controls for years with dummies. Those are significant, yet these fixed effects only control for yearly differences in the dependent variable between the base year (2000) and each other year. This does not control for for differences in the regressors, and therefore not control for different yearly temperature effects (as seen Table A.3) either.
 	Table A.5 (R output) shows the estimates of (2) without any lags or leads for temperature. The dimension of the unobserved factors is two, meaning that the dimensionality criterion "PC3" found the inclusion of two latent factors is the best trade off between increase in goodness of fit and loss of degrees of freedom. Controlling for these two latent factors leads to a slightly larger temperature effect, which is still highly significant.
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	% Section 6: 
@@ -272,7 +273,7 @@
 						\hline
 						\(N\)      &      206924         &      206924         &      206924         \\
 						\hline\hline
-						\multicolumn{4}{l}{\footnotesize Standard errors in brackets}\\
+						\multicolumn{4}{l}{\footnotesize Standard errors in brackets.}\\
 						\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 					\end{tabular}
 				}			
@@ -322,8 +323,7 @@
 						\hline
 						\(N\)       &      250652         &      250652         &      250652         &      250652         \\
 						\hline\hline
-						\multicolumn{5}{l}{\footnotesize Standard errors in brackets}\\
-						\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+				\multicolumn{5}{l}{\footnotesize Standard errors in brackets. \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 					\end{tabular}
 				}
 				
@@ -370,8 +370,7 @@
 						\hline
 						\(N\)       &       45463         &       54106         &       65572         &       41783         \\
 						\hline\hline
-						\multicolumn{5}{l}{\footnotesize Standard errors in brackets}\\
-						\multicolumn{5}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+				\multicolumn{5}{l}{\footnotesize Standard errors in brackets. \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 					\end{tabular}
 				}
 				
@@ -415,8 +414,7 @@
 						\hline
 						\(N\)       &       45463         &       43728         &       54106         &       65572         &       41783         \\
 						\hline\hline
-						\multicolumn{6}{l}{\footnotesize Standard errors in brackets}\\
-						\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
+				\multicolumn{5}{l}{\footnotesize Standard errors in brackets. \sym{*} \(p<0.10\), \sym{**} \(p<0.05\), \sym{***} \(p<0.01\)}\\
 					\end{tabular}
 				}
 				
@@ -454,10 +452,10 @@
 	
 	\newpage
 	\section{Authors response to referee's comments}
-			I thank Vincent Loewe most thoroughly for his criticism and helpful suggestions on my paper. He points out that my yearly subsample approach may yield estimates with too high variances. It is true that it is somewhat problematic to prove that a coeficent that is not significantly different from 0 was subject to enough degrees of freedom in its estimation. I therefore did a test run of the yearly analysis with random subsamples (20k instead of 45k obs). This yielded similar results, which shall serve as somewhat of a proof that the yearly subsamples are sufficient to deliver meaningful results. As this was to be expected given the sample size, I do go into furhter detail in the paper itself.
+			I thank Vincent Loewe most thoroughly for his thoughts and helpful suggestions on my paper. He points out that my yearly subsample approach may yield estimates with too high variances. It is true that it is somewhat problematic to prove that a coeficent that is not significantly different from 0 was subject to enough degrees of freedom in its estimation. I did a test run of the yearly analysis with random subsamples (20k instead of 45k obs). This yielded similar results, which shall serve as somewhat of a proof that the yearly subsamples are sufficient to deliver meaningful results. As this was to be expected given the sample size, I do not go into further detail in the paper itself.
 			\newline In the discussion chapter I now include a short note on the issue that a linear probabilty model is prone to fitted values falling outside of the [0; 1] interval, as suggested. I explain that the LPM does not seem problematic in this analysis and its results are comparable to other papers, which apparently did not have problems with that, either.
 			\newline Vincent explains that my example of judges' political sentiment is not adequate from a theoretical perspective to motivate the inclusion of latent factors. I agree, and changed the example to judges' general feeling of well-being and mood, which is more fitting. 
-			Apart from its motivation, my colleague generally questions the usefulness of the latent factor specification. As put in the discussion chapter, this additional method as well as its motivation serve only as an example how the given dataset could be further mined to maybe yield better estimates for temperature effects. Obviously, getting an alternative method such as the latent factor example to run properly would be beyond the scope of this paper. Even latent factors might not improve inference, assuming that in this very dataset considerable temperature effects truly exist. Nonetheless, the fact that after including latent factors significant temperature effects prevail, is a valuable finding in itself, even though it contradicts its motivation. I therefore find its inclusion as an example appropiate.
+			Apart from its motivation, my colleague generally questions the usefulness of the latent factor specification. As put in the discussion chapter, this additional method as well as its motivation serve only as an example how the given dataset could be further mined to maybe yield better estimates for temperature effects. Obviously, getting an alternative method such as the latent factor example to run flawlessly would be beyond the scope of this paper. Even latent factors might not improve inference, assuming that in this very dataset considerable temperature effects truly exist. Nonetheless, the fact that after including latent factors significant temperature effects prevail, is a valuable finding in itself, even though it contradicts its motivation. I therefore find its inclusion as an example appropiate.
 			\newline Another suggestion by Vincent is testing different dimension combinations for error clustering in the pooled regression. At an early stage of this paper I tested the estimation of the base model without any error clustering at all, which lead to similar results. That motivated me to omit potential issues of clustered errors and simply use them without any critical reflection. I now tested several different dimensions for clustering and still got similar results. Subsequently, I stay with my initial impression that this is not impactful enough to be further elaborated in the paper.
 			
 	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

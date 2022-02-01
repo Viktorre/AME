@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.20)  31 JAN 2022 14:24
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 21.12) (preloaded format=pdflatex 2022.1.20)  1 FEB 2022 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -719,24 +719,24 @@ LaTeX Font Info:    Trying to load font information for U+pxsyc on input line 9
 File: upxsyc.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Trying to load font information for TS1+ppl on input line 1
-15.
+16.
 
 (C:\Users\reifv\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ppl.fd
 File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
 )
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 121--123
+Underfull \hbox (badness 10000) in paragraph at lines 122--124
 
  []
 
 [4] [5] [6]
-Underfull \hbox (badness 10000) in paragraph at lines 212--214
+Underfull \hbox (badness 10000) in paragraph at lines 213--215
 
  []
 
 [7] [8] [9] [10] [11]
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-30.
+28.
 
 (C:\Users\reifv\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -748,13 +748,13 @@ File: "R_out.txt"  (verbatim)
 File: plot_na_dist_of_n_cols_with_most_na.png Graphic file (type png)
 <use plot_na_dist_of_n_cols_with_most_na.png>
 Package pdftex.def Info: plot_na_dist_of_n_cols_with_most_na.png  used on input
- line 440.
+ line 438.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
 <double_plot_year_dist_with_and_whithout_co.png, id=50, 578.16pt x 289.08pt>
 File: double_plot_year_dist_with_and_whithout_co.png Graphic file (type png)
 <use double_plot_year_dist_with_and_whithout_co.png>
 Package pdftex.def Info: double_plot_year_dist_with_and_whithout_co.png  used o
-n input line 447.
+n input line 445.
 (pdftex.def)             Requested size: 491.43832pt x 245.71915pt.
  [13 <./plot_na_dist_of_n_cols_with_most_na.png> <./double_plot_year_dist_with_
 and_whithout_co.png>] [14] (seminar_paper_reif.bbl) [15]
@@ -764,11 +764,11 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 10043 strings out of 478659
- 170057 string characters out of 2845920
- 569684 words of memory out of 3000000
+ 10045 strings out of 478659
+ 170068 string characters out of 2845920
+ 568684 words of memory out of 3000000
  27926 multiletter control sequences out of 15000+600000
- 434562 words of font info for 112 fonts, out of 8000000 for 9000
+ 435475 words of font info for 114 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,9n,77p,1725b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/reifv/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:
@@ -781,7 +781,7 @@ mi.pfb><C:/Users/reifv/AppData/Local/Programs/MiKTeX/fonts/type1/public/pxfonts
 ino/uplb8a.pfb><C:/Users/reifv/AppData/Local/Programs/MiKTeX/fonts/type1/urw/pa
 latino/uplr8a.pfb><C:/Users/reifv/AppData/Local/Programs/MiKTeX/fonts/type1/urw
 /palatino/uplri8a.pfb>
-Output written on seminar_paper_reif.pdf (15 pages, 167061 bytes).
+Output written on seminar_paper_reif.pdf (15 pages, 167615 bytes).
 PDF statistics:
  103 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
