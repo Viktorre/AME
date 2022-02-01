@@ -24,7 +24,7 @@ class DataFormatter():
                         ]:     
                 print("add dummies for :",var,' (',
                                     len(df[var].unique()),')')
-                df = self.add_dummies_to_df_numeric(df,var)
+                df = self.add_dummies_to_df_numeric(df,var) #wäre gut mit settings hier
         return df
         
 
